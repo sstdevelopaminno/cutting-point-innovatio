@@ -1,4 +1,4 @@
-import { ArrowRight, Smartphone, Star } from "lucide-react";
+import { ArrowRight, Globe2, Star } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getRequestedLocale } from "@/lib/locale";
@@ -83,7 +83,7 @@ export default async function TrialPage() {
       status: t.available,
       active: true,
       href: "/trial/pos",
-      icon: Smartphone,
+      icon: Globe2,
       tone: "from-blue-600 to-cyan-500",
     },
   ];
