@@ -47,23 +47,23 @@ const metadataByLocale: Record<
   }
 > = {
   th: {
-    title: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด | เว็บไซต์และระบบบริหารธุรกิจครบวงจร",
+    title: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด | CpiPOS ระบบ POS สำหรับ Android",
     description:
-      "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด (CUTTING POINT INNOVATION CO., LTD.) ให้บริการรับทำเว็บไซต์ ระบบ POS ระบบจองที่พัก คลาวด์ และระบบบริหารธุรกิจครบวงจร สำหรับองค์กร ร้านค้า ร้านอาหาร โรงแรม และรีสอร์ทที่ต้องการความน่าเชื่อถือ ประสิทธิภาพ และการเติบโตระยะยาว",
+      "CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไป รองรับอุปกรณ์ Android ที่รองรับ ช่วยจัดการงานขาย สินค้า สต๊อก และข้อมูลยอดขาย พร้อมทดลองใช้ฟรี 7 วัน",
     ogLocale: "th_TH",
     alternateLocales: ["en_US", "lo_LA"],
   },
   en: {
-    title: "CUTTING POINT INNOVATION CO., LTD. | Websites and Business Systems",
+    title: "CUTTING POINT INNOVATION CO., LTD. | CpiPOS POS for Android",
     description:
-      "CUTTING POINT INNOVATION CO., LTD. builds professional websites, business systems, and digital solutions for organizations that need credibility, performance, and long-term growth.",
+      "CpiPOS is an Android POS system for restaurants, cafés, retail stores, and general merchants, covering sales, products, inventory, and store visibility with a 7-day free trial.",
     ogLocale: "en_US",
     alternateLocales: ["th_TH"],
   },
   lo: {
-    title: "CUTTING POINT INNOVATION CO., LTD. | Website and Business Systems",
+    title: "CUTTING POINT INNOVATION CO., LTD. | CpiPOS POS for Android",
     description:
-      "CUTTING POINT INNOVATION CO., LTD. provides professional website development and business system solutions for growing organizations.",
+      "CpiPOS ແມ່ນລະບົບ POS ສຳລັບ Android ສຳລັບຮ້ານອາຫານ ຄາເຟ ແລະ ຮ້ານຄ້າປີກ ຮອງຮັບວຽກຂາຍ ສິນຄ້າ ແລະ ສະຕັອກ.",
     ogLocale: "lo_LA",
     alternateLocales: ["th_TH", "en_US"],
   },
