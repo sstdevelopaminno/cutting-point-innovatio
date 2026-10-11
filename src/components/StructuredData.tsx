@@ -39,19 +39,19 @@ const companyInfo = {
     name: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด",
     alternateName: "CUTTING POINT INNOVATION CO., LTD.",
     description:
-      "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด ให้บริการพัฒนาเว็บไซต์ ระบบธุรกิจ และโซลูชันดิจิทัลสำหรับองค์กรที่ต้องการความน่าเชื่อถือ ประสิทธิภาพ และการเติบโตระยะยาว",
+      "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด ผู้พัฒนา CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไป รองรับอุปกรณ์ Android ที่รองรับ พร้อมบริการด้านไอทีและการดูแลระบบ",
   },
   en: {
     name: "CUTTING POINT INNOVATION CO., LTD.",
     alternateName: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด",
     description:
-      "CUTTING POINT INNOVATION CO., LTD. builds professional websites, business systems, and digital solutions for organizations that need credibility, performance, and long-term growth.",
+      "CUTTING POINT INNOVATION CO., LTD. develops CpiPOS, an Android POS system for restaurants, cafés, retail stores, and general merchants, alongside IT services and system support.",
   },
   lo: {
     name: "CUTTING POINT INNOVATION CO., LTD.",
     alternateName: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด",
     description:
-      "CUTTING POINT INNOVATION CO., LTD. provides professional website development and business system solutions for growing organizations.",
+      "CUTTING POINT INNOVATION CO., LTD. develops CpiPOS, a POS system for compatible Android devices, with IT services and system support for businesses.",
   },
 };
 function uniqueGraphId(id: string) {
