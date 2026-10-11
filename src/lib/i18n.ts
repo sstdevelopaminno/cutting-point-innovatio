@@ -280,7 +280,7 @@ export const dict: Record<Lang, Dict> = {
     footer: {
       company: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด",
       address:
-        "บ้านเลขที่ 66/497 หมู่บ้านคันทรีพาร์ค 14 หมู่ 5 ซอย 2 ถนนปทุมธานีลาดหลุมแก้ว ตำบลบางเตย อำเภอสามโคก จังหวัดปทุมธานี 12160",
+        "139/32 หมู่บ้านนันทนาการ์เด้นท์ ตำบลบ้านกลาง อำเภอเมืองปทุมธานี จังหวัดปทุมธานี 12000",
       phone: "0843374982",
       email: "cuttingpointtech@gmail.com",
       line: "ไลน์: @974qhtym",
@@ -478,7 +478,7 @@ export const dict: Record<Lang, Dict> = {
     footer: {
       company: "CUTTING POINT INNOVATION CO., LTD.",
       address:
-        "66/497 Country Park 14 Village, Moo 5, Soi 2, Pathum Thani-Lat Lum Kaeo Road, Bang Toei, Sam Khok, Pathum Thani 12160",
+        "139/32 Nantana Garden Village, Ban Klang, Mueang Pathum Thani, Pathum Thani 12000, Thailand",
       phone: "+66 84 337 4982",
       email: "cuttingpointtech@gmail.com",
       line: "Line: @974qhtym",
@@ -676,7 +676,7 @@ export const dict: Record<Lang, Dict> = {
     footer: {
       company: "CUTTING POINT INNOVATION CO., LTD.",
       address:
-        "66/497 Country Park 14 Village, Moo 5, Soi 2, Pathum Thani-Lat Lum Kaeo Road, Bang Toei, Sam Khok, Pathum Thani 12160",
+        "139/32 Nantana Garden Village, Ban Klang, Mueang Pathum Thani, Pathum Thani 12000, Thailand",
       phone: "0843374982",
       email: "cuttingpointtech@gmail.com",
       line: "LINE: @974qhtym",
