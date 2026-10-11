@@ -7,7 +7,7 @@ import { logEvent } from "@/lib/eventLogger";
 
 type ServiceLinksProps = {
   locale: Lang;
-  current?: "website" | "dormitory-system" | "company-registration";
+  current?: "website" | "company-registration";
 };
 
 const servicesByLocale = {
@@ -19,14 +19,6 @@ const servicesByLocale = {
         "ออกแบบและพัฒนาเว็บไซต์องค์กรที่สื่อสารแบรนด์ชัดเจน พร้อมรองรับ SEO และการเติบโตในระยะยาว",
       href: "/services/website",
       estimateHref: "/estimate?service=website",
-    },
-    {
-      key: "dormitory-system",
-      title: "โปรแกรมบริหารหอพัก/รีสอร์ท",
-      description:
-        "ระบบจัดการห้องพัก สัญญา และการชำระเงินแบบครบวงจร ลดงานซ้ำซ้อนและเพิ่มความแม่นยำ",
-      href: "/services/dormitory-system",
-      estimateHref: "/estimate?service=dormitory",
     },
     {
       key: "company-registration",
@@ -45,14 +37,6 @@ const servicesByLocale = {
         "Strategic, premium websites built for credibility, SEO readiness, and long-term scalability.",
       href: "/services/website",
       estimateHref: "/estimate?service=website",
-    },
-    {
-      key: "dormitory-system",
-      title: "Dormitory & Resort Management System",
-      description:
-        "End-to-end system for rooms, contracts, payments, and reporting with real-world workflows.",
-      href: "/services/dormitory-system",
-      estimateHref: "/estimate?service=dormitory",
     },
     {
       key: "company-registration",
@@ -78,7 +62,7 @@ export default function ServiceLinks({ locale, current }: ServiceLinksProps) {
   };
 
   return (
-    <div className="grid gap-6 md:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-2">
       {services.map((service) => {
         const isCurrent = service.key === current;
         return (
