@@ -251,7 +251,7 @@ const seoContent = useMemo(
     () =>
       lang === "th"
       ? {
-          h1: "ยกระดับธุรกิจของคุณ ด้วยเว็บไซต์และระบบบริหารธุรกิจครบวงจร",
+          h1: "CpiPOS ระบบ POS สำหรับร้านค้าและร้านอาหาร บน Android",
           sections: [
             {
               h2: "CUTTING POINT INNOVATION CO., LTD.",
