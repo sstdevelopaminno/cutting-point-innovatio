@@ -1,4 +1,4 @@
-import { ArrowRight, Briefcase, Globe2, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Smartphone, Star } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getRequestedLocale } from "@/lib/locale";
@@ -8,14 +8,14 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnova
 const copy = {
   th: {
     title: "ทดลองใช้งานระบบ | CUTTING POINT INNOVATION",
-    description: "เลือกทดลองใช้งานระบบของ CUTTING POINT INNOVATION เริ่มจาก CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีก",
-    eyebrow: "TRY OUR SYSTEMS",
-    heading: "ทดลองระบบก่อนตัดสินใจใช้งานจริง",
-    subtitle: "เลือกผลิตภัณฑ์ที่ต้องการทดลอง ระบบที่เปิดให้ทดลองแล้วสามารถเริ่มใช้งานผ่านเว็บเบราว์เซอร์ได้ทันที",
+    description: "ทดลอง CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไป รองรับอุปกรณ์ Android ที่รองรับ",
+    eyebrow: "CpiPOS TRIAL",
+    heading: "ทดลอง CpiPOS ก่อนตัดสินใจใช้งานจริง",
+    subtitle: "ระบบ POS สำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีก รองรับการใช้งานบนอุปกรณ์ Android ที่รองรับ โดยมี Web Demo สำหรับทดลองฟังก์ชันเบื้องต้น",
     available: "พร้อมทดลอง",
     coming: "เร็ว ๆ นี้",
     posTitle: "CpiPOS · ระบบ POS",
-    posDesc: "ทดลองระบบขายหน้าร้าน ดูยอดขาย สินค้า สต๊อก และการทำงานสำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีก",
+    posDesc: "ทดลองงานขายหน้าร้าน สินค้า สต๊อก และยอดขายของ CpiPOS ก่อนสมัครใช้งานจริง",
     aiTitle: "CpiPOS AI",
     aiDesc: "ผู้ช่วยวิเคราะห์ยอดขาย สต๊อก ต้นทุน และข้อมูลร้านจากระบบ POS",
     stayTitle: "ระบบหอพัก / รีสอร์ท",
@@ -25,14 +25,14 @@ const copy = {
   },
   en: {
     title: "Try Our Systems | CUTTING POINT INNOVATION",
-    description: "Explore product trials from CUTTING POINT INNOVATION, starting with CpiPOS for restaurants, cafés, and retail stores.",
-    eyebrow: "TRY OUR SYSTEMS",
-    heading: "Try the system before you decide",
-    subtitle: "Choose a product to explore. Available trials can be launched from your browser.",
+    description: "Try CpiPOS, an Android POS system for restaurants, cafés, retail stores, and general merchants.",
+    eyebrow: "CpiPOS TRIAL",
+    heading: "Try CpiPOS before you subscribe",
+    subtitle: "CpiPOS is built for compatible Android devices, with a web demo available to explore core functions before you subscribe.",
     available: "Available",
     coming: "Coming soon",
     posTitle: "CpiPOS · POS System",
-    posDesc: "Explore sales, products, inventory and store operations for restaurants, cafés and retail.",
+    posDesc: "Explore CpiPOS sales, products, inventory, and store visibility before subscribing.",
     aiTitle: "CpiPOS AI",
     aiDesc: "AI assistance for sales, stock, cost and store-data analysis inside CpiPOS.",
     stayTitle: "Dormitory / Resort System",
@@ -83,28 +83,11 @@ export default async function TrialPage() {
       status: t.available,
       active: true,
       href: "/trial/pos",
-      icon: Globe2,
+      icon: Smartphone,
       tone: "from-blue-600 to-cyan-500",
     },
-    {
-      title: t.aiTitle,
-      description: t.aiDesc,
-      status: t.coming,
-      active: false,
-      href: "",
-      icon: Sparkles,
-      tone: "from-violet-600 to-indigo-500",
-    },
-    {
-      title: t.stayTitle,
-      description: t.stayDesc,
-      status: t.coming,
-      active: false,
-      href: "",
-      icon: Briefcase,
-      tone: "from-emerald-600 to-teal-500",
-    },
   ];
+
 
   return (
     <main className="min-h-screen bg-[#f5f8fc] text-slate-950">
