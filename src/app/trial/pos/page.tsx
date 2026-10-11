@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink, Globe2, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, ShieldCheck, Smartphone, Star } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getRequestedLocale } from "@/lib/locale";
@@ -9,48 +9,48 @@ const POS_TRIAL_URL = "https://cp-ipos-web.vercel.app/";
 const copy = {
   th: {
     title: "ทดลอง CpiPOS | CUTTING POINT INNOVATION",
-    description: "เริ่มทดลอง CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีกผ่านเว็บ",
+    description: "ทดลอง CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีก รองรับอุปกรณ์ Android ที่รองรับ",
     back: "กลับหน้าทดลองใช้งาน",
     eyebrow: "CpiPOS TRIAL",
-    heading: "ทดลอง CpiPOS ผ่านเว็บ",
-    subtitle: "เริ่มสำรวจระบบ POS จริงผ่าน Browser โดยไม่ต้องติดตั้งโปรแกรมจากหน้านี้",
+    heading: "ทดลอง CpiPOS ก่อนใช้งานจริง",
+    subtitle: "Web Demo ช่วยให้ทดลองฟังก์ชันหลักได้ก่อน ส่วนการใช้งานหน้าร้านจริงรองรับอุปกรณ์ Android ที่รองรับ",
     feature1: "ขายและจัดการรายการสินค้า",
     feature2: "ดูยอดขายและข้อมูลร้าน",
-    feature3: "รองรับการทำงานต่อยอดกับ CpiPOS AI",
+    feature3: "รองรับการใช้งานหน้าร้านบนอุปกรณ์ Android ที่รองรับ",
     feature4: "ระบบจริงอาจต้องสมัครร้านและกำหนดสิทธิ์ก่อนใช้งานเต็มรูปแบบ",
-    launch: "เปิดระบบ POS ทดลอง",
+    launch: "เปิด Web Demo CpiPOS",
     signup: "สมัครใช้งาน CpiPOS",
-    domainNote: "หน้าเริ่มทดลองอยู่บนโดเมนบริษัท ส่วนระบบ POS เปิดจากระบบ CpiPOS โดยตรงเพื่อให้ Asset, API และ Session ทำงานได้เสถียร",
+    domainNote: "Web Demo ใช้สำหรับทดลองฟังก์ชันเบื้องต้น การใช้งานหน้าร้านจริงให้สมัครร้านและใช้งานผ่านอุปกรณ์ Android ที่รองรับ",
   },
   en: {
     title: "Try CpiPOS | CUTTING POINT INNOVATION",
-    description: "Launch the CpiPOS web trial for restaurants, cafés and retail stores.",
+    description: "Try CpiPOS, an Android POS system for restaurants, cafés and retail stores.",
     back: "Back to trials",
     eyebrow: "CpiPOS TRIAL",
-    heading: "Try CpiPOS in your browser",
-    subtitle: "Explore the POS experience without installing desktop software.",
+    heading: "Try CpiPOS before going live",
+    subtitle: "Use the web demo to explore core functions first. Live front-of-house use is designed for compatible Android devices.",
     feature1: "Sales and product management",
     feature2: "Store sales and operational insights",
-    feature3: "Ready for CpiPOS AI workflows",
+    feature3: "Designed for front-of-house use on compatible Android devices",
     feature4: "Full production access may require store registration and permissions",
-    launch: "Open POS trial",
+    launch: "Open CpiPOS web demo",
     signup: "Sign up for CpiPOS",
-    domainNote: "This trial gateway stays on the company domain. The POS itself opens from CpiPOS directly so assets, APIs and sessions remain stable.",
+    domainNote: "The web demo is for exploring core functions. Live store use requires store registration and a compatible Android device.",
   },
   lo: {
     title: "ທົດລອງ CpiPOS | CUTTING POINT INNOVATION",
-    description: "ເປີດທົດລອງ CpiPOS ຜ່ານເວັບ.",
+    description: "ທົດລອງ CpiPOS ລະບົບ POS ສຳລັບ Android ສຳລັບຮ້ານອາຫານ ຄາເຟ ແລະ ຮ້ານຄ້າປີກ.",
     back: "ກັບໜ້າທົດລອງ",
     eyebrow: "CpiPOS TRIAL",
-    heading: "ທົດລອງ CpiPOS ຜ່ານ Browser",
-    subtitle: "ສຳຫຼວດລະບົບ POS ໂດຍບໍ່ຕ້ອງຕິດຕັ້ງໂປຣແກຣມ.",
+    heading: "ທົດລອງ CpiPOS ກ່ອນໃຊ້ງານຈິງ",
+    subtitle: "ໃຊ້ Web Demo ເພື່ອທົດລອງຟັງຊັນຫຼັກ ສ່ວນການໃຊ້ງານໜ້າຮ້ານຈິງຮອງຮັບອຸປະກອນ Android ທີ່ຮອງຮັບ.",
     feature1: "ການຂາຍ ແລະ ຈັດການສິນຄ້າ",
     feature2: "ຍອດຂາຍ ແລະ ຂໍ້ມູນຮ້ານ",
-    feature3: "ຮອງຮັບ CpiPOS AI",
+    feature3: "ຮອງຮັບການໃຊ້ງານໜ້າຮ້ານເທິງອຸປະກອນ Android ທີ່ຮອງຮັບ",
     feature4: "ການໃຊ້ງານເຕັມອາດຕ້ອງລົງທະບຽນຮ້ານ ແລະ ກຳນົດສິດ",
     launch: "ເປີດລະບົບ POS",
     signup: "ສະໝັກໃຊ້ CpiPOS",
-    domainNote: "ໜ້າເລີ່ມທົດລອງຢູ່ໂດເມນບໍລິສັດ ແລະ POS ເປີດຈາກລະບົບ CpiPOS ໂດຍກົງ.",
+    domainNote: "Web Demo ໃຊ້ເພື່ອທົດລອງຟັງຊັນເບື້ອງຕົ້ນ ການໃຊ້ງານຈິງຕ້ອງສະໝັກຮ້ານ ແລະ ໃຊ້ອຸປະກອນ Android ທີ່ຮອງຮັບ.",
   },
 } as const;
 
@@ -88,8 +88,8 @@ export default async function PosTrialPage() {
               <div className="mt-8 grid gap-3">
                 {[
                   [Star, t.feature1],
-                  [Globe2, t.feature2],
-                  [Sparkles, t.feature3],
+                  [Smartphone, t.feature2],
+                  [Smartphone, t.feature3],
                   [ShieldCheck, t.feature4],
                 ].map(([Icon, label]) => {
                   const C = Icon as typeof Star;
@@ -120,7 +120,7 @@ export default async function PosTrialPage() {
               <div className="relative flex w-full max-w-sm flex-col items-center rounded-[28px] border border-white/10 bg-white/5 p-8 text-center backdrop-blur">
                 <img src="/brand/logo-icon.png" alt="CpiPOS" className="h-20 w-20 object-contain" />
                 <strong className="mt-5 text-3xl font-black">CpiPOS</strong>
-                <span className="mt-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-200">WEB POS TRIAL</span>
+                <span className="mt-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-200">ANDROID POS · WEB DEMO</span>
                 <p className="mt-6 text-xs leading-5 text-slate-300">{t.domainNote}</p>
               </div>
             </div>
