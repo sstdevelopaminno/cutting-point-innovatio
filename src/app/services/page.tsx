@@ -15,7 +15,7 @@ const content = {
     meta: {
       title: "บริการของเรา | CUTTING POINT INNOVATION",
       description:
-        "บริการหลักของ CUTTING POINT INNOVATION ครอบคลุมรับทำเว็บไซต์ ระบบหอพัก/รีสอร์ท และจดทะเบียนบริษัทครบวงจร พร้อมทีมงานดูแลต่อเนื่องและการทำ SEO/การตลาด.",
+        "บริการของ CUTTING POINT INNOVATION ครอบคลุม CpiPOS สำหรับ Android งานเว็บไซต์ และบริการธุรกิจที่เปิดให้บริการจริง พร้อมทีมงานดูแลต่อเนื่อง.",
     },
     hero: {
       title: "บริการหลักของ CUTTING POINT INNOVATION",
@@ -45,7 +45,7 @@ const content = {
     meta: {
       title: "Our Services | CUTTING POINT INNOVATION",
       description:
-        "Explore CUTTING POINT INNOVATION services: professional website development, dormitory/resort systems, and company registration, plus ongoing support and SEO/marketing.",
+        "Explore CUTTING POINT INNOVATION services currently available, including CpiPOS for Android, professional website development, and business support services.",
     },
     hero: {
       title: "Core services by CUTTING POINT INNOVATION",
