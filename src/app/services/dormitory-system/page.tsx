@@ -244,6 +244,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { absolute: data.title },
     description: data.description,
     alternates: { canonical: "/services/dormitory-system" },
+    robots: { index: false, follow: false },
     openGraph: {
       title: data.title,
       description: data.description,
