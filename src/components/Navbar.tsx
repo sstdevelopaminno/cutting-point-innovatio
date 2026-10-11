@@ -447,17 +447,6 @@ export default function Navbar({
                     </Link>
                     <Link
                       role="menuitem"
-                      href="/services/dormitory-system"
-                      onClick={() => {
-                        onNavClick("services");
-                        setServicesOpen(false);
-                      }}
-                      className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
-                    >
-                      {t.servicesDorm}
-                    </Link>
-                    <Link
-                      role="menuitem"
                       href="/services/company-registration"
                       onClick={() => {
                         onNavClick("services");
@@ -612,18 +601,6 @@ export default function Navbar({
                             className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
                           >
                             {t.servicesWebsite}
-                          </Link>
-                          <Link
-                            href="/services/dormitory-system"
-                            onClick={() => {
-                              onNavClick("services");
-                              setMobileMenuOpen(false);
-                              setMobileFeaturesOpen(false);
-                              setMobileServicesOpen(false);
-                            }}
-                            className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
-                          >
-                            {t.servicesDorm}
                           </Link>
                           <Link
                             href="/services/company-registration"
