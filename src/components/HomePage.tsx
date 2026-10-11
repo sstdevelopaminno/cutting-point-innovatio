@@ -589,6 +589,20 @@ const seoContent = useMemo(
               <p className="mt-4 max-w-xl text-sm font-medium leading-7 text-slate-100 sm:text-base">
                 {copy.hero.trust}
               </p>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href="/trial/pos"
+                  className="inline-flex items-center justify-center rounded-xl bg-[#0a91ff] px-5 py-3 text-sm font-extrabold text-white shadow-[0_16px_34px_rgba(10,145,255,0.28)] transition hover:bg-[#087fdc]"
+                >
+                  {copy.hero.primaryCta}
+                </Link>
+                <a
+                  href="#main-services"
+                  className="inline-flex items-center justify-center rounded-xl border border-white/30 bg-white/10 px-5 py-3 text-sm font-bold text-white backdrop-blur transition hover:bg-white/15"
+                >
+                  {copy.hero.secondaryCta}
+                </a>
+              </div>
             </div>
 
             <div className="relative min-h-[310px] sm:min-h-[410px] lg:min-h-[540px]">
@@ -715,8 +729,10 @@ const seoContent = useMemo(
               <p className="c20-copy c20-copy-2 mt-5 max-w-[15ch] font-[var(--font-body)] text-2xl font-extrabold leading-tight tracking-normal text-slate-950 sm:max-w-none sm:text-3xl lg:text-4xl">
                 Android Desktop POS <span className="block sm:inline">Terminal</span>
               </p>
-              <p className="c20-copy c20-copy-3 mt-6 max-w-[19rem] text-base font-medium leading-8 text-slate-700 sm:max-w-lg sm:text-lg">
-                เครื่อง POS พร้อมระบบขาย ที่รองรับรูปแบบขนาดร้านอาหาร สำหรับโต๊ะ และร้านค้าทั่วไป แบบ 2 จอ
+              <p className="c20-copy c20-copy-3 mt-6 max-w-[22rem] text-base font-medium leading-8 text-slate-700 sm:max-w-lg sm:text-lg">
+                {lang === "th"
+                  ? "Hardware เป็นทางเลือกสำหรับร้านที่ต้องการเครื่องเฉพาะ หากมีอุปกรณ์ Android ที่รองรับอยู่แล้ว สามารถเริ่มใช้ CpiPOS ได้ก่อน"
+                  : "Dedicated POS hardware is optional. If you already have a compatible Android device, you can start with CpiPOS first."}
               </p>
             </div>
             <div className="pointer-events-none relative z-[1] mx-auto mt-8 w-[64%] max-w-[280px] self-end sm:absolute sm:bottom-[-2%] sm:right-[2%] sm:mt-0 sm:w-[48%] sm:max-w-[560px] lg:right-[8%] lg:w-[36%] xl:right-[10%] xl:w-[34%]">
@@ -747,14 +763,14 @@ const seoContent = useMemo(
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,0.94),rgba(248,250,252,0.86)_45%,rgba(255,255,255,0.97))]" />
           <div className="mx-auto w-full max-w-[1500px] px-4 sm:px-6 lg:px-8">
             <div className="mx-auto mb-10 max-w-3xl text-center">
-              <p className={eyebrowClass}>{lang === "th" ? "ผลิตภัณฑ์และบริการ" : "Products and Services"}</p>
+              <p className={eyebrowClass}>{lang === "th" ? "CpiPOS สำหรับธุรกิจหน้าร้าน" : "CpiPOS for Front-of-House Operations"}</p>
               <h2 className="mt-3 font-[var(--font-heading)] text-3xl font-semibold tracking-tight text-slate-950 md:text-4xl">
-                {lang === "th" ? "โซลูชันที่ต่อยอดได้ตามธุรกิจของคุณ" : "Solutions Built Around Your Business"}
+                {lang === "th" ? "เริ่มใช้ POS โดยไม่ต้องซื้อเครื่องใหม่ก่อน" : "Start POS without buying new hardware first"}
               </h2>
               <p className="mt-3 text-slate-600">
                 {lang === "th"
-                  ? "เว็บไซต์ ระบบ POS เครื่อง POS ระบบจองที่พัก และระบบบริหารธุรกิจ วางเป็นชุดบริการเดียวที่ขยายต่อได้"
-                  : "Websites, POS systems, POS hardware, booking systems, and business tools arranged as a scalable service suite."}
+                  ? "ใช้ CpiPOS บนอุปกรณ์ Android ที่รองรับ แล้วค่อยเลือก Hardware เพิ่มเมื่อร้านต้องการ"
+                  : "Use CpiPOS on a compatible Android device, then add dedicated hardware later if your store needs it."}
               </p>
             </div>
 
@@ -851,8 +867,8 @@ const seoContent = useMemo(
               </div>
               <div className="rounded-[8px] border border-slate-200/90 bg-white/72 px-5 py-4 text-sm font-semibold leading-7 text-slate-600 shadow-[0_18px_50px_rgba(15,23,42,0.07)] backdrop-blur">
                 {lang === "th"
-                  ? "ยกระดับเว็บไซต์ให้เป็นสินทรัพย์เชิงธุรกิจ"
-                  : "Turn your website into a strategic business asset."}
+                  ? "เริ่มจากระบบที่ร้านใช้งานจริง แล้วค่อยขยาย Hardware ตามความจำเป็น"
+                  : "Start with the system your store needs, then add hardware only when necessary."}
               </div>
             </div>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-5">
