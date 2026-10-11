@@ -104,32 +104,32 @@ export const dict: Record<Lang, Dict> = {
       downloads: "ดาวน์โหลด",
     },
     hero: {
-      title: "Pro จาก CUTTING POINT INNOVATION",
+      title: "CpiPOS ระบบ POS สำหรับ Android",
       subtitle:
-        "โซลูชันเว็บไซต์องค์กรระดับพรีเมียมที่ยกระดับภาพลักษณ์ พร้อมรองรับการเติบโตระยะยาว",
-      primaryCta: "ขอใบเสนอราคา",
-      secondaryCta: "ดูแพ็กเกจ",
-      trust: "ได้รับความไว้วางใจจากองค์กรและลูกค้า ร้านค้า ทั่วไป",
+        "มีแท็บเล็ตหรือมือถือ Android ที่รองรับอยู่แล้ว ก็เริ่มใช้ระบบ POS ได้ โดยไม่จำเป็นต้องลงทุนเครื่องใหม่ตั้งแต่วันแรก",
+      primaryCta: "ทดลองใช้ฟรี 7 วัน",
+      secondaryCta: "ดูรายละเอียด CpiPOS",
+      trust: "เหมาะสำหรับร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไป",
     },
     features: {
-      title: "ทำไมต้อง CUTTING POINT INNOVATION Pro",
-      subtitle: "ออกแบบเพื่อธุรกิจที่ต้องการความแตกต่างและความน่าเชื่อถือ",
+      title: "CpiPOS ช่วยให้หน้าร้านทำงานง่ายขึ้น",
+      subtitle: "เริ่มจากสิ่งที่ร้านต้องใช้จริง: ขายสินค้า จัดการสต๊อก ดูยอดขาย และควบคุมการทำงาน",
       items: [
         {
-          title: "ดีไซน์ระดับองค์กร",
-          description: "วางโครงสร้าง UI/UX อย่างมีระบบ ถ่ายทอดภาพลักษณ์ที่เป็นมืออาชีพ",
+          title: "เริ่มได้บน Android",
+          description: "ใช้อุปกรณ์ Android ที่รองรับอยู่แล้วได้ ไม่จำเป็นต้องซื้อเครื่อง POS ใหม่ก่อน",
         },
         {
-          title: "ประสิทธิภาพสูง",
-          description: "โครงสร้างโค้ดทันสมัย โหลดไว รองรับ SEO และ Core Web Vitals",
+          title: "ขายและจัดการสินค้า",
+          description: "รองรับงานขายหน้าร้านและการจัดการรายการสินค้าในระบบเดียว",
         },
         {
-          title: "ความปลอดภัยและมาตรฐาน",
-          description: "รองรับการต่อยอดกับระบบภายใน พร้อมมาตรฐานความปลอดภัย",
+          title: "สต๊อกและยอดขาย",
+          description: "ติดตามข้อมูลสินค้า สต๊อก และยอดขายเพื่อช่วยให้เจ้าของร้านเห็นภาพรวมได้ง่ายขึ้น",
         },
         {
-          title: "ดูแลต่อเนื่อง",
-          description: "ทีมผู้เชี่ยวชาญดูแลหลังส่งมอบ อัปเดตและขยายได้ง่าย",
+          title: "พร้อมทีมดูแล",
+          description: "มีช่องทางติดต่อสำหรับการสมัครใช้งาน การตั้งค่าระบบ และการช่วยเหลือหลังเริ่มใช้งาน",
         },
       ],
     },
@@ -302,32 +302,32 @@ export const dict: Record<Lang, Dict> = {
       downloads: "Downloads",
     },
     hero: {
-      title: "Pro by CUTTING POINT INNOVATION",
+      title: "CpiPOS — POS for Android",
       subtitle:
-        "Premium enterprise website solutions that elevate credibility and support long-term growth.",
-      primaryCta: "Request a Quote",
-      secondaryCta: "View Packages",
-      trust: "Trusted by organizations, businesses, and everyday customers.",
+        "Already have a compatible Android tablet or phone? Start using a POS system without buying new hardware on day one.",
+      primaryCta: "Start a 7-day free trial",
+      secondaryCta: "Explore CpiPOS",
+      trust: "Built for restaurants, cafés, retail stores, and general merchants.",
     },
     features: {
-      title: "Why CUTTING POINT INNOVATION Pro",
-      subtitle: "Built for brands that demand elegance, clarity, and performance.",
+      title: "CpiPOS keeps front-of-house operations simple",
+      subtitle: "Start with what stores actually need: sales, products, inventory, and store visibility.",
       items: [
         {
-          title: "Enterprise-grade design",
-          description: "Structured UX/UI that communicates professionalism and trust.",
+          title: "Start on Android",
+          description: "Use a compatible Android device you already have before investing in dedicated POS hardware.",
         },
         {
-          title: "High performance",
-          description: "Modern architecture optimized for speed, SEO, and Core Web Vitals.",
+          title: "Sales and products",
+          description: "Handle front-counter sales and product management in one system.",
         },
         {
-          title: "Security & compliance",
-          description: "Ready for internal integrations with robust security standards.",
+          title: "Inventory and sales visibility",
+          description: "Keep product, stock, and sales information easier to review in one place.",
         },
         {
-          title: "Ongoing care",
-          description: "Dedicated experts to maintain, improve, and expand your platform.",
+          title: "Support when you start",
+          description: "Contact our team for onboarding, system setup, and assistance after launch.",
         },
       ],
     },
@@ -500,36 +500,32 @@ export const dict: Record<Lang, Dict> = {
       downloads: "ດາວໂຫຼດ",
     },
     hero: {
-      title: "Pro ຈາກ CUTTING POINT INNOVATION",
+      title: "CpiPOS — ລະບົບ POS ສຳລັບ Android",
       subtitle:
-        "ໂຊລູຊັນເວັບໄຊອົງກອນລະດັບພຣີເມຍມ ເພື່ອຍົກລະດັບຄວາມນ່າເຊື່ອຖື ແລະ ຮອງຮັບການເຕີບໂຕໃນລະຍະຍາວ",
-      primaryCta: "ຂໍໃບສະເໜີລາຄາ",
-      secondaryCta: "ເບິ່ງແພັກເກັດ",
-      trust: "ໄດ້ຮັບຄວາມໄວ້ວາງໃຈຈາກອົງກອນ ແລະ ລູກຄ້າທົ່ວໄປ",
+        "ຖ້າມີແທັບເລັດ ຫຼື ໂທລະສັບ Android ທີ່ຮອງຮັບ ສາມາດເລີ່ມໃຊ້ POS ໄດ້ໂດຍບໍ່ຈຳເປັນຊື້ເຄື່ອງໃໝ່ຕັ້ງແຕ່ມື້ທຳອິດ",
+      primaryCta: "ທົດລອງຟຣີ 7 ມື້",
+      secondaryCta: "ເບິ່ງ CpiPOS",
+      trust: "ເໝາະສຳລັບຮ້ານອາຫານ ຄາເຟ ຮ້ານຄ້າປີກ ແລະ ຮ້ານຄ້າທົ່ວໄປ",
     },
     features: {
-      title: "ເປັນຫຍັງຕ້ອງ CUTTING POINT INNOVATION Pro",
-      subtitle: "ອອກແບບເພື່ອທຸລະກິດທີ່ຕ້ອງການຄວາມແຕກຕ່າງ ແລະ ຄວາມນ່າເຊື່ອຖື",
+      title: "CpiPOS ຊ່ວຍໃຫ້ວຽກໜ້າຮ້ານງ່າຍຂຶ້ນ",
+      subtitle: "ເລີ່ມຈາກວຽກທີ່ຮ້ານຕ້ອງໃຊ້ຈິງ: ຂາຍສິນຄ້າ ຈັດການສະຕັອກ ແລະ ເບິ່ງຍອດຂາຍ",
       items: [
         {
-          title: "ດີໄຊນ໌ລະດັບອົງກອນ",
-          description:
-            "ວາງໂຄງສ້າງ UI/UX ຢ່າງເປັນລະບົບ ເພື່ອສື່ສານຄວາມເປັນມືອາຊີບ",
+          title: "ເລີ່ມໄດ້ເທິງ Android",
+          description: "ໃຊ້ອຸປະກອນ Android ທີ່ຮອງຮັບຢູ່ແລ້ວໄດ້ ກ່ອນລົງທຶນເຄື່ອງ POS ເພີ່ມ",
         },
         {
-          title: "ປະສິດທິພາບສູງ",
-          description:
-            "ໂຄງສ້າງໂຄດທັນສະໄໝ ໂຫລດໄວ ຮອງຮັບ SEO ແລະ Core Web Vitals",
+          title: "ການຂາຍແລະສິນຄ້າ",
+          description: "ຈັດການການຂາຍໜ້າຮ້ານແລະລາຍການສິນຄ້າໃນລະບົບດຽວ",
         },
         {
-          title: "ຄວາມປອດໄພ ແລະ ມາດຕະຖານ",
-          description:
-            "ພ້ອມຕໍ່ຍອດກັບລະບົບພາຍໃນ ແລະ ມາດຕະຖານຄວາມປອດໄພ",
+          title: "ສະຕັອກແລະຍອດຂາຍ",
+          description: "ຕິດຕາມຂໍ້ມູນສິນຄ້າ ສະຕັອກ ແລະ ຍອດຂາຍໄດ້ງ່າຍຂຶ້ນ",
         },
         {
-          title: "ດູແລຕໍ່ເນື່ອງ",
-          description:
-            "ທີມຜູ້ຊ່ຽວຊານດູແລຫຼັງສົ່ງມອບ ອັບເດດ ແລະ ຂະຫຍາຍໄດ້ງ່າຍ",
+          title: "ມີທີມງານຊ່ວຍເຫຼືອ",
+          description: "ຕິດຕໍ່ທີມງານເພື່ອສະໝັກ ຕັ້ງຄ່າ ແລະ ຮັບການຊ່ວຍເຫຼືອຫຼັງເລີ່ມໃຊ້",
         },
       ],
     },
