@@ -1188,8 +1188,8 @@ const seoContent = useMemo(
                 </h2>
                 <p className="mt-3 max-w-2xl text-slate-600">
                   {lang === "th"
-                    ? "รวมบทความเชิงลึกเกี่ยวกับเว็บไซต์ ระบบบริหาร และการเริ่มต้นธุรกิจ พร้อมแนวทางที่นำไปใช้ได้จริง"
-                    : "Explore practical guides on websites, management systems, and business setup."}
+                    ? "รวมบทความเกี่ยวกับระบบ POS การจัดการหน้าร้าน เว็บไซต์ และการเริ่มต้นธุรกิจ พร้อมแนวทางที่นำไปใช้ได้จริง"
+                    : "Explore practical guides on POS, front-of-house operations, websites, and business setup."}
                 </p>
               </div>
               <Link href="/articles" className="text-sm font-semibold text-slate-700">
@@ -1211,12 +1211,12 @@ const seoContent = useMemo(
                 {
                   title:
                     lang === "th"
-                      ? "ระบบบริหารหอพักช่วยลดต้นทุนได้อย่างไร"
-                      : "How dormitory systems reduce operational cost",
+                      ? "เริ่มใช้ POS ด้วยแท็บเล็ต Android ต้องเตรียมอะไรบ้าง"
+                      : "What you need to start POS on an Android tablet",
                   excerpt:
                     lang === "th"
-                      ? "แนวทางวางระบบที่ลดความซ้ำซ้อน เพิ่มความแม่นยำ และทำให้การบริหารโปร่งใสขึ้น"
-                      : "How structured operations improve accuracy, transparency, and efficiency.",
+                      ? "แนวทางเริ่มต้นระบบขายหน้าร้านโดยใช้อุปกรณ์ Android ที่รองรับ ก่อนตัดสินใจลงทุน Hardware เพิ่ม"
+                      : "A practical guide to starting POS on a compatible Android device before investing in dedicated hardware.",
                 },
                 {
                   title:
