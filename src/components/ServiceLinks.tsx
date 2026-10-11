@@ -7,7 +7,7 @@ import { logEvent } from "@/lib/eventLogger";
 
 type ServiceLinksProps = {
   locale: Lang;
-  current?: "website" | "company-registration";
+  current?: "website" | "dormitory-system" | "company-registration";
 };
 
 const servicesByLocale = {
