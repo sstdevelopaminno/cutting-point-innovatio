@@ -129,10 +129,10 @@ export default function StructuredData({
       address: {
         "@type": "PostalAddress",
         streetAddress:
-          "บ้านเลขที่ 66/497 หมู่บ้านคันทรีพาร์ค 14 หมู่ 5 ซอย 2 ถนนปทุมธานีลาดหลุมแก้ว ตำบลบางเตย อำเภอสามโคก",
-        addressLocality: "สามโคก",
+          "139/32 หมู่บ้านนันทนาการ์เด้นท์ ตำบลบ้านกลาง",
+        addressLocality: "อำเภอเมืองปทุมธานี",
         addressRegion: "ปทุมธานี",
-        postalCode: "12160",
+        postalCode: "12000",
         addressCountry: "TH",
       },
     });
