@@ -1,4 +1,4 @@
-import { ArrowRight, ExternalLink, ShieldCheck, Smartphone, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, Globe2, ShieldCheck, Star } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getRequestedLocale } from "@/lib/locale";
@@ -88,8 +88,8 @@ export default async function PosTrialPage() {
               <div className="mt-8 grid gap-3">
                 {[
                   [Star, t.feature1],
-                  [Smartphone, t.feature2],
-                  [Smartphone, t.feature3],
+                  [Globe2, t.feature2],
+                  [Globe2, t.feature3],
                   [ShieldCheck, t.feature4],
                 ].map(([Icon, label]) => {
                   const C = Icon as typeof Star;
