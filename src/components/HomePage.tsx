@@ -30,16 +30,6 @@ const heroProductSlides = [
     altTh: "อุปกรณ์ POS สองหน้าจอ",
     altEn: "Dual-screen POS devices",
   },
-  {
-    src: "/home-hero/hero-slide-payment.png",
-    altTh: "ระบบชำระเงินหลายช่องทาง",
-    altEn: "Multi-channel payment system",
-  },
-  {
-    src: "/home-hero/hero-slide-cloud-security.png",
-    altTh: "คลาวด์เซิร์ฟเวอร์และระบบความปลอดภัย",
-    altEn: "Cloud server and security system",
-  },
 ] as const;
 
 export default function HomePage() {
@@ -256,7 +246,7 @@ const seoContent = useMemo(
             {
               h2: "CUTTING POINT INNOVATION CO., LTD.",
               intro: [
-                "CUTTING POINT INNOVATION คือทีมผู้เชี่ยวชาญที่ทำงานแบบครบวงจร ตั้งแต่กลยุทธ์ดิจิทัล การออกแบบ การพัฒนา ไปจนถึงการดูแลหลังส่งมอบ เราเน้นความโปร่งใส คุณภาพ และผลลัพธ์เชิงธุรกิจของเรา และเป็นธุรกิจขนาดเล็กที่เน้นบริการที่ดี ให้บริการด้านไอทีทั้งซอฟต์แวร์ ฮาร์ดแวร์ และระบบอื่น ๆ ของเว็บไซต์ รวมถึงด้านธุรกิจอาหารและเครื่องดื่ม และรีสอร์ท/โรงแรม ครอบคลุมระบบการจองและระบบที่เกี่ยวข้องอื่น ๆ ด้วยทีมงานมืออาชีพและการดูแลหลังการขาย",
+                "เริ่มใช้ CpiPOS ได้จากอุปกรณ์ Android ที่รองรับอยู่แล้ว ช่วยให้ร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไปเริ่มใช้ระบบขายหน้าร้าน จัดการสินค้า สต๊อก และดูยอดขายได้ โดยไม่จำเป็นต้องลงทุนซื้อเครื่อง POS ใหม่ตั้งแต่วันแรก",
               ],
               h3: [],
             },
@@ -324,12 +314,12 @@ const seoContent = useMemo(
         }
       : lang === "lo"
         ? {
-            h1: "ຍົກລະດັບທຸລະກິດຂອງທ່ານ ດ້ວຍເວັບໄຊແລະລະບົບທຸລະກິດແບບຄົບວົງຈອນ",
+            h1: "CpiPOS — ລະບົບ POS ສຳລັບຮ້ານຄ້າ ແລະ ຮ້ານອາຫານເທິງ Android",
             sections: [
               {
                 h2: "CUTTING POINT INNOVATION CO., LTD.",
                 intro: [
-                  "CUTTING POINT INNOVATION ແມ່ນທີມງານຜູ້ຊ່ຽວຊານແບບຄົບວົງຈອນ: ວາງກົນລະຍຸດດິຈິຕອນ, ອອກແບບ, ພັດທະນາ ແລະ ດູແລຫຼັງສົ່ງມອບ. ພວກເຮົາເນັ້ນຄວາມໂປ່ງໃສ, ຄຸນນະພາບ ແລະ ຜົນລັບທາງທຸລະກິດທີ່ວັດໄດ້.",
+                  "ເລີ່ມໃຊ້ CpiPOS ໄດ້ຈາກອຸປະກອນ Android ທີ່ຮອງຮັບ ສຳລັບຮ້ານອາຫານ ຄາເຟ ແລະ ຮ້ານຄ້າປີກ ໂດຍບໍ່ຈຳເປັນຊື້ເຄື່ອງ POS ໃໝ່ຕັ້ງແຕ່ມື້ທຳອິດ.",
                 ],
                 h3: [],
               },
@@ -358,12 +348,12 @@ const seoContent = useMemo(
             ],
           }
         : {
-          h1: "Elevate your business with full-service websites and business systems",
+          h1: "CpiPOS — Android POS for restaurants and retail stores",
           sections: [
             {
               h2: "CUTTING POINT INNOVATION CO., LTD.",
               intro: [
-                "CUTTING POINT INNOVATION is an end-to-end expert team—from digital strategy, design, and development to post-launch support. We emphasize transparency, quality, and real business outcomes. As a small, service-minded company, we provide IT services across software, hardware, and website systems, as well as solutions for food & beverage businesses and resorts/hotels, including complete booking systems and related operational systems—backed by a professional team and after-sales support.",
+                "Start CpiPOS on a compatible Android device you already own. Restaurants, cafés, retail stores, and general merchants can begin with sales, product, inventory, and store visibility without buying dedicated POS hardware on day one.",
               ],
               h3: [],
             },
