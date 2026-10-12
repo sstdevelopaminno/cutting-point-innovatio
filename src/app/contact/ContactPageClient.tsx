@@ -2,16 +2,7 @@
 
 import type { FormEvent } from "react";
 import { useEffect, useRef, useState } from "react";
-import {
-  ArrowRight,
-  Clock3,
-  ExternalLink,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-  Store,
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import SubmitStatusModal from "@/components/SubmitStatusModal";
 import { useLang } from "@/components/LangContext";
 import { trackGaEvent } from "@/lib/ga";
@@ -27,6 +18,20 @@ const EMAIL = "cuttingpointtech@gmail.com";
 const MAP_URL = "https://maps.app.goo.gl/K9PJtkZi2RStu3MR8";
 const TRIAL_URL =
   "/trial/pos?utm_source=website&utm_medium=contact_page&utm_campaign=cpipos_contact_hub&utm_content=trial_cta";
+
+function SimpleIcon({
+  className,
+  path,
+}: {
+  className?: string;
+  path: string;
+}) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d={path} />
+    </svg>
+  );
+}
 
 function FacebookMark({ className }: { className?: string }) {
   return (
@@ -332,14 +337,14 @@ export default function ContactPageClient() {
               rel="noreferrer"
               className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#06C755] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#05b84e]"
             >
-              <MessageCircle className="h-4 w-4" />
+              <SimpleIcon className="h-4 w-4" path="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
               {text.addFriend}
             </a>
             <a
               href={TRIAL_URL}
               className="inline-flex min-h-11 items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800"
             >
-              <Store className="h-4 w-4" />
+              <SimpleIcon className="h-4 w-4" path="M3 9l2-5h14l2 5M5 13v7h14v-7M9 20v-6h6v6" />
               {text.trialButton}
             </a>
           </div>
@@ -360,7 +365,7 @@ export default function ContactPageClient() {
 
             <a href={LINE_URL} target="_blank" rel="noreferrer" className={channelClass}>
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#06C755] text-white">
-                <MessageCircle className="h-5 w-5" />
+                <SimpleIcon className="h-5 w-5" path="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
               </div>
               <h2 className="mt-4 font-semibold text-slate-950">{text.lineTitle}</h2>
               <p className="mt-1 text-lg font-bold text-[#06A84A]">{LINE_ID}</p>
@@ -394,13 +399,13 @@ export default function ContactPageClient() {
                 {copy.footer.address}
               </p>
               <p className="mt-2 inline-flex items-center gap-1 text-sm text-slate-600">
-                {text.mapDesc} <ExternalLink className="h-3.5 w-3.5" />
+                {text.mapDesc} <SimpleIcon className="h-3.5 w-3.5" path="M14 3h7v7M10 14L21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
               </p>
             </a>
 
             <div className={channelClass}>
               <div className={iconClass}>
-                <Clock3 className="h-5 w-5" />
+                <SimpleIcon className="h-5 w-5" path="M12 8v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
               </div>
               <h2 className="mt-4 font-semibold text-slate-950">{text.hoursTitle}</h2>
               <p className="mt-1 text-lg font-bold text-slate-900">{text.hoursValue}</p>
@@ -554,7 +559,7 @@ export default function ContactPageClient() {
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-blue-50"
                 >
                   {text.trialButton}
-                  <ArrowRight className="h-4 w-4" />
+                  <SimpleIcon className="h-4 w-4" path="M5 12h14M13 6l6 6-6 6" />
                 </a>
               </div>
 
@@ -571,7 +576,7 @@ export default function ContactPageClient() {
                   className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition hover:text-blue-700"
                 >
                   {text.mapDesc}
-                  <ExternalLink className="h-4 w-4" />
+                  <SimpleIcon className="h-4 w-4" path="M14 3h7v7M10 14L21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
                 </a>
               </div>
             </div>
