@@ -17,12 +17,22 @@ type ServiceSchema = {
   url: string;
 };
 
+type ArticleSchema = {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  image?: string;
+};
+
 type StructuredDataProps = {
   locale: Locale;
   includeGlobal?: boolean;
   breadcrumbs?: BreadcrumbItem[];
   faqs?: FaqItem[];
   service?: ServiceSchema;
+  article?: ArticleSchema;
 };
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnovation.vercel.app";
@@ -66,6 +76,7 @@ export default function StructuredData({
   breadcrumbs,
   faqs,
   service,
+  article,
 }: StructuredDataProps) {
   const baseUrl = SITE_URL.replace(/\/+$/, "");
   const info = companyInfo[locale];
@@ -176,8 +187,28 @@ export default function StructuredData({
     });
   }
 
+  if (article) {
+    ensureOrganization(includeGlobal ? "full" : "minimal");
+
+    const articleUrl = uniqueGraphId(article.url);
+    graph.push({
+      "@type": "Article",
+      "@id": `${articleUrl}#article`,
+      headline: article.headline,
+      description: article.description,
+      url: articleUrl,
+      mainEntityOfPage: { "@id": `${articleUrl}#webpage` },
+      author: { "@id": organizationId },
+      publisher: { "@id": organizationId },
+      datePublished: article.datePublished,
+      dateModified: article.dateModified,
+      image: article.image,
+      inLanguage: locale,
+    });
+  }
+
   const pageUrl =
-    uniqueGraphId(service?.url ?? breadcrumbs?.[breadcrumbs.length - 1]?.item ?? `${baseUrl}/`) ||
+    uniqueGraphId(article?.url ?? service?.url ?? breadcrumbs?.[breadcrumbs.length - 1]?.item ?? `${baseUrl}/`) ||
     `${baseUrl}/`;
 
   if (faqs?.length) {
@@ -186,6 +217,7 @@ export default function StructuredData({
       "@id": `${pageUrl}#faqpage`,
       url: pageUrl,
       name:
+        article?.headline ??
         service?.name ??
         (locale === "th" ? "คำถามที่พบบ่อย | CUTTING POINT INNOVATION" : "FAQ | CUTTING POINT INNOVATION CO., LTD."),
       isPartOf: { "@id": websiteId },
@@ -214,7 +246,7 @@ export default function StructuredData({
     });
   }
 
-  if (service || breadcrumbs?.length || faqs?.length) {
+  if (service || article || breadcrumbs?.length || faqs?.length) {
     ensureOrganization(includeGlobal ? "full" : "minimal");
 
     if (includeGlobal) {
@@ -234,9 +266,10 @@ export default function StructuredData({
       "@type": "WebPage",
       "@id": `${pageUrl}#webpage`,
       url: pageUrl,
-      name: service?.name ?? info.name,
+      name: article?.headline ?? service?.name ?? info.name,
       isPartOf: { "@id": websiteId },
       about: service ? { "@id": `${uniqueGraphId(service.url)}#service` } : undefined,
+      mainEntity: article ? { "@id": `${uniqueGraphId(article.url)}#article` } : undefined,
       breadcrumb: breadcrumbs?.length ? { "@id": `${pageUrl}#breadcrumb` } : undefined,
       inLanguage: locale,
     });
