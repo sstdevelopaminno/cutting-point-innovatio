@@ -1094,9 +1094,33 @@ const seoContent = useMemo(
                   <div className="mt-4 space-y-3 text-sm text-slate-700">
                     <p>{copy.footer.company}</p>
                     <p>{copy.footer.address}</p>
-                    <p>{copy.footer.phone}</p>
-                    <p>{copy.footer.email}</p>
-                    <p>{copy.footer.line}</p>
+                    <p>
+                      <a
+                        href={`tel:${copy.footer.phone.replace(/\\s+/g, "")}`}
+                        className="font-medium text-slate-800 transition hover:text-blue-600"
+                      >
+                        {copy.footer.phone}
+                      </a>
+                    </p>
+                    <p>
+                      <a
+                        href={`mailto:${copy.footer.email}`}
+                        className="font-medium text-slate-800 transition hover:text-blue-600"
+                      >
+                        {copy.footer.email}
+                      </a>
+                    </p>
+                    <p className="flex flex-wrap items-center gap-2">
+                      <span>{copy.footer.line}</span>
+                      <a
+                        href="https://lin.ee/z8qLGjU"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center rounded-lg bg-[#06C755] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#05b84e]"
+                      >
+                        {lang === "th" ? "เพิ่มเพื่อน LINE" : lang === "lo" ? "ເພີ່ມເພື່ອນ LINE" : "Add LINE friend"}
+                      </a>
+                    </p>
                   </div>
                 </div>
                 <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-card-soft">
