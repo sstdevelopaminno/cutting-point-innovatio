@@ -1,6 +1,7 @@
 import { ArrowRight, ExternalLink, Globe2, ShieldCheck, Star } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import StructuredData from "@/components/StructuredData";
 import { getRequestedLocale } from "@/lib/locale";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnovation.vercel.app";
@@ -8,8 +9,8 @@ const POS_TRIAL_URL = "https://cp-ipos-web.vercel.app/";
 
 const copy = {
   th: {
-    title: "ทดลอง CpiPOS | CUTTING POINT INNOVATION",
-    description: "ทดลอง CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีก รองรับอุปกรณ์ Android ที่รองรับ",
+    title: "ทดลองใช้ฟรี CpiPOS ระบบ POS Android 7 วัน | CUTTING POINT INNOVATION",
+    description: "ทดลอง CpiPOS ฟรี 7 วัน ระบบ POS และโปรแกรมขายหน้าร้านสำหรับ Android เหมาะกับร้านอาหาร คาเฟ่ ร้านค้าปลีก จัดการขาย สินค้า สต๊อก และยอดขาย",
     back: "กลับหน้าทดลองใช้งาน",
     eyebrow: "CpiPOS TRIAL",
     heading: "ทดลอง CpiPOS ก่อนใช้งานจริง",
@@ -63,16 +64,44 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { absolute: t.title },
     description: t.description,
     alternates: { canonical: "/trial/pos" },
-    openGraph: { title: t.title, description: t.description, url: `${baseUrl}/trial/pos`, type: "website" },
+    openGraph: {
+      title: t.title,
+      description: t.description,
+      url: `${baseUrl}/trial/pos`,
+      type: "website",
+      images: [{ url: "/product-showcase/service-pos.png", alt: "ทดลอง CpiPOS ระบบ POS Android" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t.title,
+      description: t.description,
+      images: ["/product-showcase/service-pos.png"],
+    },
+    robots: { index: true, follow: true },
   };
 }
 
 export default async function PosTrialPage() {
   const locale = await getRequestedLocale();
   const t = copy[locale];
+  const baseUrl = SITE_URL.replace(/\/+$/, "");
 
   return (
-    <main className="min-h-screen bg-[#f5f8fc] text-slate-950">
+    <>
+      <StructuredData
+        locale={locale}
+        service={{
+          name: locale === "th" ? "CpiPOS ระบบ POS สำหรับ Android" : "CpiPOS POS for Android",
+          description: t.description,
+          serviceType: "Point of Sale Software",
+          url: `${baseUrl}/trial/pos`,
+        }}
+        breadcrumbs={[
+          { name: locale === "th" ? "หน้าแรก" : "Home", item: `${baseUrl}/` },
+          { name: locale === "th" ? "ทดลอง CpiPOS" : "Try CpiPOS", item: `${baseUrl}/trial/pos` },
+        ]}
+      />
+      <main className="min-h-screen bg-[#f5f8fc] text-slate-950">
       <section className="mx-auto max-w-6xl px-6 py-10 sm:py-14">
         <Link href="/trial" className="inline-flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-blue-700">
           <ArrowRight className="h-4 w-4 rotate-180" />{t.back}
@@ -127,6 +156,7 @@ export default async function PosTrialPage() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
