@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./register-store.module.css";
+import { trackGaEvent } from "@/lib/ga";
 
 type Package = { id: string; code: string; name: string; monthly_price: number; effective_monthly_price?: number | null; max_branches: number; max_devices: number; quota_mode?: string; contact_sales?: boolean; sales_mode_limit?: number | null };
 type SalesModes = { takeaway: boolean; dine_in: boolean; general_sale: boolean };
@@ -89,6 +90,14 @@ export default function RegisterStoreForm() {
         }
         throw new Error(payload?.error??"บันทึกคำขอไม่สำเร็จ");
       }
+      trackGaEvent("generate_lead", {
+        lead_type: "cpipos_store_registration",
+        package_id: packageId,
+        package_name: selectedPackage?.name ?? "",
+        business_type: businessType,
+        currency: "THB",
+        value: Number(selectedPackage?.effective_monthly_price ?? selectedPackage?.monthly_price ?? 0),
+      });
       setDone(true);setSubmissionKey(globalThis.crypto.randomUUID());setStartedAt(Date.now());
     }catch(e){setError(e instanceof Error?e.message:"ส่งคำขอไม่สำเร็จ");}
     finally{setSubmitting(false);}
