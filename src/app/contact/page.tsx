@@ -11,8 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = locale === "th" ? "ติดต่อ | CUTTING POINT INNOVATION" : "Contact | CUTTING POINT INNOVATION";
   const description =
     locale === "th"
-      ? "ติดต่อ CUTTING POINT INNOVATION เพื่อรับคำปรึกษาและใบเสนอราคา ทีมงานพร้อมตอบกลับโดยเร็ว"
-      : "Contact CUTTING POINT INNOVATION for consultation and a tailored quote.";
+      ? "รวมช่องทางติดต่อ CUTTING POINT INNOVATION สำหรับ CpiPOS โทร LINE OA Facebook อีเมล ที่ตั้งบริษัท และแบบฟอร์มติดต่อ"
+      : "Contact CUTTING POINT INNOVATION for CpiPOS via phone, LINE OA, Facebook, email, company location, or contact form.";
 
   return {
     metadataBase: new URL(baseUrl),
