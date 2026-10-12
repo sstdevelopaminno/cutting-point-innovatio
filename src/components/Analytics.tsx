@@ -18,9 +18,9 @@ export default function Analytics() {
       />
       <Script id="ga4-gtag" strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA4_ID}', { anonymize_ip: true, send_page_view: false });`}
+window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+window.gtag('js', new Date());
+window.gtag('config', '${GA4_ID}', { anonymize_ip: true, send_page_view: false });`}
       </Script>
       <GaPageViewTracker gaId={GA4_ID} />
       <CoreWebVitalsTracker />
