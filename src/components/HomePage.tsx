@@ -1203,58 +1203,61 @@ const seoContent = useMemo(
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className={eyebrowClass}>
-                  {lang === "th" ? "บทความเชิงกลยุทธ์" : "Strategic articles"}
+                  {lang === "th" ? "บทความ CpiPOS" : "CpiPOS guides"}
                 </p>
                 <h2 className="mt-3 font-[var(--font-heading)] text-3xl font-semibold tracking-tight text-slate-900">
                   {lang === "th"
-                    ? "ความรู้ที่ช่วยให้ธุรกิจตัดสินใจได้ดีขึ้น"
-                    : "Insights to support better business decisions"}
+                    ? "เริ่มใช้ POS ให้เหมาะกับร้านก่อนลงทุนเพิ่ม"
+                    : "Choose the right POS workflow before investing more"}
                 </h2>
                 <p className="mt-3 max-w-2xl text-slate-600">
                   {lang === "th"
-                    ? "รวมบทความเกี่ยวกับระบบ POS การจัดการหน้าร้าน เว็บไซต์ และการเริ่มต้นธุรกิจ พร้อมแนวทางที่นำไปใช้ได้จริง"
-                    : "Explore practical guides on POS, front-of-house operations, websites, and business setup."}
+                    ? "รวมแนวทางระบบ POS Android สำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีก ตั้งแต่งานขาย สินค้า สต๊อก ไปจนถึงข้อมูลยอดขาย"
+                    : "Practical Android POS guides for restaurants, cafés and retailers covering sales, products, inventory and sales data."}
                 </p>
               </div>
               <Link href="/articles" className="text-sm font-semibold text-slate-700">
-                {lang === "th" ? "ดูบทความทั้งหมด" : "View all articles"}
+                {lang === "th" ? "ดูบทความทั้งหมด" : "View all guides"}
               </Link>
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {[
                 {
+                  href: "/articles/pos-android",
                   title:
                     lang === "th"
-                      ? "แนวทางเลือกผู้พัฒนาเว็บไซต์องค์กรที่เหมาะกับธุรกิจ"
-                      : "Choosing the right corporate website partner",
+                      ? "ระบบ POS Android คืออะไร? เริ่มโดยไม่ต้องซื้อเครื่องใหม่"
+                      : "Android POS: start without new hardware first",
                   excerpt:
                     lang === "th"
-                      ? "สรุปเกณฑ์สำคัญในการเลือกทีมรับทำเว็บไซต์ที่ตอบโจทย์ธุรกิจและสร้างผลลัพธ์ระยะยาว"
-                      : "Key criteria for selecting a website partner that delivers long-term value.",
+                      ? "ใช้แท็บเล็ตหรือมือถือ Android ที่รองรับเพื่อทดลอง workflow หน้าร้านก่อนลงทุน Hardware เพิ่ม"
+                      : "Start with a compatible Android device and validate your front-of-house workflow first.",
                 },
                 {
+                  href: "/articles/pos-restaurant-cafe",
                   title:
                     lang === "th"
-                      ? "เริ่มใช้ POS ด้วยแท็บเล็ต Android ต้องเตรียมอะไรบ้าง"
-                      : "What you need to start POS on an Android tablet",
+                      ? "POS ร้านอาหารและคาเฟ่ ควรมีอะไรบ้าง"
+                      : "Restaurant and café POS: what to check",
                   excerpt:
                     lang === "th"
-                      ? "แนวทางเริ่มต้นระบบขายหน้าร้านโดยใช้อุปกรณ์ Android ที่รองรับ ก่อนตัดสินใจลงทุน Hardware เพิ่ม"
-                      : "A practical guide to starting POS on a compatible Android device before investing in dedicated hardware.",
+                      ? "เช็กลิสต์งานขาย สินค้า สต๊อก และข้อมูลยอดขายที่ควรทดลองก่อนเลือกระบบ"
+                      : "A practical checklist for sales, products, inventory and sales visibility.",
                 },
                 {
+                  href: "/articles/pos-inventory-retail",
                   title:
                     lang === "th"
-                      ? "เตรียมเอกสารจดทะเบียนบริษัทให้พร้อมในครั้งเดียว"
-                      : "Preparing company registration documents correctly",
+                      ? "POS ร้านค้าปลีกและระบบสต๊อก"
+                      : "Retail POS and inventory",
                   excerpt:
                     lang === "th"
-                      ? "เช็กลิสต์เอกสารและขั้นตอนสำคัญก่อนเริ่มจดทะเบียนบริษัท"
-                      : "A practical checklist of steps and documents before registration.",
+                      ? "จัดงานขาย สินค้า และสต๊อกให้อยู่ใน workflow เดียว ลดการตามข้อมูลจากหลายที่"
+                      : "Organize sales, products and inventory in one operational workflow.",
                 },
               ].map((article) => (
                 <div
-                  key={article.title}
+                  key={article.href}
                   className="rounded-2xl border border-slate-200 bg-white p-6 shadow-card-soft"
                 >
                   <h3 className="text-lg font-semibold text-slate-900">
@@ -1262,8 +1265,8 @@ const seoContent = useMemo(
                   </h3>
                   <p className="mt-3 text-sm text-slate-600">{article.excerpt}</p>
                   <Link
-                    href="/articles"
-                    className="mt-4 inline-flex text-sm text-slate-700"
+                    href={article.href}
+                    className="mt-4 inline-flex text-sm font-semibold text-blue-700"
                   >
                     {lang === "th" ? "อ่านต่อ" : "Read more"}
                   </Link>

@@ -88,8 +88,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/articles`,
       lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/articles/pos-android`,
+      lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/articles/pos-restaurant-cafe`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/articles/pos-inventory-retail`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
     },
   ];
 }
