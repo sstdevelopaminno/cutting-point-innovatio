@@ -32,6 +32,8 @@ const CONTACT = {
   phoneLocal: "0985460355",
   phoneE164: "+66985460355",
   line: "https://lin.ee/z8qLGjU",
+  facebook: "https://www.facebook.com/122134406553382800",
+  contactUrl: "https://cuttingpointinnovation.vercel.app/contact",
 } as const;
 
 const companyInfo = {
@@ -89,7 +91,7 @@ export default function StructuredData({
       description: info.description,
       email: CONTACT.email,
       telephone: CONTACT.phoneE164,
-      sameAs: [CONTACT.line],
+      sameAs: [CONTACT.line, CONTACT.facebook],
     };
 
     graph.push(
@@ -102,6 +104,7 @@ export default function StructuredData({
                 telephone: CONTACT.phoneE164,
                 contactType: "customer support",
                 email: CONTACT.email,
+                url: CONTACT.contactUrl,
                 availableLanguage: ["th", "en", "lo"],
               },
             ],
@@ -121,11 +124,19 @@ export default function StructuredData({
       description: info.description,
       telephone: CONTACT.phoneE164,
       email: CONTACT.email,
-      sameAs: [CONTACT.line],
+      sameAs: [CONTACT.line, CONTACT.facebook],
       areaServed: {
         "@type": "Country",
         name: "Thailand",
       },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "09:00",
+          closes: "17:00",
+        },
+      ],
       address: {
         "@type": "PostalAddress",
         streetAddress:
