@@ -334,11 +334,13 @@ export default async function PosArticlePage({ params }: PageProps) {
     <>
       <StructuredData
         locale={locale}
-        service={{
-          name: "CpiPOS POS for Android",
+        article={{
+          headline: copy.title,
           description: copy.metaDescription,
-          serviceType: "Point of Sale Software",
           url: pageUrl,
+          datePublished: "2026-10-12",
+          dateModified: "2026-10-12",
+          image: `${baseUrl}/product-showcase/service-pos.png`,
         }}
         breadcrumbs={[
           { name: locale === "en" ? "Home" : "หน้าแรก", item: `${baseUrl}/` },
