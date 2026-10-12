@@ -479,7 +479,7 @@ export const dict: Record<Lang, Dict> = {
       company: "CUTTING POINT INNOVATION CO., LTD.",
       address:
         "139/32 Nantana Garden Village, Ban Klang, Mueang Pathum Thani, Pathum Thani 12000, Thailand",
-      phone: "+66 84 337 4982",
+      phone: "+66 98 546 0355",
       email: "cuttingpointtech@gmail.com",
       line: "LINE OA: @174zcwjw",
       note: "Enterprise digital solutions across websites, applications, and internal systems.",
