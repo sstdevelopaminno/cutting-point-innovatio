@@ -82,6 +82,16 @@ export default function MarketingEventTracker() {
         return;
       }
 
+      if (/facebook\.com/i.test(anchor.href)) {
+        trackGaEvent("contact_click", { ...context, contact_method: "facebook" });
+        return;
+      }
+
+      if (/maps\.app\.goo\.gl|google\.[^/]+\/maps/i.test(anchor.href)) {
+        trackGaEvent("contact_click", { ...context, contact_method: "google_maps" });
+        return;
+      }
+
       try {
         const url = new URL(anchor.href, window.location.origin);
 
