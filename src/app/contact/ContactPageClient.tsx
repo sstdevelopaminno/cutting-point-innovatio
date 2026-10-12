@@ -2,16 +2,126 @@
 
 import type { FormEvent } from "react";
 import { useEffect, useRef, useState } from "react";
+import {
+  ArrowRight,
+  Clock3,
+  ExternalLink,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Store,
+} from "lucide-react";
 import SubmitStatusModal from "@/components/SubmitStatusModal";
 import { useLang } from "@/components/LangContext";
 import { trackGaEvent } from "@/lib/ga";
 import { getCopy } from "@/lib/i18n";
 import { formatLeadRef } from "@/lib/leadRef";
 
+const PHONE_DISPLAY = "098-546-0355";
+const PHONE_HREF = "tel:0985460355";
+const LINE_ID = "@174zcwjw";
+const LINE_URL = "https://lin.ee/z8qLGjU";
+const FACEBOOK_URL = "https://www.facebook.com/122134406553382800";
+const EMAIL = "cuttingpointtech@gmail.com";
+const MAP_URL = "https://maps.app.goo.gl/K9PJtkZi2RStu3MR8";
+const TRIAL_URL =
+  "/trial/pos?utm_source=website&utm_medium=contact_page&utm_campaign=cpipos_contact_hub&utm_content=trial_cta";
+
+function FacebookMark({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+      <path d="M13.5 21v-7h2.3l.4-2.7h-2.7V9.6c0-.8.2-1.3 1.4-1.3h1.4V5.9c-.2 0-1.1-.1-2.2-.1-2.2 0-3.6 1.3-3.6 3.7v1.8H8.1V14h2.4v7H13.5z" />
+    </svg>
+  );
+}
+
 export default function ContactPageClient() {
   const { lang } = useLang();
   const copy = getCopy(lang);
   const REQUEST_TIMEOUT_MS = 15_000;
+
+  const text =
+    lang === "th"
+      ? {
+          eyebrow: "CONTACT CENTER",
+          title: "ช่องทางติดต่อ CUTTING POINT INNOVATION",
+          subtitle:
+            "ติดต่อทีมงานเรื่อง CpiPOS การทดลองใช้งาน การติดตั้ง การตั้งค่าระบบ หรือการช่วยเหลือด้าน IT ได้จากช่องทางด้านล่าง",
+          phoneTitle: "โทรหาเรา",
+          phoneDesc: "สอบถาม CpiPOS และบริการของบริษัท",
+          lineTitle: "LINE Official Account",
+          lineDesc: "เพิ่มเพื่อนและแชตกับทีมงานโดยตรง",
+          facebookTitle: "Facebook Page",
+          facebookDesc: "ติดตามข่าวสาร โปรโมชั่น และส่งข้อความหาเพจ",
+          emailTitle: "อีเมล",
+          emailDesc: "เหมาะสำหรับรายละเอียดงานและเอกสาร",
+          mapTitle: "ที่ตั้งบริษัท",
+          mapDesc: "เปิดตำแหน่งบน Google Maps",
+          hoursTitle: "เวลาทำการ",
+          hoursValue: "จันทร์–ศุกร์ 09:00–17:00 น.",
+          addressTitle: "สำนักงาน",
+          formTitle: "ส่งข้อความถึงทีมงาน",
+          formDesc: "กรอกข้อมูลด้านล่าง ทีมงานจะติดต่อกลับโดยเร็ว",
+          trialTitle: "ต้องการทดลอง CpiPOS?",
+          trialDesc: "เริ่มทดลองใช้ฟรี 7 วันบนอุปกรณ์ Android ที่รองรับ",
+          trialButton: "ทดลองใช้ฟรี 7 วัน",
+          addFriend: "เพิ่มเพื่อน LINE",
+          open: "เปิด",
+        }
+      : lang === "lo"
+        ? {
+            eyebrow: "CONTACT CENTER",
+            title: "ຊ່ອງທາງຕິດຕໍ່ CUTTING POINT INNOVATION",
+            subtitle:
+              "ຕິດຕໍ່ທີມງານກ່ຽວກັບ CpiPOS, ການທົດລອງ, ການຕິດຕັ້ງ ຫຼື ການຊ່ວຍເຫຼືອ IT.",
+            phoneTitle: "ໂທຫາພວກເຮົາ",
+            phoneDesc: "ສອບຖາມ CpiPOS ແລະ ບໍລິການ",
+            lineTitle: "LINE Official Account",
+            lineDesc: "ເພີ່ມເພື່ອນ ແລະ ແຊັດກັບທີມງານ",
+            facebookTitle: "Facebook Page",
+            facebookDesc: "ຕິດຕາມຂ່າວ ແລະ ສົ່ງຂໍ້ຄວາມ",
+            emailTitle: "ອີເມວ",
+            emailDesc: "ສຳລັບລາຍລະອຽດງານ ແລະ ເອກະສານ",
+            mapTitle: "ທີ່ຕັ້ງບໍລິສັດ",
+            mapDesc: "ເປີດໃນ Google Maps",
+            hoursTitle: "ເວລາເຮັດວຽກ",
+            hoursValue: "ຈັນ–ສຸກ 09:00–17:00",
+            addressTitle: "ສຳນັກງານ",
+            formTitle: "ສົ່ງຂໍ້ຄວາມຫາທີມງານ",
+            formDesc: "ກອກຂໍ້ມູນ ແລະ ທີມງານຈະຕິດຕໍ່ກັບ",
+            trialTitle: "ຕ້ອງການທົດລອງ CpiPOS?",
+            trialDesc: "ທົດລອງຟຣີ 7 ມື້ເທິງ Android ທີ່ຮອງຮັບ",
+            trialButton: "ທົດລອງຟຣີ 7 ມື້",
+            addFriend: "ເພີ່ມເພື່ອນ LINE",
+            open: "ເປີດ",
+          }
+        : {
+            eyebrow: "CONTACT CENTER",
+            title: "Contact CUTTING POINT INNOVATION",
+            subtitle:
+              "Reach our team for CpiPOS trials, onboarding, setup, or IT support through the channels below.",
+            phoneTitle: "Call us",
+            phoneDesc: "CpiPOS and company service enquiries",
+            lineTitle: "LINE Official Account",
+            lineDesc: "Add our official account and chat with the team",
+            facebookTitle: "Facebook Page",
+            facebookDesc: "Follow updates and message our Page",
+            emailTitle: "Email",
+            emailDesc: "Best for project details and documents",
+            mapTitle: "Company location",
+            mapDesc: "Open our location in Google Maps",
+            hoursTitle: "Business hours",
+            hoursValue: "Mon–Fri 09:00–17:00",
+            addressTitle: "Office",
+            formTitle: "Send us a message",
+            formDesc: "Submit the form and our team will get back to you.",
+            trialTitle: "Want to try CpiPOS?",
+            trialDesc: "Start a 7-day free trial on a compatible Android device.",
+            trialButton: "Start 7-day free trial",
+            addFriend: "Add LINE friend",
+            open: "Open",
+          };
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -47,10 +157,10 @@ export default function ContactPageClient() {
       ? "text-xs font-semibold text-slate-500"
       : "text-xs uppercase tracking-[0.2em] text-slate-500";
   const submitClass =
-    lang === "th"
-      ? "inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
-      : "inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400";
+    "inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400";
+
   const submitModalVariant = submitModal.open ? submitModal.variant : null;
+
   const getNotificationWarning = (notifications: {
     email?: "sent" | "skipped" | "failed";
     line?: "sent" | "skipped" | "failed";
@@ -68,17 +178,17 @@ export default function ContactPageClient() {
       ? `หมายเหตุ: การแจ้งเตือนบางช่องทางยังไม่สำเร็จ (${issues.join(", ")})`
       : `Note: some notifications were not delivered (${issues.join(", ")})`;
   };
+
   const setStartedAtIfMissing = () => {
     setFormData((prev) => (prev.startedAt ? prev : { ...prev, startedAt: Date.now() }));
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (submitInFlightRef.current || status === "loading") {
-      return;
-    }
+    if (submitInFlightRef.current || status === "loading") return;
+
     submitInFlightRef.current = true;
-    trackGaEvent("contact_submit_attempt", { locale: lang });
+    trackGaEvent("contact_submit_attempt", { locale: lang, page: "contact_hub" });
     setStatus("loading");
     setErrorMessage(null);
     setDebugRequestId(null);
@@ -92,6 +202,7 @@ export default function ContactPageClient() {
 
     const controller = new AbortController();
     let timeoutId: number | null = null;
+
     try {
       timeoutId = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
       const response = await fetch("/api/contact", {
@@ -103,15 +214,14 @@ export default function ContactPageClient() {
       const data = await response.json().catch(() => null);
 
       if (!response.ok || !data?.ok) {
-        const err = data?.error || "Submission failed";
         setDebugRequestId(data?.requestId ?? null);
-        throw new Error(err);
+        throw new Error(data?.error || "Submission failed");
       }
-      const notificationWarning = getNotificationWarning(data?.notifications ?? null);
 
+      const notificationWarning = getNotificationWarning(data?.notifications ?? null);
       setStatus("success");
       setLeadRef(formatLeadRef(data?.leadId ?? null));
-      trackGaEvent("contact_submit_success", { locale: lang });
+      trackGaEvent("contact_submit_success", { locale: lang, page: "contact_hub" });
       setSubmitModal({
         open: true,
         variant: "success",
@@ -125,7 +235,6 @@ export default function ContactPageClient() {
           ? `${copy.contact.success}\n${notificationWarning}`
           : copy.contact.success,
       });
-
       setFormData({
         name: "",
         phone: "",
@@ -143,7 +252,8 @@ export default function ContactPageClient() {
         : error instanceof Error
           ? error.message
           : "Submission failed. Please try again.";
-      trackGaEvent("contact_submit_error", { locale: lang });
+
+      trackGaEvent("contact_submit_error", { locale: lang, page: "contact_hub" });
       setErrorMessage(message);
       setStatus("error");
       setSubmitModal({
@@ -158,9 +268,7 @@ export default function ContactPageClient() {
         message,
       });
     } finally {
-      if (timeoutId) {
-        window.clearTimeout(timeoutId);
-      }
+      if (timeoutId) window.clearTimeout(timeoutId);
       submitInFlightRef.current = false;
     }
   };
@@ -170,10 +278,7 @@ export default function ContactPageClient() {
       window.clearTimeout(submitModalTimerRef.current);
       submitModalTimerRef.current = null;
     }
-
-    if (!submitModal.open) {
-      return;
-    }
+    if (!submitModal.open) return;
 
     if (submitModalVariant === "success") {
       submitModalTimerRef.current = window.setTimeout(() => {
@@ -197,32 +302,126 @@ export default function ContactPageClient() {
 
   useEffect(() => {
     return () => {
-      if (submitModalTimerRef.current) {
-        window.clearTimeout(submitModalTimerRef.current);
-        submitModalTimerRef.current = null;
-      }
+      if (submitModalTimerRef.current) window.clearTimeout(submitModalTimerRef.current);
     };
   }, []);
 
+  const channelClass =
+    "group rounded-3xl border border-slate-200 bg-white p-5 shadow-card-soft transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg";
+  const iconClass =
+    "flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-950 text-white";
+
   return (
     <main className="min-h-screen bg-mist text-slate-900">
-      <section className="border-b border-slate-200 bg-gradient-to-b from-white to-mist py-10">
-        <div className="mx-auto w-full max-w-6xl space-y-4 px-6">
+      <section className="border-b border-slate-200 bg-gradient-to-b from-white via-white to-blue-50/40 py-12 sm:py-16">
+        <div className="mx-auto w-full max-w-6xl px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">
-            CUTTING POINT INNOVATION
+            {text.eyebrow}
           </p>
-          <h1 className="font-[var(--font-heading)] text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">
-            {copy.contact.title}
+          <h1 className="mt-3 max-w-4xl font-[var(--font-heading)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl md:text-5xl">
+            {text.title}
           </h1>
-          <p className="max-w-2xl text-sm text-slate-600 sm:text-base">{copy.contact.subtitle}</p>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base">
+            {text.subtitle}
+          </p>
+
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href={LINE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#06C755] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#05b84e]"
+            >
+              <MessageCircle className="h-4 w-4" />
+              {text.addFriend}
+            </a>
+            <a
+              href={TRIAL_URL}
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800"
+            >
+              <Store className="h-4 w-4" />
+              {text.trialButton}
+            </a>
+          </div>
         </div>
       </section>
 
-      <section className="py-14 sm:py-16">
+      <section className="py-12 sm:py-16">
         <div className="mx-auto w-full max-w-6xl px-6">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-card-soft">
-              <form className="space-y-4" onSubmit={handleSubmit} onFocusCapture={setStartedAtIfMissing}>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <a href={PHONE_HREF} className={channelClass}>
+              <div className={iconClass}>
+                <Phone className="h-5 w-5" />
+              </div>
+              <h2 className="mt-4 font-semibold text-slate-950">{text.phoneTitle}</h2>
+              <p className="mt-1 text-lg font-bold text-blue-600">{PHONE_DISPLAY}</p>
+              <p className="mt-2 text-sm text-slate-600">{text.phoneDesc}</p>
+            </a>
+
+            <a href={LINE_URL} target="_blank" rel="noreferrer" className={channelClass}>
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#06C755] text-white">
+                <MessageCircle className="h-5 w-5" />
+              </div>
+              <h2 className="mt-4 font-semibold text-slate-950">{text.lineTitle}</h2>
+              <p className="mt-1 text-lg font-bold text-[#06A84A]">{LINE_ID}</p>
+              <p className="mt-2 text-sm text-slate-600">{text.lineDesc}</p>
+            </a>
+
+            <a href={FACEBOOK_URL} target="_blank" rel="noreferrer" className={channelClass}>
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#1877F2] text-white">
+                <FacebookMark className="h-6 w-6" />
+              </div>
+              <h2 className="mt-4 font-semibold text-slate-950">{text.facebookTitle}</h2>
+              <p className="mt-1 text-lg font-bold text-blue-600">CPInno</p>
+              <p className="mt-2 text-sm text-slate-600">{text.facebookDesc}</p>
+            </a>
+
+            <a href={`mailto:${EMAIL}`} className={channelClass}>
+              <div className={iconClass}>
+                <Mail className="h-5 w-5" />
+              </div>
+              <h2 className="mt-4 font-semibold text-slate-950">{text.emailTitle}</h2>
+              <p className="mt-1 break-all text-sm font-bold text-blue-600">{EMAIL}</p>
+              <p className="mt-2 text-sm text-slate-600">{text.emailDesc}</p>
+            </a>
+
+            <a href={MAP_URL} target="_blank" rel="noreferrer" className={channelClass}>
+              <div className={iconClass}>
+                <MapPin className="h-5 w-5" />
+              </div>
+              <h2 className="mt-4 font-semibold text-slate-950">{text.mapTitle}</h2>
+              <p className="mt-1 text-sm font-bold text-blue-600">
+                {copy.footer.address}
+              </p>
+              <p className="mt-2 inline-flex items-center gap-1 text-sm text-slate-600">
+                {text.mapDesc} <ExternalLink className="h-3.5 w-3.5" />
+              </p>
+            </a>
+
+            <div className={channelClass}>
+              <div className={iconClass}>
+                <Clock3 className="h-5 w-5" />
+              </div>
+              <h2 className="mt-4 font-semibold text-slate-950">{text.hoursTitle}</h2>
+              <p className="mt-1 text-lg font-bold text-slate-900">{text.hoursValue}</p>
+              <p className="mt-2 text-sm text-slate-600">
+                {text.addressTitle}: {copy.footer.address}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-card-soft sm:p-8">
+              <h2 className="font-[var(--font-heading)] text-2xl font-semibold text-slate-950">
+                {text.formTitle}
+              </h2>
+              <p className="mt-2 text-sm text-slate-600">{text.formDesc}</p>
+
+              <form
+                className="mt-6 space-y-4"
+                onSubmit={handleSubmit}
+                onFocusCapture={setStartedAtIfMissing}
+              >
                 <div>
                   <label className={formLabelClass} htmlFor="contact-name">
                     {copy.contact.name}
@@ -243,6 +442,7 @@ export default function ContactPageClient() {
                     }
                   />
                 </div>
+
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label className={formLabelClass} htmlFor="contact-phone">
@@ -284,6 +484,7 @@ export default function ContactPageClient() {
                     />
                   </div>
                 </div>
+
                 <div>
                   <label className={formLabelClass} htmlFor="contact-message">
                     {copy.contact.message}
@@ -291,7 +492,7 @@ export default function ContactPageClient() {
                   <textarea
                     id="contact-message"
                     required
-                    rows={4}
+                    rows={5}
                     maxLength={2000}
                     className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-blue-500"
                     value={formData.message}
@@ -304,6 +505,7 @@ export default function ContactPageClient() {
                     }
                   />
                 </div>
+
                 <input
                   type="text"
                   name="company"
@@ -312,7 +514,9 @@ export default function ContactPageClient() {
                   aria-hidden="true"
                   className="hidden"
                   value={formData.company}
-                  onChange={(event) => setFormData({ ...formData, company: event.target.value })}
+                  onChange={(event) =>
+                    setFormData({ ...formData, company: event.target.value })
+                  }
                 />
 
                 <button
@@ -337,25 +541,38 @@ export default function ContactPageClient() {
             </div>
 
             <div className="space-y-6">
-              <div className="rounded-3xl border border-blue-100 bg-gradient-to-br from-white to-blue-50 p-6 shadow-card-soft">
-                <h2 className="font-[var(--font-heading)] text-xl font-semibold text-slate-900">
-                  {lang === "th" ? "การดูแลหลังส่งมอบ" : "Post-launch care"}
-                </h2>
-                <p className="mt-3 text-sm text-slate-600">
-                  {lang === "th"
-                    ? "แพ็กเกจดูแลรายเดือน พร้อมทีมงานดูแลความปลอดภัยและอัปเดตระบบให้ต่อเนื่อง"
-                    : "Monthly care plans with security monitoring and continuous updates."}
+              <div className="rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-600 to-slate-950 p-7 text-white shadow-card-soft">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-100">
+                  CpiPOS
                 </p>
-                <div className="mt-4 rounded-2xl border border-blue-100 bg-white/80 p-4 text-xs leading-6 text-slate-600">
-                  {lang === "th"
-                    ? "ข้อมูลจากฟอร์มนี้จะส่งเข้าศูนย์ IT ของบริษัทโดยตรง และจัดเก็บแยกในฐาน CpiPOS-Communications"
-                    : "This form is sent directly to the company IT center and stored separately in CpiPOS-Communications."}
-                </div>
-                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
-                  <li>SLA ระดับองค์กร</li>
-                  <li>รายงานวิเคราะห์รายเดือน</li>
-                  <li>อัปเดตฟีเจอร์แบบยืดหยุ่น</li>
-                </ul>
+                <h2 className="mt-3 font-[var(--font-heading)] text-2xl font-semibold">
+                  {text.trialTitle}
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-blue-50">{text.trialDesc}</p>
+                <a
+                  href={TRIAL_URL}
+                  className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-blue-50"
+                >
+                  {text.trialButton}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+
+              <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-card-soft">
+                <h2 className="font-[var(--font-heading)] text-xl font-semibold text-slate-950">
+                  {text.addressTitle}
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{copy.footer.company}</p>
+                <p className="text-sm leading-7 text-slate-600">{copy.footer.address}</p>
+                <a
+                  href={MAP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition hover:text-blue-700"
+                >
+                  {text.mapDesc}
+                  <ExternalLink className="h-4 w-4" />
+                </a>
               </div>
             </div>
           </div>
