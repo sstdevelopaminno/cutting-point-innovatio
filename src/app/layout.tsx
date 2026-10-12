@@ -48,9 +48,9 @@ const metadataByLocale: Record<
   }
 > = {
   th: {
-    title: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด | CpiPOS ระบบ POS สำหรับ Android",
+    title: "CpiPOS ระบบ POS Android สำหรับร้านอาหารและร้านค้า | CUTTING POINT INNOVATION",
     description:
-      "CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไป รองรับอุปกรณ์ Android ที่รองรับ ช่วยจัดการงานขาย สินค้า สต๊อก และข้อมูลยอดขาย พร้อมทดลองใช้ฟรี 7 วัน",
+      "CpiPOS โปรแกรมขายหน้าร้านและระบบ POS สำหรับ Android เหมาะกับร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไป จัดการขาย สินค้า สต๊อก และยอดขาย พร้อมทดลองใช้ฟรี 7 วัน",
     ogLocale: "th_TH",
     alternateLocales: ["en_US", "lo_LA"],
   },
@@ -92,6 +92,12 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       url: "/",
       siteName: "CUTTING POINT INNOVATION CO., LTD.",
+      images: [
+        {
+          url: "/product-showcase/service-pos.png",
+          alt: "CpiPOS ระบบ POS สำหรับ Android",
+        },
+      ],
     },
     icons: {
       icon: [{ url: "/brand/logo-icon.png", type: "image/png" }],
@@ -102,6 +108,11 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
+      images: ["/product-showcase/service-pos.png"],
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
