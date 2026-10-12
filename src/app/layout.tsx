@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Lao, Noto_Sans_Thai, Noto_Serif_Lao, Noto_Serif_Thai } from "next/font/google";
 import Analytics from "@/components/Analytics";
+import MarketingEventTracker from "@/components/MarketingEventTracker";
 import ImageProtection from "@/components/ImageProtection";
 import SiteShell from "@/components/SiteShell";
 import StructuredData from "@/components/StructuredData";
@@ -119,6 +120,7 @@ export default async function RootLayout({
       >
         <StructuredData locale={locale} includeGlobal />
         <Analytics />
+        <MarketingEventTracker />
         <ImageProtection />
         <SiteShell initialLang={locale}>{children}</SiteShell>
       </body>
