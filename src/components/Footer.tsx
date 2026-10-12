@@ -44,7 +44,9 @@ export default function Footer({
   note,
 }: FooterProps) {
   const lineId = /@[\w.-]+/.exec(line)?.[0] ?? null;
-  const lineHref = lineId ? `https://line.me/R/ti/p/${lineId}` : null;
+  const lineHref =
+    process.env.NEXT_PUBLIC_LINE_URL ||
+    (lineId ? `https://line.me/R/ti/p/${lineId}` : "https://lin.ee/z8qLGjU");
   const facebookHref = process.env.NEXT_PUBLIC_FACEBOOK_URL || undefined;
   const iconTileBaseClass =
     "inline-flex h-11 w-11 items-center justify-center rounded-[6px] text-white transition-transform hover:scale-105";
@@ -92,7 +94,9 @@ export default function Footer({
             {lineHref ? (
               <a
                 href={lineHref}
-                aria-label="LINE"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Add LINE OA friend"
                 className={`${iconTileBaseClass} bg-[#36d80f]`}
               >
                 <LineIcon className="h-5 w-5" />
@@ -115,15 +119,29 @@ export default function Footer({
           </div>
           <div className="flex items-center gap-3">
             <Phone className="h-4 w-4 text-slate-400" />
-            <span>{phone}</span>
+            <a
+              href={`tel:${phone.replace(/\\s+/g, "")}`}
+              className="transition hover:text-white"
+            >
+              {phone}
+            </a>
           </div>
           <div className="flex items-center gap-3">
             <Mail className="h-4 w-4 text-slate-400" />
-            <span>{email}</span>
+            <a href={`mailto:${email}`} className="transition hover:text-white">
+              {email}
+            </a>
           </div>
           <div className="flex items-center gap-3">
             <LineIcon className="h-4 w-4 text-slate-400" />
-            <span>{line}</span>
+            <a
+              href={lineHref}
+              target="_blank"
+              rel="noreferrer"
+              className="transition hover:text-white"
+            >
+              {line} · เพิ่มเพื่อน
+            </a>
           </div>
         </div>
       </div>
