@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import StructuredData from "@/components/StructuredData";
 import { getRequestedLocale } from "@/lib/locale";
@@ -306,7 +305,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function PosArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = articleBySlug.get(slug);
-  if (!article) notFound();
+  if (!article) {
+    return (
+      <main className="min-h-screen bg-white px-6 py-20 text-slate-900">
+        <div className="mx-auto max-w-3xl">
+          <h1 className="text-3xl font-semibold">Article not found</h1>
+          <p className="mt-4 text-slate-600">The requested CpiPOS guide is not available.</p>
+          <Link href="/articles" className="mt-6 inline-flex font-semibold text-blue-700">
+            Back to CpiPOS guides
+          </Link>
+        </div>
+      </main>
+    );
+  }
 
   const locale = await getRequestedLocale();
   const copy = locale === "en" ? article.en : article.th;
