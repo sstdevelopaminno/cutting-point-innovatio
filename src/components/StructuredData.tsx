@@ -29,9 +29,9 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnova
 
 const CONTACT = {
   email: "cuttingpointtech@gmail.com",
-  phoneLocal: "0843374982",
-  phoneE164: "+66843374982",
-  line: "https://line.me/R/ti/p/@974qhtym",
+  phoneLocal: "0985460355",
+  phoneE164: "+66985460355",
+  line: "https://lin.ee/z8qLGjU",
 } as const;
 
 const companyInfo = {
