@@ -14,13 +14,13 @@ const copy = {
     back: "กลับหน้าทดลองใช้งาน",
     eyebrow: "CpiPOS TRIAL",
     heading: "ทดลอง CpiPOS ก่อนใช้งานจริง",
-    subtitle: "Web Demo ช่วยให้ทดลองฟังก์ชันหลักได้ก่อน ส่วนการใช้งานหน้าร้านจริงรองรับอุปกรณ์ Android ที่รองรับ",
+    subtitle: "ทดลองดูระบบผ่าน Web Demo ได้ก่อน หากต้องการทดลองใช้กับร้านจริง 7 วัน ให้ส่งคำขอเปิดร้าน ทีมงานจะตรวจสอบและติดต่อกลับผ่านข้อมูลที่ลงทะเบียน",
     feature1: "ขายและจัดการรายการสินค้า",
     feature2: "ดูยอดขายและข้อมูลร้าน",
     feature3: "รองรับการใช้งานหน้าร้านบนอุปกรณ์ Android ที่รองรับ",
     feature4: "ระบบจริงอาจต้องสมัครร้านและกำหนดสิทธิ์ก่อนใช้งานเต็มรูปแบบ",
     launch: "เปิด Web Demo CpiPOS",
-    signup: "สมัครใช้งาน CpiPOS",
+    signup: "ขอทดลองใช้กับร้านจริง 7 วัน",
     domainNote: "Web Demo ใช้สำหรับทดลองฟังก์ชันเบื้องต้น การใช้งานหน้าร้านจริงให้สมัครร้านและใช้งานผ่านอุปกรณ์ Android ที่รองรับ",
   },
   en: {
@@ -29,13 +29,13 @@ const copy = {
     back: "Back to trials",
     eyebrow: "CpiPOS TRIAL",
     heading: "Try CpiPOS before going live",
-    subtitle: "Use the web demo to explore core functions first. Live front-of-house use is designed for compatible Android devices.",
+    subtitle: "Explore the web demo first. To request a 7-day trial for your store, submit a store registration and our team will review and contact you.",
     feature1: "Sales and product management",
     feature2: "Store sales and operational insights",
     feature3: "Designed for front-of-house use on compatible Android devices",
     feature4: "Full production access may require store registration and permissions",
     launch: "Open CpiPOS web demo",
-    signup: "Sign up for CpiPOS",
+    signup: "Request a 7-day store trial",
     domainNote: "The web demo is for exploring core functions. Live store use requires store registration and a compatible Android device.",
   },
   lo: {
@@ -50,7 +50,7 @@ const copy = {
     feature3: "ຮອງຮັບການໃຊ້ງານໜ້າຮ້ານເທິງອຸປະກອນ Android ທີ່ຮອງຮັບ",
     feature4: "ການໃຊ້ງານເຕັມອາດຕ້ອງລົງທະບຽນຮ້ານ ແລະ ກຳນົດສິດ",
     launch: "ເປີດລະບົບ POS",
-    signup: "ສະໝັກໃຊ້ CpiPOS",
+    signup: "ຂໍທົດລອງໃຊ້ CpiPOS 7 ມື້",
     domainNote: "Web Demo ໃຊ້ເພື່ອທົດລອງຟັງຊັນເບື້ອງຕົ້ນ ການໃຊ້ງານຈິງຕ້ອງສະໝັກຮ້ານ ແລະ ໃຊ້ອຸປະກອນ Android ທີ່ຮອງຮັບ.",
   },
 } as const;
@@ -138,7 +138,7 @@ export default async function PosTrialPage() {
                 >
                   {t.launch}<ExternalLink className="h-4 w-4" />
                 </a>
-                <Link href="/register-store" className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-700 hover:bg-slate-50">
+                <Link href="/register-store?utm_source=company_website&utm_medium=trial_page&utm_campaign=cpipos_trial" className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-700 hover:bg-slate-50">
                   {t.signup}
                 </Link>
               </div>
