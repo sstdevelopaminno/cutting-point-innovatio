@@ -41,7 +41,9 @@ export default function RegisterStoreForm() {
     const controller=new AbortController();
     fetch("/api/store-registration",{cache:"no-store",signal:controller.signal}).then(async r=>{
       if(!r.ok)throw new Error("โหลดแพ็กเกจไม่สำเร็จ");
-      return r.json() as Promise<{packages:Package[]}>;
+      const data = await r.json() as {packages?:Package[]};
+      if (!Array.isArray(data.packages) || data.packages.length === 0) throw new Error("ยังไม่พบแพ็กเกจที่เปิดรับสมัคร กรุณาติดต่อทีมงาน");
+      return {packages:data.packages};
     }).then(d=>{setPackages(d.packages);setPackageId(d.packages[0]?.id??"");})
       .catch(e=>{if(!controller.signal.aborted)setError(e instanceof Error?e.message:"โหลดแพ็กเกจไม่สำเร็จ");})
       .finally(()=>{if(!controller.signal.aborted)setLoading(false);});
@@ -67,6 +69,7 @@ export default function RegisterStoreForm() {
   async function submit(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if(submitting)return;
+    if(loading || !selectedPackage){setError("ยังไม่สามารถเลือกแพ็กเกจได้ กรุณาลองใหม่หรือติดต่อทีมงาน");return;}
     if(storeName.trim().length<2){setError("กรุณากรอกชื่อร้านอย่างน้อย 2 ตัวอักษร");return;}
     if(!businessType.trim()){setError("กรุณาเลือกประเภทร้านค้า");return;}
     if(ownerName.trim().length<2){setError("กรุณากรอกชื่อเจ้าของร้านอย่างน้อย 2 ตัวอักษร");return;}
