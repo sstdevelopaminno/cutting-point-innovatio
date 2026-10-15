@@ -15,6 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: titles[lang],
     description: "สมัครเปิดร้าน CpIPOS เลือกแพ็กเกจ โหมดขายและทดลองใช้งาน 7 วันหลัง IT อนุมัติ",
+    alternates: { canonical: "/register-store" },
     robots: { index: true, follow: true },
   };
 }
