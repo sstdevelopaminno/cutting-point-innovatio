@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "CpiPOS ລະບົບ POS ສໍາລັບຮ້ານຄ້າໃນລາວ | ທົດລອງໃຊ້",
   description: "ຮູ້ຈັກ CpiPOS ລະບົບຂາຍໜ້າຮ້ານສໍາລັບ Android ເໝາະກັບຮ້ານຄ້າ ຄາເຟ ແລະຮ້ານອາຫານ. ສາມາດເບິ່ງ Web Demo ແລະຂໍທົດລອງໃຊ້ 7 ມື້ໄດ້.",
   alternates: { canonical: "/laos/pos" },
-  openGraph: { title: "CpiPOS ສໍາລັບຮ້ານຄ້າໃນລາວ", description: "ລະບົບ POS ສໍາລັບ Android ແລະຮ້ານຄ້າໃນລາວ", url: SITE_URL.replace(/\\/+$/, "") + "/laos/pos", type: "website" },
+  openGraph: { title: "CpiPOS ສໍາລັບຮ້ານຄ້າໃນລາວ", description: "ລະບົບ POS ສໍາລັບ Android ແລະຮ້ານຄ້າໃນລາວ", url: new URL("/laos/pos", SITE_URL).toString(), type: "website" },
   robots: { index: true, follow: true },
 };
 
