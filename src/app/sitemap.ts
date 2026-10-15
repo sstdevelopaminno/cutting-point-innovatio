@@ -72,6 +72,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/laos/pos`,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/register-store`,
       changeFrequency: "monthly",
       priority: 0.8,
