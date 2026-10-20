@@ -11,6 +11,20 @@ const labels: Array<{key:keyof SalesModes;label:string;description:string}> = [
   {key:"dine_in",label:"นั่งโต๊ะ",description:"เปิดโต๊ะและคิดเงิน"},
   {key:"general_sale",label:"ร้านชำ / ขายทั่วไป",description:"บาร์โค้ด / SKU / ร้านค้าปลีก"}
 ];
+const ATTRIBUTION_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
+function readSignupAttribution() {
+  if (typeof window === "undefined") return {};
+  try {
+    const stored = JSON.parse(window.sessionStorage.getItem("cpinno_marketing_attribution") || "{}") as Record<string, unknown>;
+    const current = new URLSearchParams(window.location.search);
+    const values: Record<string, string> = {};
+    for (const key of ATTRIBUTION_PARAMS) {
+      const value = current.get(key) || stored[key];
+      if (typeof value === "string" && value.length <= 120) values[key] = value;
+    }
+    return values;
+  } catch { return {}; }
+}
 const formatPrice = (n:number) => new Intl.NumberFormat("th-TH", { style:"currency",currency:"THB",maximumFractionDigits:0 }).format(n);
 const countSelectedModes = (modes:SalesModes) => labels.reduce((count,item)=>count+(modes[item.key]?1:0),0);
 const resolveSalesModeLimit = (pkg:Package|null) => {
@@ -93,13 +107,14 @@ export default function RegisterStoreForm() {
         }
         throw new Error(payload?.error??"บันทึกคำขอไม่สำเร็จ");
       }
+      // Only the upstream API's successful response counts as a submitted lead.
+      // A click or an attempted form submission must not be treated as success.
+      const attribution = readSignupAttribution();
       trackGaEvent("generate_lead", {
         lead_type: "cpipos_store_registration",
         package_id: packageId,
-        package_name: selectedPackage?.name ?? "",
         business_type: businessType,
-        currency: "THB",
-        value: Number(selectedPackage?.effective_monthly_price ?? selectedPackage?.monthly_price ?? 0),
+        ...attribution,
       });
       setDone(true);setSubmissionKey(globalThis.crypto.randomUUID());setStartedAt(Date.now());
     }catch(e){setError(e instanceof Error?e.message:"ส่งคำขอไม่สำเร็จ");}
