@@ -72,6 +72,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/pos`,
+      changeFrequency: "weekly",
+      priority: 0.98,
+    },
+    {
       url: `${baseUrl}/laos/pos`,
       changeFrequency: "monthly",
       priority: 0.85,

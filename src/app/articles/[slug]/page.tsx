@@ -656,6 +656,7 @@ export default async function PosArticlePage({ params }: PageProps) {
             </section>
 
             <nav className="mt-10 flex flex-wrap gap-4 border-t border-slate-200 pt-8 text-sm font-semibold">
+              <Link href="/pos" className="text-blue-700">{locale === "en" ? "CpiPOS POS system" : "ระบบ POS CpiPOS"}</Link>
               <Link href="/articles" className="text-blue-700">{locale === "en" ? "More CpiPOS guides" : "ดูบทความ CpiPOS เพิ่มเติม"}</Link>
               <Link href="/trial/pos" className="text-blue-700">{locale === "en" ? "Free trial" : "ทดลองใช้ฟรี"}</Link>
               <Link href="/packages/pos" className="text-blue-700">{locale === "en" ? "Pricing" : "ราคา CpiPOS"}</Link>
