@@ -101,5 +101,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.85,
     },
+    {
+      url: `${baseUrl}/articles/pos-system-guide`,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/articles/pos-price-monthly`,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/articles/pos-free-trial`,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
   ];
 }
