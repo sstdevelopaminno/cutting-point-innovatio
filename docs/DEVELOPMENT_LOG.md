@@ -16,6 +16,12 @@ This file records documentation-first development notes for the Cutting Point Te
 
 
 
+## 2026-10-21
+- Corrected CpiPOS package pricing UX so the public pricing page defaults to monthly pricing instead of annual lump-sum pricing. Added a clear monthly/yearly toggle above package cards; Starter now leads with 350 THB/month, Growth 550 THB/month, and Business 1,500 THB/month while yearly and 2–3 year options remain available. Checkout inherits the billing period selected on the pricing page and still allows changing it inside checkout.
+- Updated `src/app/packages/pos/page.tsx` SEO metadata, FAQ schema, and server-rendered pricing copy to cover both monthly and annual plans instead of positioning annual-only pricing.
+- Updated `src/app/laos/pos/page.tsx` to lead with 350 THB/month and present 3,780 THB/year as an alternative, while retaining the LAK quotation notice for Laos customers.
+- Verification: Vercel preview `dpl_VLux5hPLBrnG1uBjUqZRS4XZ4rym` built successfully and returned the new monthly/yearly pricing page. PR #22 was squash-merged to `main` as `700cd505aee0747ce17f087e55df57fa48c131d5`. Production deployment `dpl_BZjKVioBixdW5YfCQxJT3raqTUBC` completed with state READY and aliases including `https://cuttingpointinnovation.vercel.app`. Live Thailand and Laos pages were fetched successfully with the new monthly-first pricing content.
+
 ## 2026-09-21
 - Refined the CpIPOS downloads page by separating the platform card component into `src/components/downloads/DownloadPlatformCard.tsx`, restyling Windows and Android into clearer platform sections with matching icons, adding jump links for `#windows` and `#android`, and removing the visible RC/DEBUG warning copy from the page while keeping the real APK filename. Verification: `npm run lint`, `npx tsc --noEmit`, and `npm run build` passed.
 - Published CpIPOS installer assets through GitHub Releases after owner approval. Created `cpipos-windows-v0.3.3` with `CpIPOS.Desktop_0.3.3_x64-setup.exe` and `cpipos-android-v1.0.23-rc` as a prerelease with `CpIPOS-Android-POS-1.0.23-MDM-RC-DEBUG.apk`. Verification: public release downloads matched the local SHA-256 hashes (`ee3ca1ca13005eaac0d48f591e64eee63c93c540d03d53f3f20af8d8d2bff3dc` for Windows and `be39040de53bbd134ff958ef62faa932f1c48784906ef1f4d4216d1546e85d73` for Android), Android remained clearly marked RC/DEBUG, and no installer files were committed to source.
