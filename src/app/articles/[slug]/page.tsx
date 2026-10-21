@@ -636,7 +636,26 @@ export default async function PosArticlePage({ params }: PageProps) {
               </div>
             </section>
 
-            <nav className="mt-14 flex flex-wrap gap-4 border-t border-slate-200 pt-8 text-sm font-semibold">
+            <section className="mt-14 border-t border-slate-200 pt-8">
+              <h2 className="text-xl font-semibold text-slate-900">
+                {locale === "en" ? "Related POS guides" : "บทความระบบ POS ที่เกี่ยวข้อง"}
+              </h2>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {articles
+                  .filter((item) => item.slug !== slug)
+                  .map((item) => (
+                    <Link
+                      key={item.slug}
+                      href={`/articles/${item.slug}`}
+                      className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-blue-700 hover:border-blue-300 hover:bg-blue-50"
+                    >
+                      {locale === "en" ? item.en.title : item.th.title}
+                    </Link>
+                  ))}
+              </div>
+            </section>
+
+            <nav className="mt-10 flex flex-wrap gap-4 border-t border-slate-200 pt-8 text-sm font-semibold">
               <Link href="/articles" className="text-blue-700">{locale === "en" ? "More CpiPOS guides" : "ดูบทความ CpiPOS เพิ่มเติม"}</Link>
               <Link href="/trial/pos" className="text-blue-700">{locale === "en" ? "Free trial" : "ทดลองใช้ฟรี"}</Link>
               <Link href="/packages/pos" className="text-blue-700">{locale === "en" ? "Pricing" : "ราคา CpiPOS"}</Link>
