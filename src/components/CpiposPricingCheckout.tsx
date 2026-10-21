@@ -181,7 +181,7 @@ export default function CpiposPricingCheckout() {
   const [loading, setLoading] = useState(true);
   const [catalogError, setCatalogError] = useState("");
   const [selected, setSelected] = useState<PackageRow | null>(null);
-  const [interval, setInterval] = useState<"monthly" | "yearly">("monthly");
+  const [interval, setInterval] = useState<"monthly" | "yearly">("yearly");
   const [step, setStep] = useState<"verify" | "pay" | "success">("verify");
   const [storeCode, setStoreCode] = useState("");
   const [pin, setPin] = useState("");
@@ -217,7 +217,7 @@ export default function CpiposPricingCheckout() {
   function openCheckout(pkg: PackageRow) {
     if (pkg.contact_sales) return;
     setSelected(pkg);
-    setInterval("monthly");
+    setInterval(pkg.yearly_price ? "yearly" : "monthly");
     setStep("verify");
     setStoreCode("");
     setPin("");
@@ -326,9 +326,9 @@ export default function CpiposPricingCheckout() {
               เลือกแพ็กเกจ <span className="text-[#155eef]">CpiPOS</span> ที่เหมาะกับร้านคุณ
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-[#5e708d] sm:text-base">
-              เปรียบเทียบราคาและสิทธิ์การใช้งานจากระบบ CpiPOS โดยตรง เลือกแพ็กเกจที่เหมาะกับขนาดธุรกิจของคุณ
+              แพ็กเกจรายปีเป็นตัวเลือกหลักสำหรับร้านที่ต้องการใช้งานต่อเนื่อง พร้อมเปรียบเทียบสิทธิ์ของ Starter, Growth, Business และ CUSTOM
               <br className="hidden sm:block" />
-              ยืนยันรหัสร้านด้วย PIN ของ Owner/Manager แล้วชำระได้จากหน้านี้โดยไม่ต้องล็อกอินเข้า POS
+              ทดลองใช้ก่อนตัดสินใจ และยืนยันรหัสร้านด้วย PIN ของ Owner/Manager เพื่อชำระแพ็กเกจที่รองรับจากหน้านี้ได้
             </p>
           </div>
 
@@ -380,13 +380,22 @@ export default function CpiposPricingCheckout() {
 
                       <div className="mt-4">
                         <div className="text-[34px] font-black leading-none tracking-[-0.03em] text-[#155eef]">
-                          {pkg.contact_sales ? "ตามสัญญา" : money(pkg.monthly_price)}
-                          {!pkg.contact_sales ? <span className="ml-1 text-[13px] font-bold text-[#667892]">/ เดือน</span> : null}
+                          {pkg.contact_sales
+                            ? "ตามสัญญา"
+                            : pkg.yearly_price
+                              ? money(pkg.yearly_price)
+                              : money(pkg.monthly_price)}
+                          {!pkg.contact_sales ? (
+                            <span className="ml-1 text-[13px] font-bold text-[#667892]">
+                              {pkg.yearly_price ? "/ ปี" : "/ เดือน"}
+                            </span>
+                          ) : null}
                         </div>
                         {pkg.yearly_price ? (
-                          <p className="mt-2 text-[13px] font-bold text-[#55708f]">
-                            {money(pkg.yearly_price)} / ปี
-                          </p>
+                          <div className="mt-2 space-y-1 text-[12px] font-bold text-[#55708f]">
+                            <p>2 ปี {money(pkg.yearly_price * 2)} · 3 ปี {money(pkg.yearly_price * 3)}</p>
+                            {pkg.monthly_price ? <p className="font-semibold text-[#7a8ba2]">มีตัวเลือกรายเดือน {money(pkg.monthly_price)} / เดือน</p> : null}
+                          </div>
                         ) : pkg.contact_sales ? (
                           <p className="mt-2 text-[13px] font-semibold text-[#6b7d96]">ออกแบบตามความต้องการของธุรกิจ</p>
                         ) : null}
@@ -479,9 +488,13 @@ export default function CpiposPricingCheckout() {
                             <h3 className="mt-1 text-xl font-black text-[#0b1c3d]">{mobileComparePackage.name}</h3>
                           </div>
                           <div className="text-right">
-                            <p className="text-[11px] font-bold text-[#72839a]">ราคาเริ่มต้น</p>
+                            <p className="text-[11px] font-bold text-[#72839a]">ราคาแพ็กเกจรายปี</p>
                             <p className="mt-1 text-lg font-black text-[#155eef]">
-                              {mobileComparePackage.contact_sales ? "ตามสัญญา" : money(mobileComparePackage.monthly_price)}
+                              {mobileComparePackage.contact_sales
+                                ? "ตามสัญญา"
+                                : mobileComparePackage.yearly_price
+                                  ? money(mobileComparePackage.yearly_price)
+                                  : money(mobileComparePackage.monthly_price)}
                             </p>
                           </div>
                         </div>
