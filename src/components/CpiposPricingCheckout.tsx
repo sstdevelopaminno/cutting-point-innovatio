@@ -181,7 +181,8 @@ export default function CpiposPricingCheckout() {
   const [loading, setLoading] = useState(true);
   const [catalogError, setCatalogError] = useState("");
   const [selected, setSelected] = useState<PackageRow | null>(null);
-  const [interval, setInterval] = useState<"monthly" | "yearly">("yearly");
+  const [billingView, setBillingView] = useState<"monthly" | "yearly">("monthly");
+  const [interval, setInterval] = useState<"monthly" | "yearly">("monthly");
   const [step, setStep] = useState<"verify" | "pay" | "success">("verify");
   const [storeCode, setStoreCode] = useState("");
   const [pin, setPin] = useState("");
@@ -217,7 +218,7 @@ export default function CpiposPricingCheckout() {
   function openCheckout(pkg: PackageRow) {
     if (pkg.contact_sales) return;
     setSelected(pkg);
-    setInterval(pkg.yearly_price ? "yearly" : "monthly");
+    setInterval(billingView === "yearly" && pkg.yearly_price ? "yearly" : "monthly");
     setStep("verify");
     setStoreCode("");
     setPin("");
@@ -326,11 +327,43 @@ export default function CpiposPricingCheckout() {
               เลือกแพ็กเกจ <span className="text-[#155eef]">CpiPOS</span> ที่เหมาะกับร้านคุณ
             </h1>
             <p className="mx-auto mt-4 max-w-3xl text-sm leading-6 text-[#5e708d] sm:text-base">
-              แพ็กเกจรายปีเป็นตัวเลือกหลักสำหรับร้านที่ต้องการใช้งานต่อเนื่อง พร้อมเปรียบเทียบสิทธิ์ของ Starter, Growth, Business และ CUSTOM
+              เลือกชำระได้ทั้งแบบรายเดือนและรายปีตามงบประมาณของร้าน พร้อมเปรียบเทียบสิทธิ์ของ Starter, Growth, Business และ CUSTOM
               <br className="hidden sm:block" />
-              ทดลองใช้ก่อนตัดสินใจ และยืนยันรหัสร้านด้วย PIN ของ Owner/Manager เพื่อชำระแพ็กเกจที่รองรับจากหน้านี้ได้
+              เริ่มรายเดือนได้ก่อน หรือเลือกรายปีเมื่อพร้อมใช้งานระยะยาว และทดลองใช้ก่อนตัดสินใจได้
             </p>
           </div>
+
+          <div className="mx-auto mt-7 flex w-fit items-center gap-1 rounded-full border border-[#cfe0f4] bg-white p-1.5 shadow-[0_8px_24px_rgba(15,64,120,0.08)]">
+            <button
+              type="button"
+              aria-pressed={billingView === "monthly"}
+              onClick={() => setBillingView("monthly")}
+              className={
+                "rounded-full px-5 py-2.5 text-sm font-black transition " +
+                (billingView === "monthly"
+                  ? "bg-[#155eef] text-white shadow-[0_6px_16px_rgba(21,94,239,0.22)]"
+                  : "text-[#526985] hover:bg-[#f3f7fc]")
+              }
+            >
+              รายเดือน
+            </button>
+            <button
+              type="button"
+              aria-pressed={billingView === "yearly"}
+              onClick={() => setBillingView("yearly")}
+              className={
+                "rounded-full px-5 py-2.5 text-sm font-black transition " +
+                (billingView === "yearly"
+                  ? "bg-[#155eef] text-white shadow-[0_6px_16px_rgba(21,94,239,0.22)]"
+                  : "text-[#526985] hover:bg-[#f3f7fc]")
+              }
+            >
+              รายปี
+            </button>
+          </div>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-xs leading-5 text-[#72839a]">
+            ค่าเริ่มต้นแสดงแบบรายเดือน เพื่อให้เปรียบเทียบงบได้ง่าย สามารถสลับเป็นรายปีได้ตลอดเวลา
+          </p>
 
           {catalogError ? (
             <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-red-200 bg-red-50 p-4 text-center text-sm font-semibold text-red-700">
@@ -382,23 +415,30 @@ export default function CpiposPricingCheckout() {
                         <div className="text-[34px] font-black leading-none tracking-[-0.03em] text-[#155eef]">
                           {pkg.contact_sales
                             ? "ตามสัญญา"
-                            : pkg.yearly_price
+                            : billingView === "yearly" && pkg.yearly_price
                               ? money(pkg.yearly_price)
                               : money(pkg.monthly_price)}
                           {!pkg.contact_sales ? (
                             <span className="ml-1 text-[13px] font-bold text-[#667892]">
-                              {pkg.yearly_price ? "/ ปี" : "/ เดือน"}
+                              {billingView === "yearly" && pkg.yearly_price ? "/ ปี" : "/ เดือน"}
                             </span>
                           ) : null}
                         </div>
-                        {pkg.yearly_price ? (
-                          <div className="mt-2 space-y-1 text-[12px] font-bold text-[#55708f]">
-                            <p>2 ปี {money(pkg.yearly_price * 2)} · 3 ปี {money(pkg.yearly_price * 3)}</p>
-                            {pkg.monthly_price ? <p className="font-semibold text-[#7a8ba2]">มีตัวเลือกรายเดือน {money(pkg.monthly_price)} / เดือน</p> : null}
+                        {!pkg.contact_sales ? (
+                          <div className="mt-2 space-y-1 text-[12px] font-semibold text-[#6f8198]">
+                            {billingView === "monthly" && pkg.yearly_price ? (
+                              <p>หรือ {money(pkg.yearly_price)} / ปี</p>
+                            ) : null}
+                            {billingView === "yearly" && pkg.monthly_price ? (
+                              <p>หรือ {money(pkg.monthly_price)} / เดือน</p>
+                            ) : null}
+                            {billingView === "yearly" && pkg.yearly_price ? (
+                              <p className="font-bold text-[#55708f]">2 ปี {money(pkg.yearly_price * 2)} · 3 ปี {money(pkg.yearly_price * 3)}</p>
+                            ) : null}
                           </div>
-                        ) : pkg.contact_sales ? (
+                        ) : (
                           <p className="mt-2 text-[13px] font-semibold text-[#6b7d96]">ออกแบบตามความต้องการของธุรกิจ</p>
-                        ) : null}
+                        )}
                       </div>
 
                       <div className="my-5 h-px bg-[#e2eaf4]" />
@@ -488,11 +528,13 @@ export default function CpiposPricingCheckout() {
                             <h3 className="mt-1 text-xl font-black text-[#0b1c3d]">{mobileComparePackage.name}</h3>
                           </div>
                           <div className="text-right">
-                            <p className="text-[11px] font-bold text-[#72839a]">ราคาแพ็กเกจรายปี</p>
+                            <p className="text-[11px] font-bold text-[#72839a]">
+                              {billingView === "yearly" ? "ราคา / ปี" : "ราคา / เดือน"}
+                            </p>
                             <p className="mt-1 text-lg font-black text-[#155eef]">
                               {mobileComparePackage.contact_sales
                                 ? "ตามสัญญา"
-                                : mobileComparePackage.yearly_price
+                                : billingView === "yearly" && mobileComparePackage.yearly_price
                                   ? money(mobileComparePackage.yearly_price)
                                   : money(mobileComparePackage.monthly_price)}
                             </p>

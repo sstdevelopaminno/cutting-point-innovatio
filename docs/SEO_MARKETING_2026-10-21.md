@@ -33,3 +33,11 @@
 - Verified `https://cuttingpointinnovation.vercel.app/laos/pos` returns HTTP 200 with Lao content, Starter/Growth/Business annual prices, CUSTOM positioning, LAK quotation notice, and trial/contact CTAs.
 - Verified `https://cuttingpointinnovation.vercel.app/sitemap.xml` returns HTTP 200 and contains `/packages/pos`, `/laos/pos`, and `/trial/pos`.
 - Search Console connector currently returns no cached Search Analytics rows for the checked period; no SEO traffic/results were inferred or fabricated.
+
+
+## Pricing UX correction — monthly + annual
+- Changed the main CpiPOS pricing UI to default to monthly pricing and added a clear monthly/yearly toggle above the package cards.
+- Checkout now inherits the billing period currently selected by the customer while still allowing the customer to change it inside checkout.
+- Updated Thailand SEO copy and server-rendered pricing to lead with monthly prices: Starter 350 THB/month, Growth 550 THB/month, Business 1,500 THB/month, with yearly and multi-year options shown as alternatives.
+- Updated the Laos landing page to lead with 350 THB/month instead of an annual lump sum and present annual/multi-year pricing as optional alternatives.
+- Goal: reduce sticker shock for first-time visitors while preserving annual and multi-year conversion paths.
