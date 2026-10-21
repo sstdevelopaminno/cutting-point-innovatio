@@ -23,6 +23,8 @@ type ArticleCopy = {
 
 type Article = {
   slug: string;
+  datePublished?: string;
+  dateModified?: string;
   th: ArticleCopy;
   en: ArticleCopy;
 };
@@ -257,7 +259,211 @@ const articles: Article[] = [
         { question: "Does CpiPOS include sales data?", answer: "Yes. Sales data is supported alongside sales, products and inventory." },
       ],
     },
+  },,
+  {
+    slug: "pos-system-guide",
+    datePublished: "2026-10-21",
+    dateModified: "2026-10-21",
+    th: {
+      metaTitle: "ระบบ POS คืออะไร? ทำอะไรได้บ้าง และร้านควรเลือกแบบไหน",
+      metaDescription:
+        "ระบบ POS คืออะไร มีหน้าที่อะไรบ้าง ทั้งงานขาย ใบเสร็จ สินค้า สต๊อก รายงาน และการจัดการร้าน พร้อมแนวทางเลือกระบบ POS ให้เหมาะกับร้านอาหารและร้านค้าปลีก",
+      title: "ระบบ POS คืออะไร? ทำอะไรได้บ้าง และร้านควรเลือกแบบไหน",
+      lead:
+        "POS ย่อมาจาก Point of Sale หรือระบบขายหน้าร้าน แต่ระบบ POS ปัจจุบันไม่ได้มีหน้าที่แค่คิดเงิน ระบบที่เหมาะกับร้านควรเชื่อมงานขาย สินค้า สต๊อก และข้อมูลยอดขายเข้าด้วยกัน เพื่อให้เจ้าของร้านตรวจสอบการดำเนินงานได้ง่ายขึ้น",
+      sections: [
+        {
+          heading: "ระบบ POS คืออะไร",
+          paragraphs: [
+            "ระบบ POS คือเครื่องมือสำหรับบันทึกการขาย ณ จุดขาย ตั้งแต่เลือกรายการสินค้า คำนวณยอด ไปจนถึงบันทึกธุรกรรมและข้อมูลที่เกี่ยวข้องกับการขาย ระบบสมัยใหม่มักเชื่อมข้อมูลสินค้า สต๊อก และรายงานเข้ากับงานขายด้วย",
+            "ร้านขนาดเล็กไม่จำเป็นต้องเริ่มจากเครื่อง POS ราคาแพงเสมอไป หากมีอุปกรณ์ Android ที่รองรับก็สามารถทดลอง workflow ก่อน แล้วค่อยตัดสินใจเพิ่ม Hardware เมื่อร้านมีความต้องการจริง",
+          ],
+        },
+        {
+          heading: "ระบบ POS มีอะไรบ้าง",
+          paragraphs: [
+            "ฟังก์ชันพื้นฐานที่ควรดูคือการขาย สินค้า ราคา สต๊อก และรายงานยอดขาย ส่วนความสามารถด้านพนักงาน ลูกค้า หลายสาขา หรือระบบเฉพาะทางควรพิจารณาตามขนาดและรูปแบบของธุรกิจ",
+          ],
+          bullets: [
+            "บันทึกการขายและออกใบเสร็จ",
+            "จัดการรายการสินค้า ราคา และหมวดหมู่",
+            "ติดตามข้อมูลสต๊อกและการเคลื่อนไหวสินค้า",
+            "ดูยอดขายและรายงานเพื่อช่วยตัดสินใจ",
+            "รองรับผู้ใช้งานหรือสาขาตามแพ็กเกจที่เลือก",
+          ],
+        },
+        {
+          heading: "Mobile POS, Tablet POS และเครื่อง POS ต่างกันอย่างไร",
+          paragraphs: [
+            "Mobile POS และ Tablet POS เหมาะกับร้านที่ต้องการเริ่มจากอุปกรณ์ที่มีอยู่และต้องการความยืดหยุ่น ส่วนเครื่อง POS แบบ All-in-One เหมาะกับร้านที่ต้องการ Hardware หน้าร้านโดยเฉพาะและใช้งานต่อเนื่องเป็นจุดประจำ",
+            "สิ่งที่ควรตัดสินใจก่อนคือ workflow ของร้าน ไม่ใช่เลือกจากรูปลักษณ์เครื่องเพียงอย่างเดียว เพราะระบบที่ใช้ง่ายและเข้ากับขั้นตอนของพนักงานจะมีผลกับการใช้งานจริงมากกว่า",
+          ],
+        },
+        {
+          heading: "เลือก POS ให้เหมาะกับร้านอย่างไร",
+          paragraphs: [
+            "ร้านอาหารควรดูความเร็วของหน้าขายและการจัดรายการสินค้า ร้านค้าปลีกควรให้น้ำหนักกับสินค้าและสต๊อก ส่วนธุรกิจเฉพาะทางควรดูว่าสามารถปรับ workflow ได้หรือไม่",
+            "CpiPOS มีทั้งแพ็กเกจรายเดือนและรายปี พร้อมทดลองใช้ฟรี 7 วัน จึงสามารถทดลองกับร้านจริงก่อนเลือกแพ็กเกจที่เหมาะสม",
+          ],
+        },
+      ],
+      faqs: [
+        { question: "POS ย่อมาจากอะไร", answer: "POS ย่อมาจาก Point of Sale หมายถึงระบบหรือจุดที่ใช้บันทึกการขายและธุรกรรมหน้าร้าน" },
+        { question: "POS ต่างจากเครื่องคิดเงินอย่างไร", answer: "POS สามารถเชื่อมงานขายกับสินค้า สต๊อก และข้อมูลยอดขายได้มากกว่าเครื่องคิดเงินทั่วไป โดยรายละเอียดขึ้นอยู่กับระบบและแพ็กเกจ" },
+        { question: "ร้านเล็กจำเป็นต้องซื้อเครื่อง POS หรือไม่", answer: "ไม่จำเป็นเสมอไป หากมีอุปกรณ์ Android ที่รองรับ สามารถเริ่มทดลองระบบก่อนลงทุนเครื่องเฉพาะทางได้" },
+      ],
+    },
+    en: {
+      metaTitle: "What is a POS system? Features and how to choose one",
+      metaDescription: "Understand POS systems, core features, mobile and tablet POS options, and how restaurants and retailers can choose the right workflow.",
+      title: "What is a POS system? Features and how to choose one",
+      lead: "A point-of-sale system records transactions and can connect sales, products, inventory and reporting in one workflow.",
+      sections: [
+        { heading: "What POS means", paragraphs: ["POS stands for Point of Sale. Modern systems can connect transactions with product, inventory and sales information."] },
+        { heading: "Core POS features", paragraphs: ["Evaluate sales, receipts, products, pricing, inventory and reporting first, then add staff, customer or multi-branch capabilities as needed."] },
+        { heading: "Mobile, tablet or dedicated POS", paragraphs: ["Mobile and tablet POS can reduce initial hardware friction, while dedicated terminals fit fixed counter workflows."] },
+        { heading: "How to choose", paragraphs: ["Match the system to the store workflow and test it before committing to more hardware or a longer plan."] },
+      ],
+      faqs: [
+        { question: "What does POS stand for?", answer: "Point of Sale." },
+        { question: "Is POS more than a cash register?", answer: "Yes. Modern POS software can connect sales, products, inventory and reporting." },
+        { question: "Do small stores need dedicated hardware?", answer: "Not always. A compatible device can be used to test the workflow first." },
+      ],
+    },
   },
+  {
+    slug: "pos-price-monthly",
+    datePublished: "2026-10-21",
+    dateModified: "2026-10-21",
+    th: {
+      metaTitle: "POS ราคาเท่าไร? เปรียบเทียบรายเดือน รายปี และต้นทุนที่ควรรู้",
+      metaDescription:
+        "ระบบ POS ราคาเท่าไร ดูตัวอย่างค่าใช้จ่ายรายเดือน รายปี Hardware และต้นทุนรวม พร้อมราคา CpiPOS Starter 350 บาท Growth 550 บาท และ Business 1,500 บาทต่อเดือน",
+      title: "POS ราคาเท่าไร? เปรียบเทียบรายเดือน รายปี และต้นทุนที่ควรรู้",
+      lead:
+        "ราคา POS ไม่ได้มีแค่ค่าซอฟต์แวร์ ร้านควรแยกค่าแพ็กเกจ ค่าอุปกรณ์ และบริการเพิ่มเติมออกจากกันก่อนเปรียบเทียบ เพื่อดูต้นทุนรวมที่เหมาะกับร้านจริง ไม่ใช่ดูเพียงราคาหน้าโฆษณา",
+      sections: [
+        {
+          heading: "ราคา POS มีค่าอะไรบ้าง",
+          paragraphs: [
+            "ต้นทุนของระบบ POS อาจประกอบด้วยค่าซอฟต์แวร์รายเดือนหรือรายปี อุปกรณ์หน้าร้าน เช่น แท็บเล็ต เครื่องพิมพ์ หรือเครื่อง POS และบริการติดตั้งหรือปรับระบบในกรณีที่ธุรกิจต้องการ workflow เฉพาะ",
+            "ร้านที่มีอุปกรณ์ Android ที่รองรับอยู่แล้วสามารถลดต้นทุนเริ่มต้นได้ เพราะสามารถทดลองระบบก่อนซื้อ Hardware เพิ่ม",
+          ],
+        },
+        {
+          heading: "ราคา CpiPOS รายเดือนและรายปี",
+          paragraphs: [
+            "CpiPOS มีตัวเลือกรายเดือนเพื่อให้ร้านเริ่มจากงบที่ควบคุมได้ และมีรายปีสำหรับร้านที่ต้องการใช้งานต่อเนื่อง",
+          ],
+          bullets: [
+            "Starter 350 บาท/เดือน หรือ 3,780 บาท/ปี",
+            "Growth 550 บาท/เดือน หรือ 5,940 บาท/ปี",
+            "Business 1,500 บาท/เดือน หรือ 16,200 บาท/ปี",
+            "CUSTOM ประเมินราคาตามขอบเขตงานและสัญญา",
+          ],
+        },
+        {
+          heading: "รายเดือนหรือรายปีเหมาะกับใคร",
+          paragraphs: [
+            "รายเดือนเหมาะกับร้านที่ต้องการควบคุมเงินก้อนและเริ่มใช้งานก่อน ส่วนรายปีเหมาะกับร้านที่ตัดสินใจใช้ระบบต่อเนื่องและต้องการจัดงบเป็นรอบปี",
+            "ร้านไม่ควรเลือกแพ็กเกจจากราคาอย่างเดียว ควรดูสิทธิ์ที่ต้องใช้จริง เช่น จำนวนผู้ใช้งาน สาขา ฟังก์ชันสต๊อก หรือความต้องการปรับระบบเฉพาะทาง",
+          ],
+        },
+        {
+          heading: "วิธีลดความเสี่ยงก่อนจ่ายค่า POS",
+          paragraphs: [
+            "ทดลองใช้กับข้อมูลจริงของร้าน เช่น สินค้าบางส่วน รายการขาย และขั้นตอนที่พนักงานใช้ทุกวัน ก่อนเลือกแพ็กเกจ จะช่วยให้เห็นว่าระบบเหมาะกับร้านหรือไม่",
+            "CpiPOS เปิดให้ทดลองใช้ฟรี 7 วัน และสามารถเริ่มจากรายเดือนได้ก่อนหากยังไม่ต้องการชำระรายปี",
+          ],
+        },
+      ],
+      faqs: [
+        { question: "CpiPOS เริ่มต้นกี่บาทต่อเดือน", answer: "Starter เริ่ม 350 บาทต่อเดือน, Growth 550 บาทต่อเดือน และ Business 1,500 บาทต่อเดือน" },
+        { question: "CpiPOS มีแพ็กเกจรายปีหรือไม่", answer: "มี Starter 3,780 บาทต่อปี, Growth 5,940 บาทต่อปี และ Business 16,200 บาทต่อปี" },
+        { question: "ต้องซื้อเครื่อง POS พร้อมแพ็กเกจหรือไม่", answer: "ไม่จำเป็นเสมอไป หากมีอุปกรณ์ Android ที่รองรับสามารถเริ่มทดลองซอฟต์แวร์ก่อน แล้วค่อยเพิ่มอุปกรณ์ตามความจำเป็น" },
+      ],
+    },
+    en: {
+      metaTitle: "How much does POS cost? Monthly, annual and hardware costs",
+      metaDescription: "Compare POS software, hardware and total cost, including CpiPOS monthly and annual plan examples.",
+      title: "How much does POS cost? Monthly, annual and hardware costs",
+      lead: "POS cost includes more than software. Compare subscription, hardware and implementation costs before choosing a plan.",
+      sections: [
+        { heading: "What makes up POS cost", paragraphs: ["Separate software subscription, devices and implementation or customization costs before comparing providers."] },
+        { heading: "CpiPOS monthly and annual pricing", paragraphs: ["Starter begins at 350 THB/month, Growth at 550 THB/month and Business at 1,500 THB/month, with annual options available."] },
+        { heading: "Monthly or annual", paragraphs: ["Monthly plans reduce upfront commitment while annual plans can fit stores that are ready for continuous use."] },
+        { heading: "Reduce risk before paying", paragraphs: ["Test the workflow with real store data before committing to more hardware or a longer plan."] },
+      ],
+      faqs: [
+        { question: "How much does CpiPOS start at?", answer: "Starter begins at 350 THB per month." },
+        { question: "Are annual plans available?", answer: "Yes, annual plans are available for Starter, Growth and Business." },
+        { question: "Is dedicated hardware required?", answer: "Not always. Compatible Android devices can be used to test first." },
+      ],
+    },
+  },
+  {
+    slug: "pos-free-trial",
+    datePublished: "2026-10-21",
+    dateModified: "2026-10-21",
+    th: {
+      metaTitle: "โปรแกรม POS ทดลองใช้ฟรี 7 วัน ควรทดสอบอะไรบ้างก่อนจ่าย",
+      metaDescription:
+        "กำลังหาโปรแกรม POS ทดลองใช้ฟรี? ดูเช็กลิสต์ทดลองงานขาย สินค้า สต๊อก รายงาน และอุปกรณ์ก่อนเลือกแพ็กเกจ พร้อมทดลอง CpiPOS ฟรี 7 วัน",
+      title: "โปรแกรม POS ทดลองใช้ฟรี 7 วัน ควรทดสอบอะไรบ้างก่อนจ่าย",
+      lead:
+        "การทดลองใช้ฟรีมีประโยชน์เมื่อร้านใช้ช่วงทดลองกับ workflow จริง ไม่ใช่เพียงเปิดดูหน้าระบบ ควรตั้งข้อมูลสินค้า ทดลองขาย และให้พนักงานใช้งานจริงบางส่วน เพื่อดูว่าระบบช่วยลดขั้นตอนหรือสร้างภาระเพิ่ม",
+      sections: [
+        {
+          heading: "ทดลองใช้ฟรีไม่เท่ากับใช้ฟรีตลอดไป",
+          paragraphs: [
+            "คำว่าโปรแกรม POS ฟรีอาจหมายถึงหลายอย่าง บางระบบใช้ฟรีถาวรแต่จำกัดฟังก์ชัน ขณะที่บางระบบให้ทดลองใช้ฟรีก่อนเริ่มแพ็กเกจ CpiPOS อยู่ในรูปแบบทดลองใช้ฟรี 7 วันก่อนตัดสินใจเลือกแพ็กเกจที่เหมาะกับร้าน",
+            "การสื่อสารให้ชัดตั้งแต่ต้นช่วยให้ร้านเปรียบเทียบระบบได้ตรงกับงบจริง และไม่เข้าใจผิดว่าฟังก์ชันทั้งหมดจะใช้งานฟรีถาวร",
+          ],
+        },
+        {
+          heading: "7 วันควรทดสอบอะไรบ้าง",
+          paragraphs: [
+            "เริ่มจากข้อมูลที่ร้านใช้จริง เช่น สินค้าหลัก ราคา หมวดหมู่ และสต๊อกบางส่วน จากนั้นจำลองการขายและตรวจว่าพนักงานเข้าใจขั้นตอนโดยไม่ต้องจำคำสั่งซับซ้อน",
+          ],
+          bullets: [
+            "เพิ่มสินค้าและราคาขายจริงบางรายการ",
+            "ทดลองขาย แก้จำนวน และจบรายการ",
+            "ตรวจข้อมูลสต๊อกหลังการขาย",
+            "ดูยอดขายหรือรายงานที่เจ้าของร้านต้องใช้",
+            "ทดสอบบนอุปกรณ์ที่จะใช้จริงในร้าน",
+          ],
+        },
+        {
+          heading: "ก่อนหมด Trial ควรตัดสินใจจากอะไร",
+          paragraphs: [
+            "ให้ดูว่าระบบช่วยงานประจำวันได้จริงหรือไม่ พนักงานเรียนรู้ได้เร็วแค่ไหน และฟังก์ชันสำคัญที่ร้านต้องใช้มีครบหรือไม่ หากติดเรื่องแพ็กเกจ ควรเทียบสิทธิ์กับต้นทุนและขนาดร้านแทนการเลือกจากราคาต่ำสุดอย่างเดียว",
+            "CpiPOS มี Starter, Growth, Business และ CUSTOM พร้อมตัวเลือกรายเดือนและรายปี เพื่อให้ร้านเริ่มจากระดับที่เหมาะกับการใช้งานจริง",
+          ],
+        },
+      ],
+      faqs: [
+        { question: "CpiPOS ทดลองใช้ฟรีกี่วัน", answer: "CpiPOS มีช่วงทดลองใช้ฟรี 7 วันก่อนเลือกแพ็กเกจ" },
+        { question: "ทดลองใช้ฟรีแล้วต้องซื้อทันทีหรือไม่", answer: "ไม่จำเป็น ร้านสามารถใช้ช่วงทดลองเพื่อประเมินความเหมาะสมก่อนตัดสินใจ" },
+        { question: "ควรใส่ข้อมูลจริงตอนทดลองหรือไม่", answer: "ควรใช้ข้อมูลจริงบางส่วนของร้าน เพื่อให้เห็น workflow และข้อจำกัดก่อนใช้งานจริง" },
+      ],
+    },
+    en: {
+      metaTitle: "POS free trial: what to test during 7 days",
+      metaDescription: "Use a POS free trial effectively by testing products, sales, inventory, reports and devices before choosing a plan.",
+      title: "POS free trial: what to test during 7 days",
+      lead: "A useful POS trial should test the real store workflow, not just the interface.",
+      sections: [
+        { heading: "Free trial is not always free forever", paragraphs: ["Some POS products are permanently free with limits while others offer a trial before a paid plan. CpiPOS offers a 7-day free trial."] },
+        { heading: "What to test", paragraphs: ["Use real product, pricing, sales and inventory examples so the trial reflects daily operations."] },
+        { heading: "How to decide before trial ends", paragraphs: ["Evaluate usability, required features and plan fit before choosing monthly, annual or customized options."] },
+      ],
+      faqs: [
+        { question: "How long is the CpiPOS trial?", answer: "7 days." },
+        { question: "Do I have to buy immediately?", answer: "No. Use the trial to evaluate fit first." },
+        { question: "Should I use real store data?", answer: "Using a small set of real data makes the trial more meaningful." },
+      ],
+    },
+  }
 ];
 
 const articleBySlug = new Map(articles.map((article) => [article.slug, article]));
@@ -338,8 +544,8 @@ export default async function PosArticlePage({ params }: PageProps) {
           headline: copy.title,
           description: copy.metaDescription,
           url: pageUrl,
-          datePublished: "2026-10-12",
-          dateModified: "2026-10-12",
+          datePublished: article.datePublished ?? "2026-10-12",
+          dateModified: article.dateModified ?? article.datePublished ?? "2026-10-12",
           image: `${baseUrl}/product-showcase/service-pos.png`,
         }}
         breadcrumbs={[
