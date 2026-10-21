@@ -37,6 +37,36 @@ const articleItems = [
       "How retail stores can organize sales, product, inventory and sales data in one workflow.",
     keyword: "POS ร้านค้าปลีก",
   },
+  {
+    href: "/articles/pos-system-guide",
+    titleTh: "ระบบ POS คืออะไร? ทำอะไรได้บ้าง และร้านควรเลือกแบบไหน",
+    titleEn: "What is a POS system? Features and how to choose one",
+    excerptTh:
+      "อธิบาย POS คืออะไร ฟังก์ชันหลัก Mobile POS, Tablet POS และวิธีเลือกระบบให้เหมาะกับร้าน",
+    excerptEn:
+      "Understand POS basics, core features, device options and how to choose the right workflow.",
+    keyword: "ระบบ POS คืออะไร",
+  },
+  {
+    href: "/articles/pos-price-monthly",
+    titleTh: "POS ราคาเท่าไร? เปรียบเทียบรายเดือน รายปี และต้นทุนที่ควรรู้",
+    titleEn: "How much does POS cost? Monthly, annual and hardware costs",
+    excerptTh:
+      "แยกค่าซอฟต์แวร์ ค่าอุปกรณ์ และต้นทุนรวม พร้อมราคา CpiPOS รายเดือนและรายปี",
+    excerptEn:
+      "Compare software subscriptions, hardware and total POS costs before choosing a plan.",
+    keyword: "POS ราคา",
+  },
+  {
+    href: "/articles/pos-free-trial",
+    titleTh: "โปรแกรม POS ทดลองใช้ฟรี 7 วัน ควรทดสอบอะไรบ้างก่อนจ่าย",
+    titleEn: "POS free trial: what to test during 7 days",
+    excerptTh:
+      "เช็กลิสต์ทดลองขาย สินค้า สต๊อก รายงาน และอุปกรณ์ เพื่อให้ Trial 7 วันช่วยตัดสินใจได้จริง",
+    excerptEn:
+      "A checklist for testing sales, products, inventory, reports and devices during a POS trial.",
+    keyword: "โปรแกรม POS ทดลองใช้ฟรี",
+  },
 ] as const;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -45,11 +75,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const title =
     locale === "en"
       ? "CpiPOS Guides: Android POS for Restaurants and Retail"
-      : "บทความ CpiPOS: ระบบ POS Android สำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีก";
+      : "บทความระบบ POS: POS คืออะไร ร้านอาหาร ร้านค้า Android ราคา และทดลองใช้ฟรี";
   const description =
     locale === "en"
       ? "Practical CpiPOS guides covering Android POS, restaurant and café workflows, retail inventory, pricing and free trial planning."
-      : "รวมบทความ CpiPOS เรื่องระบบ POS Android โปรแกรมขายหน้าร้านสำหรับร้านอาหาร คาเฟ่ ร้านค้าปลีก การจัดการสต๊อก และแนวทางทดลองใช้งาน";
+      : "รวมบทความระบบ POS ตั้งแต่ POS คืออะไร ระบบ POS ร้านอาหาร ร้านค้าปลีก POS Android ราคา POS รายเดือน และโปรแกรม POS ทดลองใช้ฟรี 7 วัน";
 
   return {
     metadataBase: new URL(baseUrl),
@@ -102,13 +132,13 @@ export default async function ArticlesPage() {
             </p>
             <h1 className="max-w-4xl font-[var(--font-heading)] text-3xl font-semibold tracking-tight md:text-5xl">
               {isEnglish
-                ? "Practical guides for Android POS, restaurants and retail"
-                : "บทความ CpiPOS สำหรับร้านอาหาร คาเฟ่ และร้านค้าปลีก"}
+                ? "Practical POS guides for Android, restaurants, retail and pricing"
+                : "คู่มือระบบ POS สำหรับร้านอาหาร ร้านค้า Android ราคา และการทดลองใช้"}
             </h1>
             <p className="max-w-3xl text-base leading-8 text-slate-600 md:text-lg">
               {isEnglish
                 ? "Learn how to evaluate an Android POS workflow, prepare product and inventory data, and test CpiPOS before committing to additional hardware."
-                : "รวมแนวทางเลือกและเริ่มใช้ระบบ POS บน Android ตั้งแต่งานขาย สินค้า สต๊อก ไปจนถึงข้อมูลยอดขาย เพื่อให้ร้านทดลอง workflow จริงก่อนตัดสินใจลงทุนเพิ่ม"}
+                : "รวมคำตอบตั้งแต่ระบบ POS คืออะไร เลือก POS ร้านอาหารหรือร้านค้าปลีกแบบไหน ราคาเท่าไร ใช้ Android ได้หรือไม่ และควรทดสอบอะไรในช่วงทดลองใช้ฟรีก่อนตัดสินใจ" }
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Link href="/trial/pos" className="rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white">
@@ -123,7 +153,7 @@ export default async function ArticlesPage() {
 
         <section className="py-16">
           <div className="mx-auto w-full max-w-6xl px-6">
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {articleItems.map((item) => (
                 <article
                   key={item.href}
