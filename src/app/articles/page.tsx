@@ -141,6 +141,9 @@ export default async function ArticlesPage() {
                 : "รวมคำตอบตั้งแต่ระบบ POS คืออะไร เลือก POS ร้านอาหารหรือร้านค้าปลีกแบบไหน ราคาเท่าไร ใช้ Android ได้หรือไม่ และควรทดสอบอะไรในช่วงทดลองใช้ฟรีก่อนตัดสินใจ" }
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
+              <Link href="/pos" className="rounded-full border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-semibold text-blue-800">
+                {isEnglish ? "CpiPOS POS system" : "ดูระบบ POS CpiPOS"}
+              </Link>
               <Link href="/trial/pos" className="rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white">
                 {isEnglish ? "Try CpiPOS free for 7 days" : "ทดลองใช้ฟรี CpiPOS 7 วัน"}
               </Link>
