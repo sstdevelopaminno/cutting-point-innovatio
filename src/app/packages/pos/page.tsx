@@ -140,6 +140,9 @@ export default function PosPackagesPage() {
               <Link href="/trial/pos?utm_source=seo&utm_medium=packages&utm_campaign=pricing_options" className="rounded-full bg-blue-600 px-5 py-3 text-sm font-bold text-white">
                 ทดลองใช้ฟรี CpiPOS 7 วัน
               </Link>
+              <Link href="/pos" className="rounded-full border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-bold text-blue-800">
+                ดูระบบ POS CpiPOS
+              </Link>
               <Link href="/articles" className="rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800">
                 อ่านบทความเลือก POS
               </Link>
