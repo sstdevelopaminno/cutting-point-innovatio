@@ -6,12 +6,16 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnova
 const baseUrl = SITE_URL.replace(/\/+$/, "");
 
 const plans = [
-  { name: "Starter", audience: "ສຳລັບຮ້ານຂະໜາດນ້ອຍ", one: "3,780", two: "7,560", three: "11,340", popular: false },
-  { name: "Growth", audience: "ແພັກເກດຍອດນິຍົມສຳລັບຮ້ານທີ່ກຳລັງເຕີບໂຕ", one: "5,940", two: "11,880", three: "17,820", popular: true },
-  { name: "Business", audience: "ສຳລັບທຸລະກິດທີ່ກຳລັງຂະຫຍາຍ", one: "16,200", two: "32,400", three: "48,600", popular: false },
+  { name: "Starter", audience: "ສຳລັບຮ້ານຂະໜາດນ້ອຍ", monthly: "350", yearly: "3,780", two: "7,560", three: "11,340", popular: false },
+  { name: "Growth", audience: "ແພັກເກດຍອດນິຍົມສຳລັບຮ້ານທີ່ກຳລັງເຕີບໂຕ", monthly: "550", yearly: "5,940", two: "11,880", three: "17,820", popular: true },
+  { name: "Business", audience: "ສຳລັບທຸລະກິດທີ່ກຳລັງຂະຫຍາຍ", monthly: "1,500", yearly: "16,200", two: "32,400", three: "48,600", popular: false },
 ] as const;
 
 const faqs = [
+  {
+    question: "CpiPOS ມີທັງແພັກເກດລາຍເດືອນແລະລາຍປີບໍ?",
+    answer: "ມີ ສາມາດເລີ່ມ Starter 350 ບາດ/ເດືອນ, Growth 550 ບາດ/ເດືອນ ແລະ Business 1,500 ບາດ/ເດືອນ ຫຼືເລືອກລາຍປີຕາມຄວາມເໝາະສົມ.",
+  },
   {
     question: "CpiPOS ສາມາດທົດລອງໃຊ້ກ່ອນໄດ້ບໍ?",
     answer: "ໄດ້ ສາມາດຂໍທົດລອງໃຊ້ກັບຮ້ານຈິງ 7 ມື້ ເພື່ອທົດສອບຂັ້ນຕອນຂາຍ ສິນຄ້າ ສະຕັອກ ແລະ ການໃຊ້ງານ.",
@@ -30,7 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: "CpiPOS Laos | ລະບົບ POS ຮ້ານຄ້າ ຮ້ານອາຫານ ແລະ SME ໃນລາວ",
   description:
-    "CpiPOS ລະບົບ POS ສຳລັບຮ້ານຄ້າ ຄາເຟ ຮ້ານອາຫານ ແລະ SME ໃນລາວ. ແພັກເກດລາຍປີເລີ່ມ 3,780 ບາດ ພ້ອມຂໍລາຄາເປັນ LAK ແລະທົດລອງໃຊ້ 7 ມື້.",
+    "CpiPOS ລະບົບ POS ສຳລັບຮ້ານຄ້າ ຄາເຟ ຮ້ານອາຫານ ແລະ SME ໃນລາວ. ເລີ່ມ 350 ບາດ/ເດືອນ ຫຼື 3,780 ບາດ/ປີ ພ້ອມຂໍລາຄາເປັນ LAK ແລະທົດລອງໃຊ້ 7 ມື້.",
   keywords: [
     "POS Laos",
     "ລະບົບ POS ລາວ",
@@ -42,7 +46,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/laos/pos" },
   openGraph: {
     title: "CpiPOS Laos — ລະບົບ POS ສຳລັບທຸລະກິດໃນລາວ",
-    description: "ຈັດການການຂາຍ ສິນຄ້າ ສະຕັອກ ແລະຂໍ້ມູນຮ້ານ ພ້ອມແພັກເກດລາຍປີ ແລະ CUSTOM.",
+    description: "ຈັດການການຂາຍ ສິນຄ້າ ສະຕັອກ ແລະຂໍ້ມູນຮ້ານ ເລືອກໄດ້ທັງລາຍເດືອນ ລາຍປີ ແລະ CUSTOM.",
     url: `${baseUrl}/laos/pos`,
     type: "website",
     images: [{ url: "/product-showcase/service-pos.png", alt: "CpiPOS Laos POS" }],
@@ -81,16 +85,17 @@ export default function LaosPosPage() {
             </p>
             <div className="mt-6 inline-flex rounded-2xl border border-blue-200 bg-white px-5 py-4 shadow-sm">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.15em] text-blue-700">Annual plan</p>
-                <p className="mt-1 text-2xl font-black text-slate-950">ເລີ່ມ 3,780 ບາດ / ປີ</p>
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-blue-700">Monthly or Annual</p>
+                <p className="mt-1 text-2xl font-black text-slate-950">ເລີ່ມ 350 ບາດ / ເດືອນ</p>
+                <p className="mt-1 text-sm font-semibold text-blue-700">ຫຼື 3,780 ບາດ / ປີ</p>
                 <p className="mt-1 text-sm text-slate-600">ສາມາດຂໍໃບສະເໜີລາຄາເປັນ LAK ກ່ອນຊຳລະ</p>
               </div>
             </div>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link href="/trial/pos?utm_source=laos_landing&utm_medium=organic&utm_campaign=laos_annual" className="rounded-xl bg-blue-700 px-6 py-4 font-bold text-white hover:bg-blue-800">
+              <Link href="/trial/pos?utm_source=laos_landing&utm_medium=organic&utm_campaign=laos_pricing" className="rounded-xl bg-blue-700 px-6 py-4 font-bold text-white hover:bg-blue-800">
                 ເບິ່ງ Web Demo
               </Link>
-              <Link href="/register-store?utm_source=laos_landing&utm_medium=organic&utm_campaign=laos_annual" className="rounded-xl border border-blue-700 bg-white px-6 py-4 font-bold text-blue-800 hover:bg-blue-50">
+              <Link href="/register-store?utm_source=laos_landing&utm_medium=organic&utm_campaign=laos_pricing" className="rounded-xl border border-blue-700 bg-white px-6 py-4 font-bold text-blue-800 hover:bg-blue-50">
                 ຂໍທົດລອງໃຊ້ 7 ມື້
               </Link>
             </div>
@@ -115,9 +120,9 @@ export default function LaosPosPage() {
         <section className="border-y border-slate-200 bg-white py-16">
           <div className="mx-auto max-w-6xl px-6">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">Pricing</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">ແພັກເກດ CpiPOS ແບບລາຍປີ</h2>
+            <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">ແພັກເກດ CpiPOS ເລືອກໄດ້ທັງລາຍເດືອນ ແລະ ລາຍປີ</h2>
             <p className="mt-4 max-w-3xl leading-8 text-slate-600">
-              ລາຄາດ້ານລຸ່ມເປັນລາຄາອ້າງອີງເປັນບາດ. ສຳລັບຮ້ານໃນລາວ ກະລຸນາຂໍໃບສະເໜີລາຄາເປັນ LAK ຈາກທີມງານກ່ອນຊຳລະ.
+              ລູກຄ້າໃໝ່ສາມາດເລີ່ມແບບລາຍເດືອນໄດ້ກ່ອນ ຫຼືເລືອກລາຍປີເມື່ອຕ້ອງການໃຊ້ງານຕໍ່ເນື່ອງ. ລາຄາດ້ານລຸ່ມເປັນລາຄາອ້າງອີງເປັນບາດ ແລະສາມາດຂໍໃບສະເໜີລາຄາເປັນ LAK ກ່ອນຊຳລະ.
             </p>
 
             <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -134,10 +139,14 @@ export default function LaosPosPage() {
                     {plan.popular ? <span className="rounded-full bg-blue-600 px-3 py-1 text-xs font-bold text-white">ຍອດນິຍົມ</span> : null}
                   </div>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{plan.audience}</p>
-                  <dl className="mt-6 space-y-3 text-sm">
-                    <div className="flex justify-between gap-3"><dt>1 ປີ</dt><dd className="font-black">{plan.one} ບາດ</dd></div>
-                    <div className="flex justify-between gap-3"><dt>2 ປີ</dt><dd className="font-black">{plan.two} ບາດ</dd></div>
-                    <div className="flex justify-between gap-3"><dt>3 ປີ</dt><dd className="font-black">{plan.three} ບາດ</dd></div>
+                  <div className="mt-6 rounded-2xl bg-blue-50 p-4">
+                    <p className="text-xs font-bold text-blue-700">ເລີ່ມແບບລາຍເດືອນ</p>
+                    <p className="mt-1 text-3xl font-black">{plan.monthly} ບາດ <span className="text-sm font-bold text-slate-500">/ ເດືອນ</span></p>
+                  </div>
+                  <dl className="mt-4 space-y-3 text-sm">
+                    <div className="flex justify-between gap-3"><dt>ລາຍປີ</dt><dd className="font-black">{plan.yearly} ບາດ</dd></div>
+                    <div className="flex justify-between gap-3"><dt>2 ປີ</dt><dd className="font-semibold">{plan.two} ບາດ</dd></div>
+                    <div className="flex justify-between gap-3"><dt>3 ປີ</dt><dd className="font-semibold">{plan.three} ບາດ</dd></div>
                   </dl>
                 </article>
               ))}
@@ -159,10 +168,10 @@ export default function LaosPosPage() {
               ທີມງານສາມາດແນະນຳແພັກເກດ ແລະຊ່ວຍຕັ້ງຄ່າເລີ່ມຕົ້ນໃຫ້ເໝາະກັບຮ້ານ. ກ່ອນໃຊ້ງານຈິງ ກະລຸນາຢືນຢັນສະກຸນເງິນ ການພິມໃບຮັບເງິນ ແລະອຸປະກອນທີ່ຈະໃຊ້ກັບທີມງານ.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/trial/pos?utm_source=laos_landing&utm_medium=organic&utm_campaign=laos_annual" className="rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950">
+              <Link href="/trial/pos?utm_source=laos_landing&utm_medium=organic&utm_campaign=laos_pricing" className="rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950">
                 ເລີ່ມທົດລອງ 7 ມື້
               </Link>
-              <Link href="/contact?utm_source=laos_landing&utm_medium=organic&utm_campaign=laos_annual" className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white">
+              <Link href="/contact?utm_source=laos_landing&utm_medium=organic&utm_campaign=laos_pricing" className="rounded-full border border-white/30 px-5 py-3 text-sm font-bold text-white">
                 ຕິດຕໍ່ທີມງານ
               </Link>
             </div>
