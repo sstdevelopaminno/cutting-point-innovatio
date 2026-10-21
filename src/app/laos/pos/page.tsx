@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnovation.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.cuttingpointinnovation.com";
 const baseUrl = SITE_URL.replace(/\/+$/, "");
 
 const plans = [

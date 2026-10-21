@@ -35,7 +35,7 @@ type StructuredDataProps = {
   article?: ArticleSchema;
 };
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnovation.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.cuttingpointinnovation.com";
 
 const CONTACT = {
   email: "cuttingpointtech@gmail.com",
@@ -43,7 +43,7 @@ const CONTACT = {
   phoneE164: "+66985460355",
   line: "https://lin.ee/z8qLGjU",
   facebook: "https://www.facebook.com/122134406553382800",
-  contactUrl: "https://cuttingpointinnovation.vercel.app/contact",
+  contactUrl: "https://www.cuttingpointinnovation.com/contact",
 } as const;
 
 const companyInfo = {
