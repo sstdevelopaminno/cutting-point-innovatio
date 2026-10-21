@@ -7,9 +7,9 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnova
 const baseUrl = SITE_URL.replace(/\/+$/, "");
 
 const annualPlans = [
-  { name: "Starter", audience: "ร้านค้าขนาดเล็ก", one: "3,780", two: "7,560", three: "11,340" },
+  { name: "Starter", audience: "ร้านค้าขนาดเล็ก", one: "3,780", two: "7,560", three: "11,340", popular: false },
   { name: "Growth", audience: "แพ็กเกจยอดนิยมสำหรับร้านที่กำลังเติบโต", one: "5,940", two: "11,880", three: "17,820", popular: true },
-  { name: "Business", audience: "ธุรกิจที่กำลังขยายทีมและสาขา", one: "16,200", two: "32,400", three: "48,600" },
+  { name: "Business", audience: "ธุรกิจที่กำลังขยายทีมและสาขา", one: "16,200", two: "32,400", three: "48,600", popular: false },
 ] as const;
 
 const faqs = [
