@@ -259,7 +259,7 @@ const articles: Article[] = [
         { question: "Does CpiPOS include sales data?", answer: "Yes. Sales data is supported alongside sales, products and inventory." },
       ],
     },
-  },,
+  },
   {
     slug: "pos-system-guide",
     datePublished: "2026-10-21",
