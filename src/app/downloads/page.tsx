@@ -23,7 +23,7 @@ const ANDROID_MOBILE_RELEASE = {
   version: "v2.0.0",
   minAndroid: "Android 8.0+",
   fileName: "CpIPOS-Native-Mobile-2.0.0.apk",
-  url: "",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.0.0/CpIPOS-Native-Mobile-2.0.0.apk",
 } as const;
 
 const copy = {
@@ -179,7 +179,7 @@ export default async function DownloadsPage() {
             version: ANDROID_MOBILE_RELEASE.version,
             fileName: ANDROID_MOBILE_RELEASE.fileName,
             buttonLabel: lang === "th" ? "ดาวน์โหลดสำหรับมือถือ" : lang === "lo" ? "ດາວໂຫຼດສຳລັບມືຖື" : "Download for Mobile",
-            noLinkLabel: lang === "th" ? "กำลังจัดเตรียม APK มือถือที่เซ็นสำหรับลูกค้า" : item.noLink,
+            noLinkLabel: item.noLink,
             href: androidMobileUrl,
           }}
         />
