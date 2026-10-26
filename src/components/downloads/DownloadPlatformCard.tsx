@@ -3,7 +3,7 @@ type Tone = "windows" | "android";
 type DownloadPlatformCardProps = {
   id: string;
   tone: Tone;
-  icon: "windows" | "android";
+  icon: "windows" | "android" | "android-tablet" | "android-mobile";
   eyebrow: string;
   title: string;
   description: string;
@@ -40,7 +40,7 @@ const toneStyles: Record<
   },
 };
 
-function PlatformIcon({ type }: { type: "windows" | "android" }) {
+function PlatformIcon({ type }: { type: "windows" | "android" | "android-tablet" | "android-mobile" }) {
   if (type === "windows") {
     return (
       <span aria-hidden="true" className="grid h-8 w-8 grid-cols-2 gap-1">
@@ -48,6 +48,24 @@ function PlatformIcon({ type }: { type: "windows" | "android" }) {
         <span className="rounded-[3px] bg-current" />
         <span className="rounded-[3px] bg-current" />
         <span className="rounded-[3px] bg-current" />
+      </span>
+    );
+  }
+
+  if (type === "android-tablet") {
+    return (
+      <span aria-hidden="true" className="relative h-8 w-11 rounded-[7px] border-2 border-current">
+        <span className="absolute inset-[3px] rounded-[3px] border border-current/50" />
+        <span className="absolute bottom-0.5 left-1/2 h-0.5 w-2 -translate-x-1/2 rounded-full bg-current" />
+      </span>
+    );
+  }
+
+  if (type === "android-mobile") {
+    return (
+      <span aria-hidden="true" className="relative h-10 w-6 rounded-[7px] border-2 border-current">
+        <span className="absolute left-1/2 top-1 h-0.5 w-2 -translate-x-1/2 rounded-full bg-current" />
+        <span className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-current" />
       </span>
     );
   }

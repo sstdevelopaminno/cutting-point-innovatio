@@ -10,11 +10,20 @@ const WINDOWS_FINAL_RELEASE = {
   url: "https://github.com/sstdevelopaminno/cp-ipos-desktop/releases/download/v0.3.4/CpIPOS.Desktop_0.3.4_x64-setup.exe",
 } as const;
 
-const ANDROID_FINAL_RELEASE = {
+const ANDROID_TABLET_RELEASE = {
   version: "v1.0.25",
-  versionCode: 34, // Production Android release
+  versionCode: 34,
   fileName: "CpIPOS-Android-POS-1.0.25.apk",
   url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.25-print-health-auto-update/CpIPOS-Android-POS-1.0.25.apk",
+} as const;
+
+// Native Mobile uses the verified signed release published by the CpIPOS
+// release authority workflow from the tested cpipos-native-pos source.
+const ANDROID_MOBILE_RELEASE = {
+  version: "v2.0.0",
+  minAndroid: "Android 8.0+",
+  fileName: "CpIPOS-Native-Mobile-2.0.0.apk",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.0.0/CpIPOS-Native-Mobile-2.0.0.apk",
 } as const;
 
 const copy = {
@@ -25,9 +34,9 @@ const copy = {
     subtitle: "ไฟล์ติดตั้ง CpIPOS สำหรับ Windows และ Android",
     choose: "เลือกไฟล์ดาวน์โหลด",
     windowsCaption: "สำหรับ Windows 10/11 (64-bit)",
-    androidCaption: "สำหรับร้านออนไลน์และอุปกรณ์ Android",
+    androidCaption: "สำหรับแท็บเล็ตและมือถือ Android",
     windowsEyebrow: "สำหรับ Windows",
-    androidEyebrow: "ร้านออนไลน์ Android",
+    androidEyebrow: "Android",
     windowsButton: "ดาวน์โหลด Windows",
     androidButton: "ดาวน์โหลด Android",
     noLink: "กำลังจัดเตรียมลิงก์ดาวน์โหลด",
@@ -40,9 +49,9 @@ const copy = {
     subtitle: "CpIPOS installers for Windows and Android",
     choose: "Choose download",
     windowsCaption: "For Windows 10/11 (64-bit)",
-    androidCaption: "For online stores and Android devices",
+    androidCaption: "For Android tablets and phones",
     windowsEyebrow: "For Windows",
-    androidEyebrow: "Online store Android",
+    androidEyebrow: "Android",
     windowsButton: "Download Windows",
     androidButton: "Download Android",
     noLink: "Download link being prepared",
@@ -55,9 +64,9 @@ const copy = {
     subtitle: "ໄຟລ໌ຕິດຕັ້ງ CpIPOS ສໍາລັບ Windows ແລະ Android",
     choose: "ເລືອກດາວໂຫຼດ",
     windowsCaption: "ສໍາລັບ Windows 10/11 (64-bit)",
-    androidCaption: "ສໍາລັບຮ້ານອອນລາຍ ແລະ Android",
+    androidCaption: "ສໍາລັບແທັບເລັດ ແລະ ມືຖື Android",
     windowsEyebrow: "ສໍາລັບ Windows",
-    androidEyebrow: "ຮ້ານອອນລາຍ Android",
+    androidEyebrow: "Android",
     windowsButton: "ດາວໂຫຼດ Windows",
     androidButton: "ດາວໂຫຼດ Android",
     noLink: "ກໍາລັງກຽມລິ້ງດາວໂຫຼດ",
@@ -94,7 +103,8 @@ export default async function DownloadsPage() {
   const lang = (await getRequestedLocale()) as Lang;
   const item = copy[lang];
   const windowsUrl = approvedHttpsUrl(WINDOWS_FINAL_RELEASE.url);
-  const androidUrl = approvedHttpsUrl(ANDROID_FINAL_RELEASE.url);
+  const androidTabletUrl = approvedHttpsUrl(ANDROID_TABLET_RELEASE.url);
+  const androidMobileUrl = approvedHttpsUrl(ANDROID_MOBILE_RELEASE.url);
   return (
     <main className="relative isolate min-h-[calc(100dvh-80px)] overflow-hidden bg-[#090e1c] text-white">
       <div
@@ -138,18 +148,39 @@ export default async function DownloadsPage() {
             noLinkLabel: item.noLink,
             href: windowsUrl,
           }}
-          android={{
-            id: "android",
+          androidTablet={{
+            id: "android-tablet",
             tone: "android",
-            icon: "android",
-            eyebrow: item.androidEyebrow,
-            title: "Android",
-            description: item.androidCaption,
-            version: ANDROID_FINAL_RELEASE.version,
-            fileName: ANDROID_FINAL_RELEASE.fileName,
-            buttonLabel: item.androidButton,
+            icon: "android-tablet",
+            eyebrow: lang === "th" ? "ANDROID · TABLET / POS" : lang === "lo" ? "ANDROID · TABLET / POS" : "ANDROID · TABLET / POS",
+            title: lang === "th" ? "Android Tablet" : lang === "lo" ? "Android Tablet" : "Android Tablet",
+            description: lang === "th"
+              ? "สำหรับแท็บเล็ตหรือเครื่อง POS Android หน้าจอใหญ่ · รุ่นเดิมที่ใช้งานอยู่"
+              : lang === "lo"
+                ? "ສຳລັບແທັບເລັດ ຫຼື ເຄື່ອງ POS Android ໜ້າຈໍໃຫຍ່"
+                : "For Android tablets and large-screen POS terminals",
+            version: ANDROID_TABLET_RELEASE.version,
+            fileName: ANDROID_TABLET_RELEASE.fileName,
+            buttonLabel: lang === "th" ? "ดาวน์โหลดสำหรับแท็บเล็ต" : lang === "lo" ? "ດາວໂຫຼດສຳລັບແທັບເລັດ" : "Download for Tablet",
             noLinkLabel: item.noLink,
-            href: androidUrl,
+            href: androidTabletUrl,
+          }}
+          androidMobile={{
+            id: "android-mobile",
+            tone: "android",
+            icon: "android-mobile",
+            eyebrow: "ANDROID · NATIVE MOBILE",
+            title: lang === "th" ? "Android Mobile" : lang === "lo" ? "Android Mobile" : "Android Mobile",
+            description: lang === "th"
+              ? `สำหรับมือถือ Android Native POS · รองรับ ${ANDROID_MOBILE_RELEASE.minAndroid}`
+              : lang === "lo"
+                ? `ສຳລັບມືຖື Android Native POS · ຮອງຮັບ ${ANDROID_MOBILE_RELEASE.minAndroid}`
+                : `Native POS for Android phones · supports ${ANDROID_MOBILE_RELEASE.minAndroid}`,
+            version: ANDROID_MOBILE_RELEASE.version,
+            fileName: ANDROID_MOBILE_RELEASE.fileName,
+            buttonLabel: lang === "th" ? "ดาวน์โหลดสำหรับมือถือ" : lang === "lo" ? "ດາວໂຫຼດສຳລັບມືຖື" : "Download for Mobile",
+            noLinkLabel: item.noLink,
+            href: androidMobileUrl,
           }}
         />
 
