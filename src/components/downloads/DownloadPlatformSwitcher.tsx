@@ -6,9 +6,9 @@ import { DownloadPlatformCard } from "@/components/downloads/DownloadPlatformCar
 type Platform = "all" | "windows" | "android";
 
 type CardConfig = {
-  id: "windows" | "android";
+  id: string;
   tone: "windows" | "android";
-  icon: "windows" | "android";
+  icon: "windows" | "android" | "android-tablet" | "android-mobile";
   eyebrow: string;
   title: string;
   description: string;
@@ -24,7 +24,8 @@ type DownloadPlatformSwitcherProps = {
   windowsLabel: string;
   androidLabel: string;
   windows: CardConfig;
-  android: CardConfig;
+  androidTablet: CardConfig;
+  androidMobile: CardConfig;
 };
 
 function platformFromHash(): Platform {
@@ -40,7 +41,8 @@ export function DownloadPlatformSwitcher({
   windowsLabel,
   androidLabel,
   windows,
-  android,
+  androidTablet,
+  androidMobile,
 }: DownloadPlatformSwitcherProps) {
   const [platform, setPlatform] = useState<Platform>("all");
 
@@ -81,9 +83,18 @@ export function DownloadPlatformSwitcher({
         </a>
       </nav>
 
-      <div className={`mx-auto grid gap-5 ${platform === "all" ? "max-w-5xl lg:grid-cols-2" : "max-w-3xl"}`}>
+      <div
+        className={`mx-auto grid gap-5 ${
+          platform === "all"
+            ? "max-w-7xl lg:grid-cols-3"
+            : platform === "android"
+              ? "max-w-5xl md:grid-cols-2"
+              : "max-w-3xl"
+        }`}
+      >
         {platform !== "android" ? <DownloadPlatformCard {...windows} /> : null}
-        {platform !== "windows" ? <DownloadPlatformCard {...android} /> : null}
+        {platform !== "windows" ? <DownloadPlatformCard {...androidTablet} /> : null}
+        {platform !== "windows" ? <DownloadPlatformCard {...androidMobile} /> : null}
       </div>
     </>
   );
