@@ -17,8 +17,8 @@ const ANDROID_TABLET_RELEASE = {
   url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.25-print-health-auto-update/CpIPOS-Android-POS-1.0.25.apk",
 } as const;
 
-// Native Mobile release is intentionally disabled until a reusable production
-// signing key and stable release asset are configured in cpipos-native-pos.
+// Native Mobile uses the verified signed release published by the CpIPOS
+// release authority workflow from the tested cpipos-native-pos source.
 const ANDROID_MOBILE_RELEASE = {
   version: "v2.0.0",
   minAndroid: "Android 8.0+",
