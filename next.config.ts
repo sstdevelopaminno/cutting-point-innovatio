@@ -48,6 +48,7 @@ const nextConfig = {
       // Common variants / old paths.
       { source: "/template/:path*", destination: "/templates/:path*", permanent: false },
       { source: "/portfolio", destination: "/templates", permanent: false },
+      { source: "/downloads/native-mobile-qa", destination: "/downloads#android", permanent: false },
     ];
   },
   async headers() {
