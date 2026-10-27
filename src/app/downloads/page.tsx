@@ -184,6 +184,33 @@ export default async function DownloadsPage() {
           }}
         />
 
+        <section aria-labelledby="android-install-title" className="mx-auto mt-10 max-w-5xl rounded-3xl border border-sky-200/15 bg-white/[0.045] p-5 sm:p-7">
+          <h2 id="android-install-title" className="text-xl font-extrabold text-white">
+            {lang === "th" ? "วิธีติดตั้ง CpIPOS บน Android" : lang === "lo" ? "ວິທີຕິດຕັ້ງ CpIPOS ໃນ Android" : "How to install CpIPOS on Android"}
+          </h2>
+          <p className="mt-2 text-sm leading-7 text-slate-300">
+            {lang === "th"
+              ? "เลือกไฟล์ให้ตรงกับอุปกรณ์: Android Tablet สำหรับแท็บเล็ต/เครื่อง POS และ Android Mobile สำหรับโทรศัพท์มือถือ (Android 8.0 ขึ้นไป)"
+              : lang === "lo"
+                ? "ເລືອກ Android Tablet ສຳລັບແທັບເລັດ ຫຼື Android Mobile ສຳລັບໂທລະສັບ (Android 8.0 ຂຶ້ນໄປ)"
+                : "Choose Android Tablet for tablets/POS terminals or Android Mobile for phones (Android 8.0 or newer)."}
+          </p>
+          <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-7 text-slate-200">
+            {(lang === "th"
+              ? ["ดาวน์โหลด APK จากปุ่มของรุ่นอุปกรณ์ที่ต้องการ", "เปิดไฟล์ APK ที่ดาวน์โหลด และอนุญาตการติดตั้งจากแหล่งนี้เฉพาะเมื่อ Android ขอสิทธิ์", "ติดตั้งและเปิดแอป จากนั้นเข้าสู่ระบบด้วยข้อมูลร้านค้าและเครื่องที่ลงทะเบียน"]
+              : lang === "lo"
+                ? ["ດາວໂຫຼດ APK ຕາມປະເພດອຸປະກອນ", "ເປີດ APK ແລະອະນຸຍາດຕິດຕັ້ງຈາກແຫຼ່ງນີ້ເມື່ອ Android ຖາມ", "ຕິດຕັ້ງ ເປີດແອັບ ແລະເຂົ້າລະບົບດ້ວຍຂໍ້ມູນຮ້ານ"]
+                : ["Download the APK for your device type.", "Open the APK and allow installation from this source if Android prompts you.", "Install and open the app, then sign in with your registered store and device."]).map((step) => <li key={step}>{step}</li>)}
+          </ol>
+          <p className="mt-4 text-xs leading-6 text-amber-100/80">
+            {lang === "th"
+              ? "ความปลอดภัย: ดาวน์โหลดจาก GitHub Releases ทางการเท่านั้น ไม่จำเป็นต้องปิด Play Protect และหน้าตาการอนุญาตอาจต่างกันตามรุ่นมือถือ"
+              : lang === "lo"
+                ? "ຄວາມປອດໄພ: ດາວໂຫຼດຈາກ GitHub Releases ທາງການເທົ່ານັ້ນ; ບໍ່ຕ້ອງປິດ Play Protect"
+                : "Security: Download only from the official GitHub Releases. You do not need to disable Play Protect; Android prompts may vary by device."}
+          </p>
+        </section>
+
         <p className="mt-12 text-center text-xs font-semibold text-slate-500">© CpIPOS Download Center · {item.foot}</p>
       </section>
     </main>
