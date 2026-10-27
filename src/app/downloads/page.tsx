@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getRequestedLocale } from "@/lib/locale";
 import { DownloadPlatformSwitcher } from "@/components/downloads/DownloadPlatformSwitcher";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://cuttingpointinnovation.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.cuttingpointinnovation.com";
 const WINDOWS_FINAL_RELEASE = {
   version: "v0.3.4",
   fileName: "CpIPOS.Desktop_0.3.4_x64-setup.exe",
@@ -28,10 +28,10 @@ const ANDROID_MOBILE_RELEASE = {
 
 const copy = {
   th: {
-    title: "ดาวน์โหลด CpIPOS | CUTTING POINT INNOVATION",
-    description: "ดาวน์โหลดโปรแกรม CpIPOS สำหรับ Windows และ Android จากศูนย์ดาวน์โหลดของบริษัท",
-    heading: "ดาวน์โหลด",
-    subtitle: "ไฟล์ติดตั้ง CpIPOS สำหรับ Windows และ Android",
+    title: "ดาวน์โหลด CpiPOS Mobile POS Android สำหรับมือถือและแท็บเล็ต | CUTTING POINT INNOVATION",
+    description: "ดาวน์โหลด CpiPOS Mobile POS สำหรับ Android ใช้งานได้ทั้งมือถือและแท็บเล็ต Android ที่มีอยู่แล้ว พร้อมระบบขายหน้าร้าน สินค้า สต๊อก และรายงาน",
+    heading: "ดาวน์โหลด CpiPOS Mobile POS",
+    subtitle: "POS Android สำหรับมือถือและแท็บเล็ตที่ร้านมีอยู่แล้ว พร้อมใช้งานจริง",
     choose: "เลือกไฟล์ดาวน์โหลด",
     windowsCaption: "สำหรับ Windows 10/11 (64-bit)",
     androidCaption: "สำหรับแท็บเล็ตและมือถือ Android",
