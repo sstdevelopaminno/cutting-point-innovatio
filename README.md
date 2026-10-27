@@ -141,7 +141,7 @@ Current environment variable surface:
 
 | Variable | Scope | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | public | Canonical site URL used by metadata and structured data. Defaults to `https://cuttingpointinnovation.vercel.app`. |
+| `NEXT_PUBLIC_SITE_URL` | public | Canonical site URL used by metadata and structured data. Defaults to `https://www.cuttingpointinnovation.com`. |
 | `NEXT_PUBLIC_SUPABASE_URL` | public/server | Supabase project URL used by client/server helpers. |
 | `SUPABASE_SERVICE_ROLE_KEY` | server only | Supabase service-role key for lead, estimate, and event writes. Never expose in browser code. |
 | `SMTP_HOST` | server only | SMTP host for admin lead notifications. |
