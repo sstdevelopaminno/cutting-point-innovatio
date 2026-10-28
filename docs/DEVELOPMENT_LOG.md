@@ -306,3 +306,13 @@ This file records documentation-first development notes for the Cutting Point Te
 - Added subtle edge highlights to the business partner section and partner logo panels so the section edges blend more smoothly into the page.
 - Removed the hard blue pixel edge lines from the C20 Lite banner, keeping only soft fade layers so no visible straight line remains.
 - Verification: targeted search confirmed the feature highlight classes remain scoped to the features section, git diff --check passed with LF/CRLF warnings only, and npm run build passed.
+
+## 2026-10-28 — Company WWW repository CI/CD hardening
+
+- Repository `cutting-point-tech` was renamed to `sstdevelopaminno/cutting-point-innovatio`; the GitHub repository ID was preserved.
+- Retained the existing Vercel Git Integration for production `main`; removed the redundant manual token-based production deployment workflow that referenced a stale Vercel project ID and failed on a missing repository secret. This change does not remove the historical failed run.
+- Added pull-request, push-to-main, and manual GitHub Actions verification with locked install, lint, typecheck, and Next.js build. Changed Node.js to 24 to match the production Vercel project.
+- Renamed the internal npm package and lockfile root metadata to `cutting-point-innovation-website`.
+- Updated README with the actual Git/Vercel project linkage, canonical domain, no-Preview policy, and branch protection guidance.
+- GitHub branch protection requires a separate repository-administration action (not included in this source commit). Review `main` settings after the verification workflow exists.
+- Customer-facing APK/EXE download URLs and production runtime environment variables were intentionally not changed.
