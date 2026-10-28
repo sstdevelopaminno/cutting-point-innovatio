@@ -53,12 +53,17 @@ src/
 
 The home page is composed from `src/components/HomePage.tsx`. Shared language copy lives in `src/lib/i18n.ts`, estimate pricing logic lives in `src/lib/estimate.ts` and `src/lib/estimateConfig.ts`, and server-side lead notification helpers live in `src/lib/email.ts` and `src/lib/lineWebhook.ts`.
 
-## Deploy to Vercel (GitHub)
+## Production deployment and CI
 
-1) Push this repository to GitHub.
-2) Create a new project in Vercel and import the repo.
-3) Add environment variables from `.env.example` in the Vercel dashboard.
-4) Deploy.
+- Source of truth: [sstdevelopaminno/cutting-point-innovatio](https://github.com/sstdevelopaminno/cutting-point-innovatio), branch `main`.
+- Keep the **existing** Vercel Git-connected project `cuttingpointlnnovatlon` (project ID `prj_U3yFR4fzLjx7cezfQ82QG9LLVnGY`, team ID `team_ZKmv6uQSU9QUyP08mxAr2YDI`). Do **not** create a duplicate project.
+- Production site: https://www.cuttingpointinnovation.com. Use this as `NEXT_PUBLIC_SITE_URL` and the canonical site URL.
+- Vercel Git Integration deploys reviewed changes on `main`; non-main/Preview deployments are disabled by `vercel.json`.
+- GitHub Actions `Verify Company Site` checks pull requests targeting `main` and pushes to `main` with `npm ci`, ESLint, TypeScript and the Next.js production build. No GitHub `VERCEL_TOKEN` secret is needed for deployment.
+- Protect `main` in GitHub Settings: require pull requests and the `verify` check, block force pushes and deletions. Confirm the check appears in GitHub after the first workflow run before marking it required.
+- Review deployment status and production domain routing in the existing Vercel dashboard after a merge. The GitHub repository was renamed; verify the Vercel Git repository link still follows the same repository ID.
+- Store server-side credentials only in Vercel environment variables. Do not commit `.env` or print secrets in Actions logs.
+
 
 ## Supabase setup
 
