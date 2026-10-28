@@ -45,21 +45,21 @@ jobs:
               exit 1
             fi
             gh api -X DELETE "repos/$GITHUB_REPOSITORY/git/refs/heads/$branch" >/dev/null
-            echo "- Deleted `$branch` (fully merged, expected SHA checked)" >> "$GITHUB_STEP_SUMMARY"
+            echo "- Deleted $branch (fully merged, expected SHA checked)" >> "$GITHUB_STEP_SUMMARY"
             deleted=$((deleted + 1))
           done <<'AUDITED_REFS'
-analytics/ga4-conversions-20261012 ec3ad4b271daab11e7073065a4e577ebde7e2f3e
-chore/gsc-verification-20261012 deb6a3e55f82e3e538875cda9beaaf5ec0936397
-contact/hub-20261012 c20ec235d86809131d216c303ff7f2b6b63a768c
-contact/line-oa-20261012 c95d750272f19ba70087b9af4e38e615da424e86
-feature/emergency-broadcast-banner-20260926 3cfd9cd86916e7e64a27b60ef663905dee9765cf
-fix/emergency-broadcast-icon-20261007 7fcdbd98970020841af24e8e25ea5c3f9b672976
-fix/emergency-broadcast-public-supabase-20260926 7bf9495a7952b041f5e86ef52cc4d8cd7a43e24a
-fix/emergency-broadcast-same-origin-20260926 54b1faab03aab661fccb4f3c86d2e5dfc0dbcc08
-fix/ga4-pageview-20261012 deb6a3e55f82e3e538875cda9beaaf5ec0936397
-gsc-verification af82c1f675629139eb1ae37d8a39e93192c46b44
-marketing/cpipos-focus-20261012 1dc13357bf3e664648f9ad8badf6878c19b3ce99
-seo/cpipos-20261012 68a3ab6fc7a155af0f967bde60e1eefe6d2cc4f5
-AUDITED_REFS
+          analytics/ga4-conversions-20261012 ec3ad4b271daab11e7073065a4e577ebde7e2f3e
+          chore/gsc-verification-20261012 deb6a3e55f82e3e538875cda9beaaf5ec0936397
+          contact/hub-20261012 c20ec235d86809131d216c303ff7f2b6b63a768c
+          contact/line-oa-20261012 c95d750272f19ba70087b9af4e38e615da424e86
+          feature/emergency-broadcast-banner-20260926 3cfd9cd86916e7e64a27b60ef663905dee9765cf
+          fix/emergency-broadcast-icon-20261007 7fcdbd98970020841af24e8e25ea5c3f9b672976
+          fix/emergency-broadcast-public-supabase-20260926 7bf9495a7952b041f5e86ef52cc4d8cd7a43e24a
+          fix/emergency-broadcast-same-origin-20260926 54b1faab03aab661fccb4f3c86d2e5dfc0dbcc08
+          fix/ga4-pageview-20261012 deb6a3e55f82e3e538875cda9beaaf5ec0936397
+          gsc-verification af82c1f675629139eb1ae37d8a39e93192c46b44
+          marketing/cpipos-focus-20261012 1dc13357bf3e664648f9ad8badf6878c19b3ce99
+          seo/cpipos-20261012 68a3ab6fc7a155af0f967bde60e1eefe6d2cc4f5
+          AUDITED_REFS
           echo "**Deleted $deleted audited branches.**" >> "$GITHUB_STEP_SUMMARY"
           echo "Preserved backup/, release/, diverged feature branches and main." >> "$GITHUB_STEP_SUMMARY"
