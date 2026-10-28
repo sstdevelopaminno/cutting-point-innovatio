@@ -48,9 +48,7 @@ jobs:
             echo "- Deleted $branch (fully merged, expected SHA checked)" >> "$GITHUB_STEP_SUMMARY"
             deleted=$((deleted + 1))
           done <<'AUDITED_REFS'
-          analytics/ga4-conversions-20261012 ec3ad4b271daab11e7073065a4e577ebde7e2f3e
-          chore/gsc-verification-20261012 deb6a3e55f82e3e538875cda9beaaf5ec0936397
-          contact/hub-20261012 c20ec235d86809131d216c303ff7f2b6b63a768c
+          contact/hub-20261012 c20ec235d86809131d216c303ff7f2f6b63a768c
           contact/line-oa-20261012 c95d750272f19ba70087b9af4e38e615da424e86
           feature/emergency-broadcast-banner-20260926 3cfd9cd86916e7e64a27b60ef663905dee9765cf
           fix/emergency-broadcast-icon-20261007 7fcdbd98970020841af24e8e25ea5c3f9b672976
