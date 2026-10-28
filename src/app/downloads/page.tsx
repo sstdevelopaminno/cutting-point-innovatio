@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { getRequestedLocale } from "@/lib/locale";
 import { DownloadPlatformSwitcher } from "@/components/downloads/DownloadPlatformSwitcher";
 
@@ -29,7 +30,7 @@ const ANDROID_MOBILE_RELEASE = {
 const copy = {
   th: {
     title: "ดาวน์โหลด CpiPOS Mobile POS Android สำหรับมือถือและแท็บเล็ต | CUTTING POINT INNOVATION",
-    description: "ดาวน์โหลด CpiPOS Mobile POS สำหรับ Android ใช้งานได้ทั้งมือถือและแท็บเล็ต Android ที่มีอยู่แล้ว พร้อมระบบขายหน้าร้าน สินค้า สต๊อก และรายงาน",
+    description: "ดาวน์โหลด CpiPOS Mobile POS สำหรับมือถือและแท็บเล็ต Android พร้อมสมัครเปิดร้านและทดลองใช้ฟรี 7 วัน ใช้จัดการงานขาย สินค้า สต๊อก และรายงาน",
     heading: "ดาวน์โหลด CpiPOS Mobile POS",
     subtitle: "POS Android สำหรับมือถือและแท็บเล็ตที่ร้านมีอยู่แล้ว พร้อมใช้งานจริง",
     choose: "เลือกไฟล์ดาวน์โหลด",
@@ -183,6 +184,27 @@ export default async function DownloadsPage() {
             href: androidMobileUrl,
           }}
         />
+
+        <section aria-labelledby="download-start-title" className="mx-auto mt-8 max-w-5xl rounded-3xl border border-cyan-300/25 bg-cyan-300/[0.07] p-5 sm:p-7">
+          <h2 id="download-start-title" className="text-xl font-extrabold text-white">
+            {lang === "th" ? "ยังไม่มีบัญชีร้าน? ทดลอง CpiPOS ฟรี 7 วัน" : lang === "lo" ? "ຍັງບໍ່ມີບັນຊີຮ້ານ? ທົດລອງ CpiPOS ຟຣີ 7 ມື້" : "New to CpiPOS? Start a free 7-day trial"}
+          </h2>
+          <p className="mt-2 text-sm leading-7 text-slate-300">
+            {lang === "th"
+              ? "หากเพิ่งดาวน์โหลดแอปและยังไม่มีข้อมูลเข้าสู่ระบบ ให้สมัครเปิดร้านก่อน แล้วจึงใช้บัญชีร้านที่ได้รับเข้าสู่แอปบนมือถือหรือแท็บเล็ต Android ที่รองรับ"
+              : lang === "lo"
+                ? "ຖ້າຍັງບໍ່ມີຂໍ້ມູນເຂົ້າລະບົບ ໃຫ້ລົງທະບຽນຮ້ານກ່ອນ ແລ້ວໃຊ້ບັນຊີຮ້ານເຂົ້າແອັບ Android"
+                : "If you have downloaded the app but do not yet have store credentials, register your store first, then sign in on a supported Android phone or tablet."}
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/register-store" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-cyan-300 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-200">
+              {lang === "th" ? "สมัครเปิดร้านทดลองใช้ฟรี 7 วัน" : lang === "lo" ? "ລົງທະບຽນຮ້ານ ທົດລອງຟຣີ 7 ມື້" : "Register store — free 7-day trial"}
+            </Link>
+            <Link href="/trial/pos" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-500 px-5 py-3 text-sm font-bold text-white transition hover:border-cyan-300">
+              {lang === "th" ? "ดูขั้นตอนทดลองใช้" : lang === "lo" ? "ເບິ່ງຂັ້ນຕອນທົດລອງ" : "How the trial works"}
+            </Link>
+          </div>
+        </section>
 
         <section aria-labelledby="android-install-title" className="mx-auto mt-10 max-w-5xl rounded-3xl border border-sky-200/15 bg-white/[0.045] p-5 sm:p-7">
           <h2 id="android-install-title" className="text-xl font-extrabold text-white">
