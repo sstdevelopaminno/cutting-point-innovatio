@@ -154,6 +154,7 @@ export async function POST(req: Request) {
 
     const [emailResult, lineResult] = await Promise.allSettled([
       sendLeadNotification({
+        leadId: lead.id,
         name,
         phone: phone || null,
         email: email || null,
@@ -198,6 +199,14 @@ export async function POST(req: Request) {
         error: lineResult.reason,
       });
     }
+
+    // Audit notification outcomes without logging customer contact details.
+    console.info("Contact lead notification result", {
+      requestId,
+      leadId: lead.id,
+      email: emailStatus,
+      line: lineStatus,
+    });
 
     return NextResponse.json({
       ok: true,
