@@ -581,6 +581,20 @@ const seoContent = useMemo(
                 >
                   {copy.hero.secondaryCta}
                 </a>
+                <Link
+                  href="/contact?utm_source=website&utm_medium=homepage&utm_campaign=cpipos_inbound&utm_content=hero_contact"
+                  className="inline-flex min-h-11 items-center justify-center rounded-xl border border-emerald-300/60 bg-emerald-400/15 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-emerald-400/25"
+                >
+                  {lang === "th" ? "สอบถามทีมงานเรื่อง POS" : lang === "lo" ? "ສອບຖາມທີມງານ POS" : "Ask our POS team"}
+                </Link>
+              </div>
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-cyan-100">
+                <Link href="/downloads#android" className="underline underline-offset-4 hover:text-white">
+                  {lang === "th" ? "ดาวน์โหลด POS สำหรับ Android" : lang === "lo" ? "ດາວໂຫຼດ POS Android" : "Download Android POS"}
+                </Link>
+                <Link href="/articles/pos-android" className="underline underline-offset-4 hover:text-white">
+                  {lang === "th" ? "คู่มือเลือก POS มือถือ/แท็บเล็ต" : lang === "lo" ? "ຄູ່ມື POS Android" : "Android POS guide"}
+                </Link>
               </div>
             </div>
 

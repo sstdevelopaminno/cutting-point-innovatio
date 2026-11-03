@@ -203,7 +203,16 @@ export default async function DownloadsPage() {
             <Link href="/trial/pos" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-500 px-5 py-3 text-sm font-bold text-white transition hover:border-cyan-300">
               {lang === "th" ? "ดูขั้นตอนทดลองใช้" : lang === "lo" ? "ເບິ່ງຂັ້ນຕອນທົດລອງ" : "How the trial works"}
             </Link>
+            <Link href="/contact?utm_source=website&utm_medium=downloads&utm_campaign=cpipos_inbound&utm_content=help_setup" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-emerald-300/60 bg-emerald-300/10 px-5 py-3 text-sm font-bold text-emerald-100 transition hover:bg-emerald-300/20">
+              {lang === "th" ? "สอบถามการติดตั้ง / เริ่มใช้งาน" : lang === "lo" ? "ສອບຖາມການຕິດຕັ້ງ" : "Ask for setup help"}
+            </Link>
           </div>
+          <p className="mt-4 text-sm leading-7 text-slate-300">
+            {lang === "th" ? "ไม่แน่ใจว่าจะเลือกมือถือหรือแท็บเล็ต?" : lang === "lo" ? "ບໍ່ແນ່ໃຈວ່າຈະເລືອກມືຖືຫຼືແທັບເລັດ?" : "Not sure whether to use a phone or tablet?"}{" "}
+            <Link href="/articles/pos-android" className="font-semibold text-cyan-200 underline underline-offset-4 hover:text-cyan-100">
+              {lang === "th" ? "อ่านคู่มือ POS Android ก่อนดาวน์โหลด" : lang === "lo" ? "ອ່ານຄູ່ມື POS Android" : "Read our Android POS guide"}
+            </Link>
+          </p>
         </section>
 
         <section aria-labelledby="android-install-title" className="mx-auto mt-10 max-w-5xl rounded-3xl border border-sky-200/15 bg-white/[0.045] p-5 sm:p-7">

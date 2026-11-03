@@ -32,6 +32,7 @@ type Article = {
 const articles: Article[] = [
   {
     slug: "pos-android",
+    dateModified: "2026-11-03",
     th: {
       metaTitle: "CpiPOS Mobile POS Android สำหรับมือถือและแท็บเล็ต ใช้เครื่องเดิมเริ่มขายได้",
       metaDescription:
@@ -60,6 +61,26 @@ const articles: Article[] = [
           ],
         },
         {
+          heading: "POS มือถือ Android หรือแท็บเล็ต เลือกอย่างไรให้เหมาะกับร้าน",
+          paragraphs: [
+            "ถ้าร้านมีพื้นที่เคาน์เตอร์จำกัดหรือเจ้าของต้องการตรวจงานขายระหว่างเดินในร้าน มือถือ Android ที่รองรับอาจเหมาะกับการเริ่มทดลอง ส่วนแท็บเล็ตหรือเครื่อง POS หน้าจอใหญ่ช่วยให้พนักงานมองรายการสินค้าหลายรายการได้สะดวกขึ้น ทั้งนี้ควรทดลองกับขั้นตอนจริงของร้านก่อนเลือกอุปกรณ์",
+            "ตรวจสอบเวอร์ชัน Android ขนาดหน้าจอ การเชื่อมต่ออินเทอร์เน็ต ความจุแบตเตอรี่ และอุปกรณ์พิมพ์ใบเสร็จที่ต้องใช้ โดย CpiPOS Mobile ระบุรองรับ Android 8.0 ขึ้นไป ส่วนความเข้ากันได้ของเครื่องพิมพ์ควรตรวจจากรุ่นที่ใช้จริง",
+          ],
+          bullets: [
+            "ร้านเล็กเริ่มจากมือถือ Android ที่รองรับเพื่อทดสอบงานขาย",
+            "ร้านที่มีรายการสินค้าจำนวนมากอาจสะดวกกว่าบนแท็บเล็ต",
+            "ทดสอบการชำระเงินและใบเสร็จบนอุปกรณ์จริงก่อนใช้ประจำ",
+          ],
+        },
+        {
+          heading: "วิธีเริ่มทดลองระบบ POS Android 7 วัน",
+          paragraphs: [
+            "ขั้นแรกเตรียมข้อมูลร้านและรายการสินค้าตัวอย่างพร้อมราคา จากนั้นสมัครเปิดร้านผ่านเว็บไซต์ และดาวน์โหลดไฟล์ CpiPOS Android ให้ตรงประเภทอุปกรณ์จาก Download Center ทางการ",
+            "เปิดแอปด้วยบัญชีร้านที่สมัครไว้ ลองเพิ่มสินค้า บันทึกการขาย ตรวจสต๊อกและยอดขาย แล้วค่อยประเมินว่าต้องการแพ็กเกจใด CpiPOS มีแพ็กเกจเริ่มต้นที่ 350 บาทต่อเดือนตามหน้าราคา และควรตรวจรายละเอียดสิทธิ์ก่อนสมัครใช้งาน",
+            "สำหรับ APK ให้ติดตั้งจากแหล่งทางการเท่านั้น และทำตามการขออนุญาตติดตั้งของ Android ตามที่เครื่องแจ้ง ไม่จำเป็นต้องปิด Play Protect หากพบปัญหาการติดตั้งหรือการเข้าสู่ระบบ ให้ใช้หน้าติดต่อทีมงานของเว็บไซต์",
+          ],
+        },
+        {
           heading: "CpiPOS ช่วยให้ร้านเริ่มต้นอย่างไร",
           paragraphs: [
             "CpiPOS Mobile POS สำหรับ Android พร้อมใช้งานจริงแล้ว ร้านสามารถเริ่มจากมือถือหรือแท็บเล็ต Android ที่รองรับได้ รองรับงานขาย สินค้า สต๊อก และข้อมูลยอดขาย เหมาะกับร้านที่ต้องการเริ่มระบบโดยไม่ต้องซื้อเครื่อง POS ใหม่ก่อน",
@@ -79,6 +100,14 @@ const articles: Article[] = [
         {
           question: "ทดลองใช้งานได้หรือไม่",
           answer: "ได้ ปัจจุบันมีช่วงทดลองใช้ฟรี 7 วันสำหรับ CpiPOS",
+        },
+        {
+          question: "POS มือถือ Android ต่างจาก POS แท็บเล็ตอย่างไร",
+          answer: "ทั้งสองรูปแบบช่วยทำงานขายหน้าร้านบนอุปกรณ์ที่รองรับได้ มือถือเหมาะกับพื้นที่จำกัด ส่วนแท็บเล็ตมีหน้าจอใหญ่ ควรทดลองขั้นตอนขายและอุปกรณ์เสริมจริงก่อนเลือกใช้งาน",
+        },
+        {
+          question: "ดาวน์โหลดแอป CpiPOS Android ได้ที่ไหน",
+          answer: "ดาวน์โหลด APK จากหน้า Download Center ของเว็บไซต์บริษัท เลือก Android Mobile หรือ Android Tablet ให้ตรงกับประเภทอุปกรณ์ แล้วทดลองใช้งานด้วยบัญชีร้าน",
         },
       ],
     },
@@ -574,6 +603,16 @@ export default async function PosArticlePage({ params }: PageProps) {
               <Link href="/packages/pos" className="rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800">
                 {locale === "en" ? "View plans" : "ดูราคาและแพ็กเกจ"}
               </Link>
+              {slug === "pos-android" ? (
+                <>
+                  <Link href="/downloads#android" className="rounded-full border border-blue-200 bg-blue-50 px-5 py-3 text-sm font-semibold text-blue-800">
+                    {locale === "en" ? "Download Android APK" : "ดาวน์โหลด CpiPOS Android"}
+                  </Link>
+                  <Link href="/contact?utm_source=seo&utm_medium=android_article&utm_campaign=cpipos_inbound&utm_content=ask_team" className="rounded-full border border-emerald-200 bg-emerald-50 px-5 py-3 text-sm font-semibold text-emerald-800">
+                    {locale === "en" ? "Ask about setup" : "สอบถามการเริ่มใช้งาน"}
+                  </Link>
+                </>
+              ) : null}
             </div>
           </div>
         </section>
