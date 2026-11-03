@@ -135,6 +135,12 @@ export default function PosPillarPage() {
                 ทดลองใช้ฟรี CpiPOS 7 วัน
               </Link>
               <Link
+                href="/contact?utm_source=website&utm_medium=pos_pillar&utm_campaign=cpipos_inbound&utm_content=ask_team"
+                className="rounded-full border border-emerald-300 bg-emerald-50 px-6 py-3 text-sm font-black text-emerald-900 hover:bg-emerald-100"
+              >
+                สอบถามทีมงาน ช่วยเริ่มใช้ POS บน Android
+              </Link>
+              <Link
                 href="/downloads#android"
                 className="rounded-full border border-blue-300 bg-blue-50 px-6 py-3 text-sm font-black text-blue-800 hover:bg-blue-100"
               >
