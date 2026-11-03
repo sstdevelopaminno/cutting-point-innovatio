@@ -95,6 +95,16 @@ export default function MarketingEventTracker() {
       try {
         const url = new URL(anchor.href, window.location.origin);
 
+        if (url.origin === window.location.origin && url.pathname === "/contact") {
+          trackGaEvent("contact_cta_click", { ...context, cta_target: "contact" });
+          return;
+        }
+
+        if (url.origin === window.location.origin && url.pathname === "/downloads") {
+          trackGaEvent("download_page_cta_click", { ...context, cta_target: "downloads" });
+          return;
+        }
+
         if (url.origin === window.location.origin && url.pathname === "/trial/pos") {
           trackGaEvent("trial_cta_click", context);
           return;
