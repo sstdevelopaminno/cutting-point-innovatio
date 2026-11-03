@@ -132,6 +132,10 @@ export default function ContactPageClient() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [debugRequestId, setDebugRequestId] = useState<string | null>(null);
   const [leadRef, setLeadRef] = useState<string | null>(null);
+  const [notificationStatuses, setNotificationStatuses] = useState<{
+    email?: "sent" | "skipped" | "failed";
+    line?: "sent" | "skipped" | "failed";
+  } | null>(null);
   const [submitModal, setSubmitModal] = useState<
     | { open: false }
     | {
@@ -198,6 +202,7 @@ export default function ContactPageClient() {
     setErrorMessage(null);
     setDebugRequestId(null);
     setLeadRef(null);
+    setNotificationStatuses(null);
     setSubmitModal({
       open: true,
       variant: "sending",
@@ -226,6 +231,7 @@ export default function ContactPageClient() {
       const notificationWarning = getNotificationWarning(data?.notifications ?? null);
       setStatus("success");
       setLeadRef(formatLeadRef(data?.leadId ?? null));
+      setNotificationStatuses(data?.notifications ?? null);
       trackGaEvent("contact_submit_success", { locale: lang, page: "contact_hub" });
       setSubmitModal({
         open: true,
@@ -285,18 +291,8 @@ export default function ContactPageClient() {
     }
     if (!submitModal.open) return;
 
-    if (submitModalVariant === "success") {
-      submitModalTimerRef.current = window.setTimeout(() => {
-        setSubmitModal({ open: false });
-        setStatus("idle");
-        setErrorMessage(null);
-        setDebugRequestId(null);
-        setLeadRef(null);
-        submitModalTimerRef.current = null;
-      }, 3500);
-      return;
-    }
-
+    // Leave successful confirmation open until acknowledged; the reference
+    // remains visible beneath the form afterward for support verification.
     if (submitModalVariant === "error") {
       submitModalTimerRef.current = window.setTimeout(() => {
         setSubmitModal({ open: false });
@@ -541,6 +537,24 @@ export default function ContactPageClient() {
                         : "Submission failed. Please try again.")}
                     {isDev && debugRequestId ? ` (requestId: ${debugRequestId})` : ""}
                   </p>
+                ) : null}
+                {status === "success" && leadRef ? (
+                  <div role="status" aria-live="polite" className="mt-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950">
+                    <p className="font-semibold">
+                      {lang === "th" ? "บันทึกคำขอสำเร็จ" : lang === "lo" ? "ບັນທຶກຄຳຂໍສຳເລັດ" : "Request saved successfully"}
+                    </p>
+                    <p className="mt-1 break-all font-mono">Ref: {leadRef}</p>
+                    {notificationStatuses && getNotificationWarning(notificationStatuses) ? (
+                      <p className="mt-2 text-amber-900">
+                        {getNotificationWarning(notificationStatuses)}
+                        {lang === "th" ? " หากเร่งด่วน ติดต่อทีมงานผ่าน LINE หรือโทรศัพท์ได้ทันที" : " Please contact us on LINE or by phone if urgent."}
+                      </p>
+                    ) : (
+                      <p className="mt-2 text-emerald-800">
+                        {lang === "th" ? "ระบบรับคำขอแล้ว โปรดเก็บหมายเลขอ้างอิงนี้ไว้" : "Keep this reference for follow-up."}
+                      </p>
+                    )}
+                  </div>
                 ) : null}
               </form>
             </div>
