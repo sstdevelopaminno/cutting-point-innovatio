@@ -1,8 +1,10 @@
 import "server-only";
 
 import nodemailer from "nodemailer";
+import { formatLeadRef } from "@/lib/leadRef";
 
 type LeadEmailPayload = {
+  leadId?: string | null;
   name: string;
   phone?: string | null;
   email?: string | null;
@@ -104,13 +106,15 @@ export const sendLeadNotification = async (
     socketTimeout: 10000,
   });
 
-  const subject = `New lead: ${payload.name}`;
+  const leadRef = payload.leadId ? formatLeadRef(payload.leadId) : null;
+  const subject = leadRef ? `New lead ${leadRef}: ${payload.name}` : `New lead: ${payload.name}`;
   const hasQuote =
     payload.source.startsWith("estimate") &&
     Number.isFinite(payload.quoteSubtotal ?? NaN) &&
     Number.isFinite(payload.priceMin ?? NaN) &&
     Number.isFinite(payload.priceMax ?? NaN);
   const messageText = [
+    leadRef ? `Lead Ref: ${leadRef}` : null,
     `Name: ${payload.name}`,
     `Phone: ${payload.phone || "-"}`,
     `Email: ${payload.email || "-"}`,
@@ -166,6 +170,7 @@ export const sendLeadNotification = async (
           A new contact form submission has been received.
         </p>
         <table style="width:100%; border-collapse:collapse; font-size:14px; color:#0f172a;">
+          ${leadRef ? `<tr><td style="padding:10px 12px; background:#f8fafc; font-weight:600; width:140px;">Lead Ref</td><td style="padding:10px 12px;">${escapeHtml(leadRef)}</td></tr>` : ""}
           <tr>
             <td style="padding:10px 12px; background:#f8fafc; font-weight:600; width:140px;">Name</td>
             <td style="padding:10px 12px;">${escapeHtml(payload.name)}</td>
