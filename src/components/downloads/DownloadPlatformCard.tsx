@@ -12,7 +12,6 @@ type DownloadPlatformCardProps = {
   buttonLabel: string;
   noLinkLabel: string;
   href: string | null;
-  notice?: string;
 };
 
 const toneStyles: Record<
@@ -93,7 +92,6 @@ export function DownloadPlatformCard({
   buttonLabel,
   noLinkLabel,
   href,
-  notice,
 }: DownloadPlatformCardProps) {
   const styles = toneStyles[tone];
 
@@ -119,11 +117,6 @@ export function DownloadPlatformCard({
         <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-slate-400">{eyebrow}</p>
         <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{title}</h2>
         <p className="mt-3 text-sm font-semibold leading-7 text-slate-300 sm:text-base">{description}</p>
-        {notice ? (
-          <p role="note" className="mt-4 rounded-xl border border-amber-300/35 bg-amber-300/10 px-3 py-2 text-xs font-semibold leading-6 text-amber-100">
-            {notice}
-          </p>
-        ) : null}
 
         <div className="my-8 flex min-h-14 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.07] px-4 py-3">
           <span aria-hidden="true" className="shrink-0 text-lg text-slate-400">▤</span>
