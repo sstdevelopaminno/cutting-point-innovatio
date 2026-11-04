@@ -17,6 +17,7 @@ type CardConfig = {
   buttonLabel: string;
   noLinkLabel: string;
   href: string | null;
+  notice?: string;
 };
 
 type DownloadPlatformSwitcherProps = {
@@ -24,6 +25,7 @@ type DownloadPlatformSwitcherProps = {
   windowsLabel: string;
   androidLabel: string;
   windows: CardConfig;
+  windowsWebPos: CardConfig;
   androidTablet: CardConfig;
   androidMobile: CardConfig;
 };
@@ -41,6 +43,7 @@ export function DownloadPlatformSwitcher({
   windowsLabel,
   androidLabel,
   windows,
+  windowsWebPos,
   androidTablet,
   androidMobile,
 }: DownloadPlatformSwitcherProps) {
@@ -86,13 +89,14 @@ export function DownloadPlatformSwitcher({
       <div
         className={`mx-auto grid gap-5 ${
           platform === "all"
-            ? "max-w-7xl lg:grid-cols-3"
+            ? "max-w-7xl md:grid-cols-2"
             : platform === "android"
               ? "max-w-5xl md:grid-cols-2"
               : "max-w-3xl"
         }`}
       >
         {platform !== "android" ? <DownloadPlatformCard {...windows} /> : null}
+        {platform !== "android" ? <DownloadPlatformCard {...windowsWebPos} /> : null}
         {platform !== "windows" ? <DownloadPlatformCard {...androidTablet} /> : null}
         {platform !== "windows" ? <DownloadPlatformCard {...androidMobile} /> : null}
       </div>
