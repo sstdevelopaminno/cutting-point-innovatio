@@ -11,6 +11,12 @@ const WINDOWS_FINAL_RELEASE = {
   url: "https://github.com/sstdevelopaminno/cp-ipos-desktop/releases/download/v0.3.4/CpIPOS.Desktop_0.3.4_x64-setup.exe",
 } as const;
 
+const WINDOWS_WEB_POS_BETA_RELEASE = {
+  version: "v0.1.9 Beta",
+  fileName: "CpIPOS-WindowsWebPOS-Setup.exe",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.1.9-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
+} as const;
+
 const ANDROID_TABLET_RELEASE = {
   version: "v1.0.25",
   versionCode: 34,
@@ -104,6 +110,7 @@ export default async function DownloadsPage() {
   const lang = (await getRequestedLocale()) as Lang;
   const item = copy[lang];
   const windowsUrl = approvedHttpsUrl(WINDOWS_FINAL_RELEASE.url);
+  const windowsWebPosUrl = approvedHttpsUrl(WINDOWS_WEB_POS_BETA_RELEASE.url);
   const androidTabletUrl = approvedHttpsUrl(ANDROID_TABLET_RELEASE.url);
   const androidMobileUrl = approvedHttpsUrl(ANDROID_MOBILE_RELEASE.url);
   return (
@@ -148,6 +155,32 @@ export default async function DownloadsPage() {
             buttonLabel: item.windowsButton,
             noLinkLabel: item.noLink,
             href: windowsUrl,
+          }}
+          windowsWebPos={{
+            id: "windows-web-pos",
+            tone: "windows",
+            icon: "windows",
+            eyebrow: "WINDOWS · WEB POS",
+            title: "Windows Web POS",
+            description: lang === "th"
+              ? "สำหรับ Windows 10/11 (64-bit) · โปรแกรม CpiPOS Web แบบติดตั้งบนเครื่อง พร้อม Local Print Bridge สำหรับเครื่องพิมพ์ใบเสร็จ"
+              : lang === "lo"
+                ? "ສໍາລັບ Windows 10/11 (64-bit) · CpIPOS Web ໃນໂປຣແກຣມ Windows ພ້ອມ Local Print Bridge"
+                : "Windows 10/11 (64-bit) · Installed CpIPOS Web app with local receipt-printer bridge",
+            version: WINDOWS_WEB_POS_BETA_RELEASE.version,
+            fileName: WINDOWS_WEB_POS_BETA_RELEASE.fileName,
+            buttonLabel: lang === "th"
+              ? "ดาวน์โหลด Windows Web POS (รุ่นทดสอบ)"
+              : lang === "lo"
+                ? "ດາວໂຫຼດ Windows Web POS (ທົດສອບ)"
+                : "Download Windows Web POS (Beta)",
+            notice: lang === "th"
+              ? "รุ่นทดสอบ: ยังไม่ผ่านการตรวจรับการพิมพ์ 58/80 มม. บนเครื่องจริง และยังไม่มีลายเซ็นดิจิทัลของ Windows ไม่แนะนำให้ใช้ขายจริงจนกว่าจะทดสอบกับเครื่องพิมพ์ของร้าน"
+              : lang === "lo"
+                ? "ລຸ້ນທົດສອບ: ຍັງບໍ່ຜ່ານການທົດສອບເຄື່ອງພິມ 58/80 ມມ. ແລະຍັງບໍ່ມີລາຍເຊັນດິຈິຕອນ"
+                : "Beta / test build: 58/80 mm printer testing is incomplete and this Windows installer is unsigned. Not yet approved for live sales.",
+            noLinkLabel: item.noLink,
+            href: windowsWebPosUrl,
           }}
           androidTablet={{
             id: "android-tablet",
