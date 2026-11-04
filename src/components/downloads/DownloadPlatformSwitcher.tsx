@@ -17,7 +17,6 @@ type CardConfig = {
   buttonLabel: string;
   noLinkLabel: string;
   href: string | null;
-  notice?: string;
 };
 
 type DownloadPlatformSwitcherProps = {
@@ -92,7 +91,7 @@ export function DownloadPlatformSwitcher({
             ? "max-w-7xl md:grid-cols-2"
             : platform === "android"
               ? "max-w-5xl md:grid-cols-2"
-              : "max-w-3xl"
+              : "max-w-6xl lg:grid-cols-2"
         }`}
       >
         {platform !== "android" ? <DownloadPlatformCard {...windows} /> : null}
