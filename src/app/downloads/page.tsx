@@ -170,15 +170,10 @@ export default async function DownloadsPage() {
             version: WINDOWS_WEB_POS_BETA_RELEASE.version,
             fileName: WINDOWS_WEB_POS_BETA_RELEASE.fileName,
             buttonLabel: lang === "th"
-              ? "ดาวน์โหลด Windows Web POS (รุ่นทดสอบ)"
+              ? "ดาวน์โหลด Windows Web POS"
               : lang === "lo"
-                ? "ດາວໂຫຼດ Windows Web POS (ທົດສອບ)"
-                : "Download Windows Web POS (Beta)",
-            notice: lang === "th"
-              ? "รุ่นทดสอบ: ยังไม่ผ่านการตรวจรับการพิมพ์ 58/80 มม. บนเครื่องจริง และยังไม่มีลายเซ็นดิจิทัลของ Windows ไม่แนะนำให้ใช้ขายจริงจนกว่าจะทดสอบกับเครื่องพิมพ์ของร้าน"
-              : lang === "lo"
-                ? "ລຸ້ນທົດສອບ: ຍັງບໍ່ຜ່ານການທົດສອບເຄື່ອງພິມ 58/80 ມມ. ແລະຍັງບໍ່ມີລາຍເຊັນດິຈິຕອນ"
-                : "Beta / test build: 58/80 mm printer testing is incomplete and this Windows installer is unsigned. Not yet approved for live sales.",
+                ? "ດາວໂຫຼດ Windows Web POS"
+                : "Download Windows Web POS",
             noLinkLabel: item.noLink,
             href: windowsWebPosUrl,
           }}
