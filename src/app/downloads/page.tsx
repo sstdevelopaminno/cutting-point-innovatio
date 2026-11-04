@@ -12,9 +12,9 @@ const WINDOWS_FINAL_RELEASE = {
 } as const;
 
 const WINDOWS_WEB_POS_BETA_RELEASE = {
-  version: "v0.1.9 Beta",
+  version: "v0.2.0 Beta",
   fileName: "CpIPOS-WindowsWebPOS-Setup.exe",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.1.9-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.0-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
 } as const;
 
 const ANDROID_TABLET_RELEASE = {
