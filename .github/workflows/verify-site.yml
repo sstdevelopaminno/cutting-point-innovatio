@@ -35,5 +35,22 @@ jobs:
         run: npm run lint
       - name: TypeScript
         run: npx tsc --noEmit
+      - name: Native Mobile stable version contract
+        run: node scripts/verify-native-mobile-download.mjs
       - name: Production build
-        run: npm run build
+        run: |
+          set -euo pipefail
+          # next/font/google occasionally returns an invalid remote font
+          # response from the upstream provider. Retry the exact same build
+          # with a clean Next cache, but never mark a failed build as passed.
+          for attempt in 1 2 3; do
+            if npm run build; then
+              exit 0
+            fi
+            if [ "$attempt" -eq 3 ]; then
+              echo "::error::Production build failed after three attempts"
+              exit 1
+            fi
+            rm -rf .next
+            sleep 12
+          done
