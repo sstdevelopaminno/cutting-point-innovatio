@@ -58,7 +58,7 @@ async function getVerifiedAndroidMobileRelease() {
     if (!response.ok) return ANDROID_MOBILE_FALLBACK;
     const release = (await response.json()) as NativeMobileUpdateOffer;
     const version = release.versionName;
-    if (!release.ok || !version || !/^\\d+\\.\\d+\\.\\d+$/.test(version) ||
+    if (!release.ok || !version || !/^\d+\.\d+\.\d+$/.test(version) ||
       !Number.isSafeInteger(release.versionCode) || (release.versionCode ?? 0) < 2000000 ||
       release.packageName !== "com.cpipos.pos.next" ||
       !/^[a-f0-9]{64}$/.test(release.apkSha256 ?? "") ||
