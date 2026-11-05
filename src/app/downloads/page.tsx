@@ -26,12 +26,12 @@ const ANDROID_TABLET_RELEASE = {
 
 // The website and installed Android phones share ONE verified stable release
 // authority: CpIPOS's signed /api/android-pos/native-update-policy endpoint.
-// Keep the last verified public APK as a safe fallback if GitHub is offline.
+// Keep the latest independently verified public Stable APK as a safe fallback\n// when the update-policy API is temporarily unreachable. Do not use QA assets.
 const ANDROID_MOBILE_FALLBACK = {
-  version: "v2.0.0",
+  version: "v2.1.0",
   minAndroid: "Android 8.0+",
-  fileName: "CpIPOS-Native-Mobile-2.0.0.apk",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.0.0/CpIPOS-Native-Mobile-2.0.0.apk",
+  fileName: "CpIPOS-Native-Mobile-2.1.0.apk",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.0/CpIPOS-Native-Mobile-2.1.0.apk",
 } as const;
 
 const NATIVE_MOBILE_EXPECTED_CERT = "6be0a9aef346a5b47162c8928c5018a01d0e7d81b4eb177bf2fb89922dc2a27a";
