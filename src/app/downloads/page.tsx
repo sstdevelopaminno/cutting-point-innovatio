@@ -24,14 +24,59 @@ const ANDROID_TABLET_RELEASE = {
   url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.25-print-health-auto-update/CpIPOS-Android-POS-1.0.25.apk",
 } as const;
 
-// Native Mobile uses the verified signed release published by the CpIPOS
-// release authority workflow from the tested cpipos-native-pos source.
-const ANDROID_MOBILE_RELEASE = {
+// The website and installed Android phones share ONE verified stable release
+// authority: CpIPOS's signed /api/android-pos/native-update-policy endpoint.
+// Keep the last verified public APK as a safe fallback if GitHub is offline.
+const ANDROID_MOBILE_FALLBACK = {
   version: "v2.0.0",
   minAndroid: "Android 8.0+",
   fileName: "CpIPOS-Native-Mobile-2.0.0.apk",
   url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.0.0/CpIPOS-Native-Mobile-2.0.0.apk",
 } as const;
+
+const NATIVE_MOBILE_EXPECTED_CERT = "6be0a9aef346a5b47162c8928c5018a01d0e7d81b4eb177bf2fb89922dc2a27a";
+const NATIVE_MOBILE_UPDATE_POLICY =
+  "https://pos.cuttingpointinnovation.com/api/android-pos/native-update-policy?version_code=0";
+
+type NativeMobileUpdateOffer = {
+  ok?: boolean;
+  versionName?: string;
+  versionCode?: number;
+  packageName?: string;
+  apkUrl?: string;
+  apkSha256?: string;
+  signingCertSha256?: string;
+};
+
+async function getVerifiedAndroidMobileRelease() {
+  try {
+    const response = await fetch(NATIVE_MOBILE_UPDATE_POLICY, {
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(8000),
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) return ANDROID_MOBILE_FALLBACK;
+    const release = (await response.json()) as NativeMobileUpdateOffer;
+    const version = release.versionName;
+    if (!release.ok || !version || !/^\\d+\\.\\d+\\.\\d+$/.test(version) ||
+      !Number.isSafeInteger(release.versionCode) || (release.versionCode ?? 0) < 2000000 ||
+      release.packageName !== "com.cpipos.pos.next" ||
+      !/^[a-f0-9]{64}$/.test(release.apkSha256 ?? "") ||
+      release.signingCertSha256?.toLowerCase() !== NATIVE_MOBILE_EXPECTED_CERT) {
+      return ANDROID_MOBILE_FALLBACK;
+    }
+    const expectedUrl = `https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v${version}/CpIPOS-Native-Mobile-${version}.apk`;
+    if (release.apkUrl !== expectedUrl) return ANDROID_MOBILE_FALLBACK;
+    return {
+      version: `v${version}`,
+      fileName: `CpIPOS-Native-Mobile-${version}.apk`,
+      minAndroid: "Android 8.0+",
+      url: expectedUrl,
+    };
+  } catch {
+    return ANDROID_MOBILE_FALLBACK;
+  }
+}
 
 const copy = {
   th: {
@@ -109,10 +154,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function DownloadsPage() {
   const lang = (await getRequestedLocale()) as Lang;
   const item = copy[lang];
+  const androidMobileRelease = await getVerifiedAndroidMobileRelease();
   const windowsUrl = approvedHttpsUrl(WINDOWS_FINAL_RELEASE.url);
   const windowsWebPosUrl = approvedHttpsUrl(WINDOWS_WEB_POS_BETA_RELEASE.url);
   const androidTabletUrl = approvedHttpsUrl(ANDROID_TABLET_RELEASE.url);
-  const androidMobileUrl = approvedHttpsUrl(ANDROID_MOBILE_RELEASE.url);
+  const androidMobileUrl = approvedHttpsUrl(androidMobileRelease.url);
   return (
     <main className="relative isolate min-h-[calc(100dvh-80px)] overflow-hidden bg-[#090e1c] text-white">
       <div
@@ -201,12 +247,12 @@ export default async function DownloadsPage() {
             eyebrow: "ANDROID · NATIVE MOBILE",
             title: lang === "th" ? "Android Mobile" : lang === "lo" ? "Android Mobile" : "Android Mobile",
             description: lang === "th"
-              ? `สำหรับมือถือ Android Native POS · รองรับ ${ANDROID_MOBILE_RELEASE.minAndroid}`
+              ? `สำหรับมือถือ Android Native POS · รองรับ ${androidMobileRelease.minAndroid}`
               : lang === "lo"
-                ? `ສຳລັບມືຖື Android Native POS · ຮອງຮັບ ${ANDROID_MOBILE_RELEASE.minAndroid}`
-                : `Native POS for Android phones · supports ${ANDROID_MOBILE_RELEASE.minAndroid}`,
-            version: ANDROID_MOBILE_RELEASE.version,
-            fileName: ANDROID_MOBILE_RELEASE.fileName,
+                ? `ສຳລັບມືຖື Android Native POS · ຮອງຮັບ ${androidMobileRelease.minAndroid}`
+                : `Native POS for Android phones · supports ${androidMobileRelease.minAndroid}`,
+            version: androidMobileRelease.version,
+            fileName: androidMobileRelease.fileName,
             buttonLabel: lang === "th" ? "ดาวน์โหลดสำหรับมือถือ" : lang === "lo" ? "ດາວໂຫຼດສຳລັບມືຖື" : "Download for Mobile",
             noLinkLabel: item.noLink,
             href: androidMobileUrl,
