@@ -12,7 +12,7 @@ const versionPattern = new RegExp(found[1]);
 for (const version of ["2.1.0", "2.1.1", "2.2.0", "3.0.0", "10.12.31"]) {
   assert.equal(versionPattern.test(version), true, "valid stable version rejected: " + version);
 }
-for (const version of ["2.1.0-rc1", "2.1", "2.1.0.apk", "../2.2.0", "v2.1.0", "2.1.0\n"]) {
+for (const version of ["2.1.0-rc1", "2.1", "2.1.0.apk", "../2.2.0", "v2.1.0", "2.1.0 "]) {
   assert.equal(versionPattern.test(version), false, "unverified version accepted: " + version);
 }
 for (const essential of [
