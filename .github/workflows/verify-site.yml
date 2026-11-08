@@ -37,6 +37,8 @@ jobs:
         run: npx tsc --noEmit
       - name: Native Mobile stable version contract
         run: node scripts/verify-native-mobile-download.mjs
+      - name: Signed QA 2.1.3 domain contract
+        run: node scripts/verify-native-qa-213-download.mjs
       - name: Production build
         run: |
           set -euo pipefail
