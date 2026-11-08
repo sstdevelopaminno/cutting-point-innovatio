@@ -7,28 +7,32 @@
       "url": "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.2-qa/CpIPOS-Native-Mobile-2.1.2.apk",
       "sha256": "aaed4ee76ff3afd3f1ac700d68431f880af0d3e11b69b2248d4db244e01acaa9",
       "size": 13648288,
-      "channel": "qa-mobile"
+      "channel": "qa-mobile",
+      "releaseAssetId": 723391061
     },
     {
       "fileName": "CpIPOS-Android-POS-1.0.27.apk",
       "url": "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.27-dual-screen-qa2/CpIPOS-Android-POS-1.0.27.apk",
       "sha256": "3385e0f5c93396c07fe2dc59686a6a2693296eee9e872484b96667bf522564e3",
       "size": 6600262,
-      "channel": "qa-tablet"
+      "channel": "qa-tablet",
+      "releaseAssetId": 723324369
     },
     {
       "fileName": "CpIPOS-Native-Mobile-2.1.0.apk",
       "url": "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.0/CpIPOS-Native-Mobile-2.1.0.apk",
       "sha256": "76b39aa3b9d6b3e7fb476a0f07de284ca4352d0bb5b5adcf0e4f9e7a345f8d16",
       "size": 13615459,
-      "channel": "stable-mobile"
+      "channel": "stable-mobile",
+      "releaseAssetId": 712928640
     },
     {
       "fileName": "CpIPOS-Android-POS-1.0.25.apk",
       "url": "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.25-print-health-auto-update/CpIPOS-Android-POS-1.0.25.apk",
       "sha256": "11dd59193d5b2db6c9efc49e7df161a4a3b834ccdffba4371253dd258bdc3901",
       "size": 6600231,
-      "channel": "stable-tablet"
+      "channel": "stable-tablet",
+      "releaseAssetId": 683614302
     }
   ]
 }
