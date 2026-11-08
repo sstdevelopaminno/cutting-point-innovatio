@@ -283,8 +283,8 @@ export default async function DownloadsPage() {
           }}
         />
 
-        <section aria-labelledby="release-qa-warning" className="mx-auto mt-6 max-w-5xl rounded-3xl border border-amber-300/35 bg-amber-300/[0.06] p-5 sm:p-6">
-          <h2 id="release-qa-warning" className="text-lg font-extrabold text-amber-100">
+        <section aria-labelledby="previous-versions" className="mx-auto mt-6 max-w-5xl rounded-3xl border border-slate-200/15 bg-white/[0.04] p-5 sm:p-6">
+          <h2 id="previous-versions" className="text-lg font-extrabold text-white">
             {lang === "th" ? "ดาวน์โหลดเวอร์ชันก่อนหน้า" : lang === "lo" ? "ດາວໂຫຼດເວີຊັນກ່ອນໜ້າ" : "Previous versions"}
           </h2>
           <p className="mt-2 text-sm leading-7 text-slate-200">
@@ -295,10 +295,10 @@ export default async function DownloadsPage() {
                 : "If you need an earlier version, select it from the download links below."}
           </p>
           <div className="mt-3 flex flex-wrap gap-4 text-sm">
-            <a href={ANDROID_TABLET_STABLE_1025} className="font-semibold text-amber-100 underline underline-offset-4">
+            <a href={ANDROID_TABLET_STABLE_1025} className="font-semibold text-sky-200 underline underline-offset-4">
               Android Tablet 1.0.25 · Stable
             </a>
-            <a href={WINDOWS_WEBPOS_PREVIOUS_BETA} className="font-semibold text-amber-100 underline underline-offset-4">
+            <a href={WINDOWS_WEBPOS_PREVIOUS_BETA} className="font-semibold text-sky-200 underline underline-offset-4">
               Windows Web POS 0.2.0 · Previous Beta
             </a>
           </div>
