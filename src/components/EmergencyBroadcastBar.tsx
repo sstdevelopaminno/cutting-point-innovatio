@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Lang } from "@/lib/i18n";
 
 type Broadcast = {
@@ -42,14 +42,23 @@ function resolveBroadcastIcon(broadcast: Broadcast) {
 export default function EmergencyBroadcastBar({ lang }: { lang: Lang }) {
   const [broadcast, setBroadcast] = useState<Broadcast | null>(null);
   const [dismissedVersion, setDismissedVersion] = useState("");
+  const inFlightRef = useRef(false);
+  const lastRequestedAtRef = useRef(0);
 
   const load = useCallback(async () => {
     if (typeof document !== "undefined" && document.visibilityState === "hidden") return;
+    if (inFlightRef.current) return;
+    const now = Date.now();
+    // Browser focus and visibilitychange fire together; collapse duplicate polls.
+    if (now - lastRequestedAtRef.current < 8_000) return;
+    lastRequestedAtRef.current = now;
+    inFlightRef.current = true;
 
     try {
       const response = await fetch("/api/public/emergency-broadcast", {
-        cache: "no-store",
-        credentials: "same-origin",
+        // The browser revalidates (max-age=0), while the CDN serves its 10s snapshot.
+        cache: "default",
+        credentials: "omit",
       });
       if (!response.ok) return;
       const payload = await response.json();
@@ -68,6 +77,8 @@ export default function EmergencyBroadcastBar({ lang }: { lang: Lang }) {
       }
     } catch {
       // Public alert failures must never block the company website.
+    } finally {
+      inFlightRef.current = false;
     }
   }, []);
 
