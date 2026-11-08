@@ -54,3 +54,6 @@ jobs:
             rm -rf .next
             sleep 12
           done
+
+      - name: Verify pinned CDN APK bytes and SHA-256 after build
+        run: npm run verify:apks
