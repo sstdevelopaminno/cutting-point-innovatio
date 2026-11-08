@@ -42,10 +42,10 @@ const ANDROID_MOBILE_FALLBACK = {
 // Manual QA download shown in the existing Android Mobile installer card.
 // Keep separate from the verified Stable policy used for customer auto-updates.
 const ANDROID_MOBILE_QA = {
-  version: "v2.1.2 QA",
+  version: "v2.1.3 QA",
   minAndroid: "Android 8.0+",
-  fileName: "CpIPOS-Native-Mobile-2.1.2.apk",
-  url: "/downloads/apk/CpIPOS-Native-Mobile-2.1.2.apk",
+  fileName: "CpIPOS-Native-Mobile-2.1.3.apk",
+  url: "/downloads/apk/CpIPOS-Native-Mobile-2.1.3.apk",
 } as const;
 
 const ANDROID_MOBILE_STABLE_DIRECT = "/downloads/apk/CpIPOS-Native-Mobile-2.1.0.apk";
@@ -145,6 +145,7 @@ const copy = {
 type Lang = keyof typeof copy;
 
 const VERIFIED_COMPANY_APK_PATHS = new Set([
+  "/downloads/apk/CpIPOS-Native-Mobile-2.1.3.apk",
   "/downloads/apk/CpIPOS-Native-Mobile-2.1.2.apk",
   "/downloads/apk/CpIPOS-Native-Mobile-2.1.0.apk",
   "/downloads/apk/CpIPOS-Android-POS-1.0.27.apk",
