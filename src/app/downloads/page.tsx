@@ -19,7 +19,7 @@ const WINDOWS_WEB_POS_BETA_RELEASE = {
 
 const ANDROID_TABLET_RELEASE = {
   version: "v1.0.27 QA · 2 จอ",
-  versionCode: 35,
+  versionCode: 36,
   fileName: "CpIPOS-Android-POS-1.0.27.apk",
   url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.27-dual-screen-qa2/CpIPOS-Android-POS-1.0.27.apk",
 } as const;
