@@ -3,7 +3,7 @@
 import { createHash } from "node:crypto";
 import { createReadStream, createWriteStream } from "node:fs";
 import { mkdir, rename, rm, stat, readFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
@@ -13,10 +13,11 @@ const { assets } = JSON.parse(await readFile(new URL("./android-apk-assets.json"
 const dir = join(root, "public", "downloads", "apk");
 
 function validate(asset) {
-  const { fileName, sha256, size, url } = asset;
+  const { fileName, sha256, size, url, releaseAssetId } = asset;
   if (!/^CpIPOS-[A-Za-z0-9.-]+\.apk$/.test(fileName) ||
       !/^[0-9a-f]{64}$/.test(sha256) ||
-      !Number.isSafeInteger(size) || size < 1_000_000 || size > 30_000_000) {
+      !Number.isSafeInteger(size) || size < 1_000_000 || size > 30_000_000 ||
+      !Number.isSafeInteger(releaseAssetId) || releaseAssetId <= 0) {
     throw new Error("Invalid pinned APK metadata: " + fileName);
   }
   const from = new URL(url);
@@ -48,35 +49,45 @@ async function stage(asset) {
     return;
   }
 
+  const apiUrl = "https://api.github.com/repos/sstdevelopaminno/CpIPOS/releases/assets/" + asset.releaseAssetId;
+  // Prefer GitHub's release-asset API: browser_download_url can return 504
+  // from some build networks even though the public asset itself exists.
+  const sources = [apiUrl, asset.url];
   let failure;
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    const temp = target + "." + process.pid + "." + attempt + ".tmp";
-    try {
-      const response = await fetch(asset.url, {
-        redirect: "follow",
-        headers: { Accept: "application/octet-stream", "User-Agent": "CpIPOS-Site-Verified-APK-Deployment" },
-        signal: AbortSignal.timeout(90000)
-      });
-      if (!response.ok || !response.body) {
-        throw new Error("GitHub release HTTP " + response.status + " for " + asset.fileName);
+  for (const source of sources) {
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const temp = target + "." + process.pid + "." + attempt + ".tmp";
+      try {
+        const response = await fetch(source, {
+          redirect: "follow",
+          headers: {
+            Accept: "application/octet-stream",
+            "User-Agent": "CpIPOS-Site-Verified-APK-Deployment",
+            "X-GitHub-Api-Version": "2022-11-28",
+          },
+          signal: AbortSignal.timeout(90000)
+        });
+        if (!response.ok || !response.body) {
+          throw new Error("GitHub HTTP " + response.status + " for " + asset.fileName);
+        }
+        const suppliedLength = response.headers.get("content-length");
+        if (suppliedLength && Number(suppliedLength) !== asset.size) {
+          throw new Error("Unexpected release response length: " + suppliedLength);
+        }
+        await pipeline(Readable.fromWeb(response.body), createWriteStream(temp, { flags: "wx" }));
+        if (!(await integrity(temp, asset))) {
+          throw new Error("APK hash or size mismatch (fail closed): " + asset.fileName);
+        }
+        await rename(temp, target);
+        console.log("[APK CDN] Verified and staged " + asset.fileName + " (" + asset.size + " bytes) via " + (source === apiUrl ? "GitHub API" : "GitHub Releases"));
+        return;
+      } catch (error) {
+        failure = error;
+        console.error("[APK CDN] Attempt " + attempt + " via " + (source === apiUrl ? "GitHub API" : "GitHub Releases") + " failed for " + asset.fileName + ": " + error.message);
+        if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 1500));
+      } finally {
+        await rm(temp, { force: true });
       }
-      const suppliedLength = response.headers.get("content-length");
-      if (suppliedLength && Number(suppliedLength) !== asset.size) {
-        throw new Error("Unexpected release response length: " + suppliedLength);
-      }
-      await pipeline(Readable.fromWeb(response.body), createWriteStream(temp, { flags: "wx" }));
-      if (!(await integrity(temp, asset))) {
-        throw new Error("APK hash or size mismatch (fail closed): " + asset.fileName);
-      }
-      await rename(temp, target);
-      console.log("[APK CDN] Verified and staged " + asset.fileName + " (" + asset.size + " bytes)");
-      return;
-    } catch (error) {
-      failure = error;
-      console.error("[APK CDN] Attempt " + attempt + " failed for " + asset.fileName + ": " + error.message);
-      if (attempt < 3) await new Promise((resolve) => setTimeout(resolve, attempt * 1500));
-    } finally {
-      await rm(temp, { force: true });
     }
   }
   throw new Error("Refusing to deploy unverified APK " + asset.fileName + ": " + failure.message);
