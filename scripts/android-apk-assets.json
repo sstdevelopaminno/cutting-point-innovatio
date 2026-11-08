@@ -3,6 +3,14 @@
   "description": "Immutable public Android installer assets. Downloaded and SHA-256 verified at build time; files hosted by company website CDN.",
   "assets": [
     {
+      "fileName": "CpIPOS-Native-Mobile-2.1.3.apk",
+      "url": "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.3-qa/CpIPOS-Native-Mobile-2.1.3.apk",
+      "sha256": "0baad5e013ed3788a77e80dc79da3faabb38a8965755c1e8feb5a85a38f9f7f7",
+      "size": 13642827,
+      "channel": "qa-mobile",
+      "releaseAssetId": 723577801
+    },
+    {
       "fileName": "CpIPOS-Native-Mobile-2.1.2.apk",
       "url": "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.2-qa/CpIPOS-Native-Mobile-2.1.2.apk",
       "sha256": "aaed4ee76ff3afd3f1ac700d68431f880af0d3e11b69b2248d4db244e01acaa9",
