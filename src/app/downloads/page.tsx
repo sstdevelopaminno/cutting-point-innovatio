@@ -21,11 +21,11 @@ const ANDROID_TABLET_RELEASE = {
   version: "v1.0.27 QA · 2 จอ",
   versionCode: 36,
   fileName: "CpIPOS-Android-POS-1.0.27.apk",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.27-dual-screen-qa2/CpIPOS-Android-POS-1.0.27.apk",
+  url: "/downloads/apk/CpIPOS-Android-POS-1.0.27.apk",
 } as const;
 
 const ANDROID_TABLET_STABLE_1025 =
-  "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.25-print-health-auto-update/CpIPOS-Android-POS-1.0.25.apk";
+  "/downloads/apk/CpIPOS-Android-POS-1.0.25.apk";
 const WINDOWS_WEBPOS_PREVIOUS_BETA =
   "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.0-beta1/CpIPOS-WindowsWebPOS-Setup.exe";
 
@@ -45,8 +45,10 @@ const ANDROID_MOBILE_QA = {
   version: "v2.1.2 QA",
   minAndroid: "Android 8.0+",
   fileName: "CpIPOS-Native-Mobile-2.1.2.apk",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.2-qa/CpIPOS-Native-Mobile-2.1.2.apk",
+  url: "/downloads/apk/CpIPOS-Native-Mobile-2.1.2.apk",
 } as const;
+
+const ANDROID_MOBILE_STABLE_DIRECT = "/downloads/apk/CpIPOS-Native-Mobile-2.1.0.apk";
 
 const NATIVE_MOBILE_EXPECTED_CERT = "6be0a9aef346a5b47162c8928c5018a01d0e7d81b4eb177bf2fb89922dc2a27a";
 const NATIVE_MOBILE_UPDATE_POLICY =
@@ -142,8 +144,16 @@ const copy = {
 
 type Lang = keyof typeof copy;
 
+const VERIFIED_COMPANY_APK_PATHS = new Set([
+  "/downloads/apk/CpIPOS-Native-Mobile-2.1.2.apk",
+  "/downloads/apk/CpIPOS-Native-Mobile-2.1.0.apk",
+  "/downloads/apk/CpIPOS-Android-POS-1.0.27.apk",
+  "/downloads/apk/CpIPOS-Android-POS-1.0.25.apk",
+]);
+
 function approvedHttpsUrl(value: string | undefined): string | null {
   if (!value) return null;
+  if (VERIFIED_COMPANY_APK_PATHS.has(value)) return value;
   try {
     const url = new URL(value);
     return url.protocol === "https:" && Boolean(url.hostname) && !url.username && !url.password ? url.toString() : null;
@@ -339,6 +349,12 @@ export default async function DownloadsPage() {
                 ? `APK Stable ລ່າສຸດທີ່ກວດສອບແລ້ວ: ${androidMobileRelease.version} · ປິດລາຍການຂາຍກ່ອນອັບເດດ`
                 : `Latest verified Stable APK: ${androidMobileRelease.version}. Finish transactions and resolve pending bills before updating.`}
           </p>
+          <a
+            href={ANDROID_MOBILE_STABLE_DIRECT}
+            className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl border border-sky-300/60 bg-sky-300/10 px-5 py-3 text-sm font-bold text-sky-100 hover:bg-sky-300/20"
+          >
+            {lang === "th" ? "ดาวน์โหลดมือถือ Stable 2.1.0 จากเว็บไซต์บริษัท" : lang === "lo" ? "ດາວໂຫຼດ Android Mobile Stable 2.1.0 ຈາກເວັບບໍລິສັດ" : "Download verified Stable 2.1.0 from company CDN"}
+          </a>
           <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-7 text-slate-200">
             {(lang === "th"
               ? [
@@ -390,10 +406,10 @@ export default async function DownloadsPage() {
           </ol>
           <p className="mt-4 text-xs leading-6 text-amber-100/80">
             {lang === "th"
-              ? "ความปลอดภัย: ดาวน์โหลดจาก GitHub Releases ทางการเท่านั้น ไม่จำเป็นต้องปิด Play Protect และหน้าตาการอนุญาตอาจต่างกันตามรุ่นมือถือ"
+              ? "ความปลอดภัย: ไฟล์ APK จากโดเมนเว็บไซต์บริษัทผ่านการตรวจ SHA-256 เทียบกับ GitHub Releases ทางการ ไม่จำเป็นต้องปิด Play Protect และหน้าตาการอนุญาตอาจต่างกันตามรุ่นมือถือ"
               : lang === "lo"
-                ? "ຄວາມປອດໄພ: ດາວໂຫຼດຈາກ GitHub Releases ທາງການເທົ່ານັ້ນ; ບໍ່ຕ້ອງປິດ Play Protect"
-                : "Security: Download only from the official GitHub Releases. You do not need to disable Play Protect; Android prompts may vary by device."}
+                ? "ຄວາມປອດໄພ: APK ຈາກເວັບບໍລິສັດກວດສອບ SHA-256 ກັບ GitHub Releases; ບໍ່ຕ້ອງປິດ Play Protect"
+                : "Security: Company-hosted APK files are verified by SHA-256 against official GitHub Releases. You do not need to disable Play Protect; Android prompts may vary by device."}
           </p>
         </section>
 
