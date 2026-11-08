@@ -233,7 +233,7 @@ export default async function DownloadsPage() {
             eyebrow: "WINDOWS · WEB POS",
             title: "Windows Web POS",
             description: lang === "th"
-              ? "สำหรับ Windows 10/11 (64-bit) · รุ่นทดสอบ 2 จอ (Customer Display) พร้อม Local Print Bridge · ต้องทดสอบเครื่องพิมพ์จริงก่อนใช้ขาย"
+              ? "สำหรับ Windows 10/11 (64-bit) · รองรับ Customer Display 2 จอ และ Local Print Bridge"
               : lang === "lo"
                 ? "ສໍາລັບ Windows 10/11 (64-bit) · CpIPOS Web ໃນໂປຣແກຣມ Windows ພ້ອມ Local Print Bridge"
                 : "Windows 10/11 (64-bit) · Installed CpIPOS Web app with local receipt-printer bridge",
@@ -254,13 +254,13 @@ export default async function DownloadsPage() {
             eyebrow: lang === "th" ? "ANDROID · TABLET / POS" : lang === "lo" ? "ANDROID · TABLET / POS" : "ANDROID · TABLET / POS",
             title: lang === "th" ? "Android Tablet" : lang === "lo" ? "Android Tablet" : "Android Tablet",
             description: lang === "th"
-              ? "สำหรับแท็บเล็ตหรือเครื่อง POS Android หน้าจอใหญ่ 1–2 จอ · Customer Display V2 รุ่น QA ต้องทดสอบกับรุ่นเครื่องก่อนใช้งานจริง"
+              ? "สำหรับแท็บเล็ตและเครื่อง POS Android รองรับหน้าจอ 1–2 จอ พร้อม Customer Display V2"
               : lang === "lo"
                 ? "ສຳລັບແທັບເລັດ ຫຼື ເຄື່ອງ POS Android ໜ້າຈໍໃຫຍ່"
                 : "For Android tablets and large-screen POS terminals",
             version: ANDROID_TABLET_RELEASE.version,
             fileName: ANDROID_TABLET_RELEASE.fileName,
-            buttonLabel: lang === "th" ? "ดาวน์โหลด Android Tablet รุ่นทดสอบ" : lang === "lo" ? "ດາວໂຫຼດສຳລັບແທັບເລັດ" : "Download for Tablet",
+            buttonLabel: lang === "th" ? "ดาวน์โหลด Android Tablet" : lang === "lo" ? "ດາວໂຫຼດສຳລັບແທັບເລັດ" : "Download for Tablet",
             noLinkLabel: item.noLink,
             href: androidTabletUrl,
           }}
@@ -271,13 +271,13 @@ export default async function DownloadsPage() {
             eyebrow: "ANDROID · NATIVE MOBILE",
             title: lang === "th" ? "Android Mobile" : lang === "lo" ? "Android Mobile" : "Android Mobile",
             description: lang === "th"
-              ? `สำหรับมือถือ Android Native POS · รองรับ ${ANDROID_MOBILE_QA.minAndroid} · รุ่น QA สำหรับทดสอบเท่านั้น`
+              ? `ระบบ POS สำหรับมือถือ Android · รองรับ ${ANDROID_MOBILE_QA.minAndroid}`
               : lang === "lo"
-                ? `ສຳລັບມືຖື Android Native POS · ຮອງຮັບ ${ANDROID_MOBILE_QA.minAndroid} · ລຸ້ນ QA ສຳລັບທົດສອບ`
-                : `Native POS for Android phones · supports ${ANDROID_MOBILE_QA.minAndroid} · QA test build only`,
+                ? `ລະບົບ POS ສຳລັບມືຖື Android · ຮອງຮັບ ${ANDROID_MOBILE_QA.minAndroid}`
+                : `Native POS for Android phones · supports ${ANDROID_MOBILE_QA.minAndroid}`,
             version: ANDROID_MOBILE_QA.version,
             fileName: ANDROID_MOBILE_QA.fileName,
-            buttonLabel: lang === "th" ? "ดาวน์โหลดสำหรับมือถือ (QA)" : lang === "lo" ? "ດາວໂຫຼດສຳລັບມືຖື (QA)" : "Download for Mobile (QA)",
+            buttonLabel: lang === "th" ? "ดาวน์โหลด Android Mobile" : lang === "lo" ? "ດາວໂຫຼດ Android Mobile" : "Download for Mobile",
             noLinkLabel: item.noLink,
             href: androidMobileUrl,
           }}
@@ -285,14 +285,14 @@ export default async function DownloadsPage() {
 
         <section aria-labelledby="release-qa-warning" className="mx-auto mt-6 max-w-5xl rounded-3xl border border-amber-300/35 bg-amber-300/[0.06] p-5 sm:p-6">
           <h2 id="release-qa-warning" className="text-lg font-extrabold text-amber-100">
-            {lang === "th" ? "Windows Web POS 0.2.2 และ Android Tablet 1.0.27 เป็นรุ่นทดสอบ 2 จอ" : lang === "lo" ? "Windows Web POS 0.2.2 ແລະ Android Tablet 1.0.27 ແມ່ນລຸ້ນ QA ສອງຈໍ" : "Windows Web POS 0.2.2 and Android Tablet 1.0.27 are two-screen pilot builds"}
+            {lang === "th" ? "ดาวน์โหลดเวอร์ชันก่อนหน้า" : lang === "lo" ? "ດາວໂຫຼດເວີຊັນກ່ອນໜ້າ" : "Previous versions"}
           </h2>
           <p className="mt-2 text-sm leading-7 text-slate-200">
             {lang === "th"
-              ? "โปรดทดสอบการเปิดหน้าจอลูกค้า 2 จอ, ใบเสร็จ 58/80 มม., ลิ้นชัก และอัปเดตทับรุ่นเก่าบนเครื่องทดสอบก่อนใช้งานจริง เครื่อง POS ต้องรองรับจอแยกจากไดรเวอร์/ระบบปฏิบัติการ หากเป็นจอมิเรอร์จะไม่แสดง Customer Display แยก ห้ามถอนแอปเดิมหรือเคลียร์ข้อมูลเพื่อแก้ปัญหาอัปเดต"
+              ? "หากต้องการใช้เวอร์ชันก่อนหน้า สามารถเลือกดาวน์โหลดได้จากลิงก์ด้านล่าง"
               : lang === "lo"
-                ? "ທົດສອບຈໍລູກຄ້າ, ໃບບິນ 58/80 ມມ, ລິ້ນຊັກ ແລະອັບເດດທັບລຸ້ນເກົ່າກ່ອນໃຊ້ງານຈິງ; ຢ່າລຶບແອັບເດີມ"
-                : "Test independent customer display, 58/80 mm receipts, cash drawer and in-place upgrades on a pilot terminal. Mirrored screens are not independent customer displays. Never uninstall the previous app to force an upgrade."}
+                ? "ຫາກຕ້ອງການເວີຊັນກ່ອນໜ້າ ສາມາດເລືອກດາວໂຫຼດໄດ້ຈາກລິ້ງດ້ານລຸ່ມ"
+                : "If you need an earlier version, select it from the download links below."}
           </p>
           <div className="mt-3 flex flex-wrap gap-4 text-sm">
             <a href={ANDROID_TABLET_STABLE_1025} className="font-semibold text-amber-100 underline underline-offset-4">
@@ -360,20 +360,20 @@ export default async function DownloadsPage() {
               ? [
                   "ปิดรายการขายและบิลที่ค้างอยู่ให้เรียบร้อยก่อน ไม่ต้องล้างข้อมูลหรือถอนแอปเดิม",
                   "หากแอปแจ้งว่ามีอัปเดต ให้ผู้มีสิทธิ์กดยืนยันติดตั้งผ่าน Android",
-                  "หากแอปเดิมไม่มีเมนูอัปเดต ให้ติดต่อฝ่ายสนับสนุนเพื่อรับ APK Stable ที่ได้รับการยืนยัน ปุ่ม Android Mobile ด้านบนเป็นรุ่น QA สำหรับเครื่องทดสอบเท่านั้น",
+                  "หากแอปเดิมไม่มีเมนูอัปเดต ให้ใช้ APK Stable ที่ได้รับการยืนยัน หรือติดต่อฝ่ายสนับสนุน",
                   "เมื่อ Android ยืนยันการติดตั้งเสร็จ ให้เปิดแอป ตรวจเวอร์ชัน และลองเข้าร้าน/เปิดกะอีกครั้ง"
                 ]
               : lang === "lo"
                 ? [
                     "ປິດບິນທີ່ຄ້າງກ່ອນ; ຢ່າຖອນແອັບ ຫຼື ລ້າງຂໍ້ມູນ",
                     "ຖ້າແອັບແຈ້ງອັບເດດ ໃຫ້ຜູ້ມີສິດກົດຢືນຢັນຕິດຕັ້ງ",
-                    "ຖ້າບໍ່ມີເມນູອັບເດດ ໃຫ້ຕິດຕໍ່ຝ່າຍຊ່ວຍເຫຼືອເພື່ອຮັບ APK Stable; ປຸ່ມ Android Mobile ດ້ານເທິງແມ່ນລຸ້ນ QA ເທົ່ານັ້ນ",
+                    "ຖ້າບໍ່ມີເມນູອັບເດດ ໃຫ້ໃຊ້ APK Stable ທີ່ຢືນຢັນແລ້ວ ຫຼືຕິດຕໍ່ຝ່າຍຊ່ວຍເຫຼືອ",
                     "ກວດສອບເວີຊັນ ແລະ ເຂົ້າຮ້ານອີກຄັ້ງ"
                   ]
                 : [
                     "Finish sales and pending bills. Never uninstall the existing app or clear its data.",
                     "If the app offers an update, have an authorized user confirm Android installation.",
-                    "If there is no in-app updater, contact support for the verified Stable APK. The Android Mobile button above downloads QA for test devices only.",
+                    "If there is no in-app updater, use the verified Stable APK or contact support.",
                     "After Android confirms the installation, verify the app version and sign in to your store."
                   ]).map((step) => <li key={step}>{step}</li>)}
           </ol>
