@@ -289,6 +289,52 @@ export default async function DownloadsPage() {
           </p>
         </section>
 
+        <section aria-labelledby="android-upgrade-title" className="mx-auto mt-8 max-w-5xl rounded-3xl border border-sky-300/25 bg-sky-300/[0.065] p-5 sm:p-7">
+          <h2 id="android-upgrade-title" className="text-xl font-extrabold text-white">
+            {lang === "th"
+              ? "ใช้งาน CpiPOS Mobile รุ่นเก่าอยู่แล้ว? อัปเดตทับแอปเดิมได้"
+              : lang === "lo"
+                ? "ໃຊ້ CpiPOS Mobile ລຸ້ນເກົ່າຢູ່? ຕິດຕັ້ງອັບເດດທັບແອັບເດີມ"
+                : "Already using an older CpiPOS Mobile version? Update without uninstalling"}
+          </h2>
+          <p className="mt-2 text-sm leading-7 text-slate-300">
+            {lang === "th"
+              ? `APK Stable ล่าสุดที่ผ่านระบบตรวจสอบ: ${androidMobileRelease.version} · ปิดรายการขายและตรวจบิลค้างก่อนอัปเดต`
+              : lang === "lo"
+                ? `APK Stable ລ່າສຸດທີ່ກວດສອບແລ້ວ: ${androidMobileRelease.version} · ປິດລາຍການຂາຍກ່ອນອັບເດດ`
+                : `Latest verified Stable APK: ${androidMobileRelease.version}. Finish transactions and resolve pending bills before updating.`}
+          </p>
+          <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-7 text-slate-200">
+            {(lang === "th"
+              ? [
+                  "ปิดรายการขายและบิลที่ค้างอยู่ให้เรียบร้อยก่อน ไม่ต้องล้างข้อมูลหรือถอนแอปเดิม",
+                  "หากแอปแจ้งว่ามีอัปเดต ให้ผู้มีสิทธิ์กดยืนยันติดตั้งผ่าน Android",
+                  "หากแอปเดิมไม่มีเมนูอัปเดต ให้ดาวน์โหลด Android Mobile จากหน้าศูนย์ดาวน์โหลดนี้ แล้วเปิด APK เพื่อติดตั้งทับ",
+                  "เมื่อ Android ยืนยันการติดตั้งเสร็จ ให้เปิดแอป ตรวจเวอร์ชัน และลองเข้าร้าน/เปิดกะอีกครั้ง"
+                ]
+              : lang === "lo"
+                ? [
+                    "ປິດບິນທີ່ຄ້າງກ່ອນ; ຢ່າຖອນແອັບ ຫຼື ລ້າງຂໍ້ມູນ",
+                    "ຖ້າແອັບແຈ້ງອັບເດດ ໃຫ້ຜູ້ມີສິດກົດຢືນຢັນຕິດຕັ້ງ",
+                    "ຖ້າບໍ່ມີເມນູອັບເດດ ໃຫ້ດາວໂຫຼດ APK Android Mobile ຈາກໜ້ານີ້ ແລ້ວຕິດຕັ້ງທັບ",
+                    "ກວດສອບເວີຊັນ ແລະ ເຂົ້າຮ້ານອີກຄັ້ງ"
+                  ]
+                : [
+                    "Finish sales and pending bills. Never uninstall the existing app or clear its data.",
+                    "If the app offers an update, have an authorized user confirm Android installation.",
+                    "If the old app has no updater, download the latest Android Mobile APK from this page and install it over the existing app.",
+                    "After Android confirms the installation, verify the app version and sign in to your store."
+                  ]).map((step) => <li key={step}>{step}</li>)}
+          </ol>
+          <p className="mt-4 text-xs leading-6 text-amber-100/90">
+            {lang === "th"
+              ? "หาก Android แจ้งว่าอัปเดตไม่ได้ ให้หยุดติดตั้งและติดต่อฝ่ายสนับสนุน ห้ามถอนแอปเพื่อลองใหม่ เพราะอาจสูญเสียข้อมูลที่ยังไม่ส่งขึ้นเซิร์ฟเวอร์"
+              : lang === "lo"
+                ? "ຖ້າ Android ຕິດຕັ້ງທັບບໍ່ໄດ້ ໃຫ້ຢຸດ ແລະ ຕິດຕໍ່ຝ່າຍຊ່ວຍເຫຼືອ; ຢ່າຖອນແອັບ"
+                : "If Android cannot update the existing app, stop and contact support. Do not uninstall to retry: unresolved local sales data could be lost."}
+          </p>
+        </section>
+
         <section aria-labelledby="android-install-title" className="mx-auto mt-10 max-w-5xl rounded-3xl border border-sky-200/15 bg-white/[0.045] p-5 sm:p-7">
           <h2 id="android-install-title" className="text-xl font-extrabold text-white">
             {lang === "th" ? "วิธีติดตั้ง CpIPOS บน Android" : lang === "lo" ? "ວິທີຕິດຕັ້ງ CpIPOS ໃນ Android" : "How to install CpIPOS on Android"}
