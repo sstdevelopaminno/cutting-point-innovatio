@@ -52,7 +52,22 @@ const nextConfig = {
     ];
   },
   async headers() {
+    const apkFiles = [
+      "CpIPOS-Native-Mobile-2.1.2.apk",
+      "CpIPOS-Native-Mobile-2.1.0.apk",
+      "CpIPOS-Android-POS-1.0.27.apk",
+      "CpIPOS-Android-POS-1.0.25.apk",
+    ];
     return [
+      ...apkFiles.map((name) => ({
+        source: `/downloads/apk/${name}`,
+        headers: [
+          { key: "Content-Type", value: "application/vnd.android.package-archive" },
+          { key: "Content-Disposition", value: `attachment; filename="${name}"` },
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      })),
+
       {
         source: "/:path*",
         headers: securityHeaders,
