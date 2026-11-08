@@ -45,3 +45,7 @@ next-env.d.ts
 
 .vercel
 .env*.local
+
+# Binary APKs staged at build time from pinned and hash-verified GitHub releases.
+/public/downloads/apk/*.apk
+/public/downloads/apk/*.tmp
