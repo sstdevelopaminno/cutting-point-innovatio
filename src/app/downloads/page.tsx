@@ -264,6 +264,28 @@ export default async function DownloadsPage() {
           }}
         />
 
+        <section aria-labelledby="native-mobile-212-qa" className="mx-auto mt-5 max-w-5xl rounded-3xl border border-sky-300/35 bg-sky-300/[0.06] p-5 sm:p-6">
+          <h2 id="native-mobile-212-qa" className="text-lg font-extrabold text-sky-100">
+            Android Mobile v2.1.2 · QA
+          </h2>
+          <p className="mt-2 text-sm leading-7 text-slate-200">
+            {lang === "th"
+              ? "รุ่นทดสอบสำหรับมือถือ Android 8.0 ขึ้นไปเท่านั้น ยังไม่ใช่รุ่น Stable และไม่ใช่การอัปเดตอัตโนมัติสำหรับลูกค้า ควรติดตั้งบนเครื่องทดสอบก่อน และห้ามถอนแอปเดิมหรือล้างข้อมูลร้าน"
+              : lang === "lo"
+                ? "ລຸ້ນ QA ທົດສອບສຳລັບ Android 8.0 ຂຶ້ນໄປ ບໍ່ແມ່ນ Stable ຫຼືການອັບເດດອັດຕະໂນມັດ ໃຫ້ທົດສອບກັບເຄື່ອງສຳຮອງກ່ອນ"
+                : "QA test build for Android 8.0+. Not a Stable release and not an automatic customer update. Test on a non-production device first; do not uninstall the existing app or erase store data."}
+          </p>
+          <a
+            href="https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.2-qa/CpIPOS-Native-Mobile-2.1.2.apk"
+            className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl border border-sky-300/60 bg-sky-400/20 px-5 text-sm font-bold text-white hover:bg-sky-400/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-200"
+          >
+            {lang === "th" ? "ดาวน์โหลด Android Mobile 2.1.2 (QA)" : lang === "lo" ? "ດາວໂຫຼດ Android Mobile 2.1.2 (QA)" : "Download Android Mobile 2.1.2 (QA)"}
+          </a>
+          <p className="mt-3 break-all text-xs leading-5 text-slate-400">
+            SHA-256: aaed4ee76ff3afd3f1ac700d68431f880af0d3e11b69b2248d4db244e01acaa9
+          </p>
+        </section>
+
         <section aria-labelledby="release-qa-warning" className="mx-auto mt-6 max-w-5xl rounded-3xl border border-amber-300/35 bg-amber-300/[0.06] p-5 sm:p-6">
           <h2 id="release-qa-warning" className="text-lg font-extrabold text-amber-100">
             {lang === "th" ? "Windows Web POS 0.2.2 และ Android Tablet 1.0.27 เป็นรุ่นทดสอบ 2 จอ" : lang === "lo" ? "Windows Web POS 0.2.2 ແລະ Android Tablet 1.0.27 ແມ່ນລຸ້ນ QA ສອງຈໍ" : "Windows Web POS 0.2.2 and Android Tablet 1.0.27 are two-screen pilot builds"}
