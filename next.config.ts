@@ -53,6 +53,7 @@ const nextConfig = {
   },
   async headers() {
     const apkFiles = [
+      "CpIPOS-Native-Mobile-2.1.3.apk",
       "CpIPOS-Native-Mobile-2.1.2.apk",
       "CpIPOS-Native-Mobile-2.1.0.apk",
       "CpIPOS-Android-POS-1.0.27.apk",
