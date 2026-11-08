@@ -35,6 +35,8 @@ jobs:
         run: npm run lint
       - name: TypeScript
         run: npx tsc --noEmit
+      - name: Public alert CDN cache regression
+        run: node scripts/verify-emergency-broadcast-cache.mjs
       - name: Native Mobile stable version contract
         run: node scripts/verify-native-mobile-download.mjs
       - name: Signed QA 2.1.3 domain contract
