@@ -79,7 +79,10 @@ export async function GET() {
       : null;
 
     const response = NextResponse.json({ data: { broadcast }, error: null });
-    response.headers.set("cache-control", "public, max-age=15, stale-while-revalidate=30");
+    // Public, identical for all visitors: cache for 10s at the CDN to avoid a
+    // database read on every 30s browser poll. Browsers always revalidate.
+    // Never CDN-cache an error response or any tenant-scoped POS endpoint.
+    response.headers.set("cache-control", "public, max-age=0, s-maxage=10, stale-while-revalidate=10");
     return response;
   } catch (error) {
     console.error("Emergency broadcast read failed:", error);
