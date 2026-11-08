@@ -79,7 +79,11 @@ export async function GET() {
       : null;
 
     const response = NextResponse.json({ data: { broadcast }, error: null });
+    // This endpoint is public and has no per-user data. Cache at the CDN so
+    // repeated company-site checks avoid starting a Supabase-backed Function.
+    // Keep the TTL short for urgent broadcast changes; never cache errors.
     response.headers.set("cache-control", "public, max-age=15, stale-while-revalidate=30");
+    response.headers.set("CDN-Cache-Control", "public, s-maxage=15, stale-while-revalidate=15");
     return response;
   } catch (error) {
     console.error("Emergency broadcast read failed:", error);
