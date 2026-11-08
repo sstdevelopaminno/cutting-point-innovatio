@@ -39,6 +39,15 @@ const ANDROID_MOBILE_FALLBACK = {
   url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.0/CpIPOS-Native-Mobile-2.1.0.apk",
 } as const;
 
+// Manual QA download shown in the existing Android Mobile installer card.
+// Keep separate from the verified Stable policy used for customer auto-updates.
+const ANDROID_MOBILE_QA = {
+  version: "v2.1.2 QA",
+  minAndroid: "Android 8.0+",
+  fileName: "CpIPOS-Native-Mobile-2.1.2.apk",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.2-qa/CpIPOS-Native-Mobile-2.1.2.apk",
+} as const;
+
 const NATIVE_MOBILE_EXPECTED_CERT = "6be0a9aef346a5b47162c8928c5018a01d0e7d81b4eb177bf2fb89922dc2a27a";
 const NATIVE_MOBILE_UPDATE_POLICY =
   "https://pos.cuttingpointinnovation.com/api/android-pos/native-update-policy?version_code=0";
@@ -163,7 +172,7 @@ export default async function DownloadsPage() {
   const windowsUrl = approvedHttpsUrl(WINDOWS_FINAL_RELEASE.url);
   const windowsWebPosUrl = approvedHttpsUrl(WINDOWS_WEB_POS_BETA_RELEASE.url);
   const androidTabletUrl = approvedHttpsUrl(ANDROID_TABLET_RELEASE.url);
-  const androidMobileUrl = approvedHttpsUrl(androidMobileRelease.url);
+  const androidMobileUrl = approvedHttpsUrl(ANDROID_MOBILE_QA.url);
   return (
     <main className="relative isolate min-h-[calc(100dvh-80px)] overflow-hidden bg-[#090e1c] text-white">
       <div
@@ -252,39 +261,17 @@ export default async function DownloadsPage() {
             eyebrow: "ANDROID · NATIVE MOBILE",
             title: lang === "th" ? "Android Mobile" : lang === "lo" ? "Android Mobile" : "Android Mobile",
             description: lang === "th"
-              ? `สำหรับมือถือ Android Native POS · รองรับ ${androidMobileRelease.minAndroid}`
+              ? `สำหรับมือถือ Android Native POS · รองรับ ${ANDROID_MOBILE_QA.minAndroid} · รุ่น QA สำหรับทดสอบเท่านั้น`
               : lang === "lo"
-                ? `ສຳລັບມືຖື Android Native POS · ຮອງຮັບ ${androidMobileRelease.minAndroid}`
-                : `Native POS for Android phones · supports ${androidMobileRelease.minAndroid}`,
-            version: androidMobileRelease.version,
-            fileName: androidMobileRelease.fileName,
-            buttonLabel: lang === "th" ? "ดาวน์โหลดสำหรับมือถือ" : lang === "lo" ? "ດາວໂຫຼດສຳລັບມືຖື" : "Download for Mobile",
+                ? `ສຳລັບມືຖື Android Native POS · ຮອງຮັບ ${ANDROID_MOBILE_QA.minAndroid} · ລຸ້ນ QA ສຳລັບທົດສອບ`
+                : `Native POS for Android phones · supports ${ANDROID_MOBILE_QA.minAndroid} · QA test build only`,
+            version: ANDROID_MOBILE_QA.version,
+            fileName: ANDROID_MOBILE_QA.fileName,
+            buttonLabel: lang === "th" ? "ดาวน์โหลดสำหรับมือถือ (QA)" : lang === "lo" ? "ດາວໂຫຼດສຳລັບມືຖື (QA)" : "Download for Mobile (QA)",
             noLinkLabel: item.noLink,
             href: androidMobileUrl,
           }}
         />
-
-        <section aria-labelledby="native-mobile-212-qa" className="mx-auto mt-5 max-w-5xl rounded-3xl border border-sky-300/35 bg-sky-300/[0.06] p-5 sm:p-6">
-          <h2 id="native-mobile-212-qa" className="text-lg font-extrabold text-sky-100">
-            Android Mobile v2.1.2 · QA
-          </h2>
-          <p className="mt-2 text-sm leading-7 text-slate-200">
-            {lang === "th"
-              ? "รุ่นทดสอบสำหรับมือถือ Android 8.0 ขึ้นไปเท่านั้น ยังไม่ใช่รุ่น Stable และไม่ใช่การอัปเดตอัตโนมัติสำหรับลูกค้า ควรติดตั้งบนเครื่องทดสอบก่อน และห้ามถอนแอปเดิมหรือล้างข้อมูลร้าน"
-              : lang === "lo"
-                ? "ລຸ້ນ QA ທົດສອບສຳລັບ Android 8.0 ຂຶ້ນໄປ ບໍ່ແມ່ນ Stable ຫຼືການອັບເດດອັດຕະໂນມັດ ໃຫ້ທົດສອບກັບເຄື່ອງສຳຮອງກ່ອນ"
-                : "QA test build for Android 8.0+. Not a Stable release and not an automatic customer update. Test on a non-production device first; do not uninstall the existing app or erase store data."}
-          </p>
-          <a
-            href="https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.2-qa/CpIPOS-Native-Mobile-2.1.2.apk"
-            className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl border border-sky-300/60 bg-sky-400/20 px-5 text-sm font-bold text-white hover:bg-sky-400/30 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-200"
-          >
-            {lang === "th" ? "ดาวน์โหลด Android Mobile 2.1.2 (QA)" : lang === "lo" ? "ດາວໂຫຼດ Android Mobile 2.1.2 (QA)" : "Download Android Mobile 2.1.2 (QA)"}
-          </a>
-          <p className="mt-3 break-all text-xs leading-5 text-slate-400">
-            SHA-256: aaed4ee76ff3afd3f1ac700d68431f880af0d3e11b69b2248d4db244e01acaa9
-          </p>
-        </section>
 
         <section aria-labelledby="release-qa-warning" className="mx-auto mt-6 max-w-5xl rounded-3xl border border-amber-300/35 bg-amber-300/[0.06] p-5 sm:p-6">
           <h2 id="release-qa-warning" className="text-lg font-extrabold text-amber-100">
@@ -357,20 +344,20 @@ export default async function DownloadsPage() {
               ? [
                   "ปิดรายการขายและบิลที่ค้างอยู่ให้เรียบร้อยก่อน ไม่ต้องล้างข้อมูลหรือถอนแอปเดิม",
                   "หากแอปแจ้งว่ามีอัปเดต ให้ผู้มีสิทธิ์กดยืนยันติดตั้งผ่าน Android",
-                  "หากแอปเดิมไม่มีเมนูอัปเดต ให้ดาวน์โหลด Android Mobile จากหน้าศูนย์ดาวน์โหลดนี้ แล้วเปิด APK เพื่อติดตั้งทับ",
+                  "หากแอปเดิมไม่มีเมนูอัปเดต ให้ติดต่อฝ่ายสนับสนุนเพื่อรับ APK Stable ที่ได้รับการยืนยัน ปุ่ม Android Mobile ด้านบนเป็นรุ่น QA สำหรับเครื่องทดสอบเท่านั้น",
                   "เมื่อ Android ยืนยันการติดตั้งเสร็จ ให้เปิดแอป ตรวจเวอร์ชัน และลองเข้าร้าน/เปิดกะอีกครั้ง"
                 ]
               : lang === "lo"
                 ? [
                     "ປິດບິນທີ່ຄ້າງກ່ອນ; ຢ່າຖອນແອັບ ຫຼື ລ້າງຂໍ້ມູນ",
                     "ຖ້າແອັບແຈ້ງອັບເດດ ໃຫ້ຜູ້ມີສິດກົດຢືນຢັນຕິດຕັ້ງ",
-                    "ຖ້າບໍ່ມີເມນູອັບເດດ ໃຫ້ດາວໂຫຼດ APK Android Mobile ຈາກໜ້ານີ້ ແລ້ວຕິດຕັ້ງທັບ",
+                    "ຖ້າບໍ່ມີເມນູອັບເດດ ໃຫ້ຕິດຕໍ່ຝ່າຍຊ່ວຍເຫຼືອເພື່ອຮັບ APK Stable; ປຸ່ມ Android Mobile ດ້ານເທິງແມ່ນລຸ້ນ QA ເທົ່ານັ້ນ",
                     "ກວດສອບເວີຊັນ ແລະ ເຂົ້າຮ້ານອີກຄັ້ງ"
                   ]
                 : [
                     "Finish sales and pending bills. Never uninstall the existing app or clear its data.",
                     "If the app offers an update, have an authorized user confirm Android installation.",
-                    "If the old app has no updater, download the latest Android Mobile APK from this page and install it over the existing app.",
+                    "If there is no in-app updater, contact support for the verified Stable APK. The Android Mobile button above downloads QA for test devices only.",
                     "After Android confirms the installation, verify the app version and sign in to your store."
                   ]).map((step) => <li key={step}>{step}</li>)}
           </ol>
