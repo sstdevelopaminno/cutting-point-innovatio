@@ -12,16 +12,16 @@ const WINDOWS_FINAL_RELEASE = {
 } as const;
 
 const WINDOWS_WEB_POS_BETA_RELEASE = {
-  version: "v0.2.1 Beta · 2 จอ",
+  version: "v0.2.2 Beta · 2 จอ",
   fileName: "CpIPOS-WindowsWebPOS-Setup.exe",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.1-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.2-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
 } as const;
 
 const ANDROID_TABLET_RELEASE = {
-  version: "v1.0.26 QA · 2 จอ",
+  version: "v1.0.27 QA · 2 จอ",
   versionCode: 35,
-  fileName: "CpIPOS-Android-POS-1.0.26.apk",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.26-dual-screen-qa1/CpIPOS-Android-POS-1.0.26.apk",
+  fileName: "CpIPOS-Android-POS-1.0.27.apk",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.27-dual-screen-qa2/CpIPOS-Android-POS-1.0.27.apk",
 } as const;
 
 const ANDROID_TABLET_STABLE_1025 =
@@ -266,7 +266,7 @@ export default async function DownloadsPage() {
 
         <section aria-labelledby="release-qa-warning" className="mx-auto mt-6 max-w-5xl rounded-3xl border border-amber-300/35 bg-amber-300/[0.06] p-5 sm:p-6">
           <h2 id="release-qa-warning" className="text-lg font-extrabold text-amber-100">
-            {lang === "th" ? "Windows Web POS 0.2.1 และ Android Tablet 1.0.26 เป็นรุ่นทดสอบ 2 จอ" : lang === "lo" ? "Windows Web POS 0.2.1 ແລະ Android Tablet 1.0.26 ແມ່ນລຸ້ນ QA ສອງຈໍ" : "Windows Web POS 0.2.1 and Android Tablet 1.0.26 are two-screen pilot builds"}
+            {lang === "th" ? "Windows Web POS 0.2.2 และ Android Tablet 1.0.27 เป็นรุ่นทดสอบ 2 จอ" : lang === "lo" ? "Windows Web POS 0.2.2 ແລະ Android Tablet 1.0.27 ແມ່ນລຸ້ນ QA ສອງຈໍ" : "Windows Web POS 0.2.2 and Android Tablet 1.0.27 are two-screen pilot builds"}
           </h2>
           <p className="mt-2 text-sm leading-7 text-slate-200">
             {lang === "th"
