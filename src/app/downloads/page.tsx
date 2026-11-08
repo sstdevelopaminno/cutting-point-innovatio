@@ -12,17 +12,22 @@ const WINDOWS_FINAL_RELEASE = {
 } as const;
 
 const WINDOWS_WEB_POS_BETA_RELEASE = {
-  version: "v0.2.0 Beta",
+  version: "v0.2.1 Beta · 2 จอ",
   fileName: "CpIPOS-WindowsWebPOS-Setup.exe",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.0-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.1-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
 } as const;
 
 const ANDROID_TABLET_RELEASE = {
-  version: "v1.0.25",
-  versionCode: 34,
-  fileName: "CpIPOS-Android-POS-1.0.25.apk",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.25-print-health-auto-update/CpIPOS-Android-POS-1.0.25.apk",
+  version: "v1.0.26 QA · 2 จอ",
+  versionCode: 35,
+  fileName: "CpIPOS-Android-POS-1.0.26.apk",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.26-dual-screen-qa1/CpIPOS-Android-POS-1.0.26.apk",
 } as const;
+
+const ANDROID_TABLET_STABLE_1025 =
+  "https://github.com/sstdevelopaminno/CpIPOS/releases/download/android-runtime-modern-1.0.25-print-health-auto-update/CpIPOS-Android-POS-1.0.25.apk";
+const WINDOWS_WEBPOS_PREVIOUS_BETA =
+  "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.0-beta1/CpIPOS-WindowsWebPOS-Setup.exe";
 
 // The website and installed Android phones share ONE verified stable release
 // authority: CpIPOS's signed /api/android-pos/native-update-policy endpoint.
@@ -209,7 +214,7 @@ export default async function DownloadsPage() {
             eyebrow: "WINDOWS · WEB POS",
             title: "Windows Web POS",
             description: lang === "th"
-              ? "สำหรับ Windows 10/11 (64-bit) · โปรแกรม CpiPOS Web แบบติดตั้งบนเครื่อง พร้อม Local Print Bridge สำหรับเครื่องพิมพ์ใบเสร็จ"
+              ? "สำหรับ Windows 10/11 (64-bit) · รุ่นทดสอบ 2 จอ (Customer Display) พร้อม Local Print Bridge · ต้องทดสอบเครื่องพิมพ์จริงก่อนใช้ขาย"
               : lang === "lo"
                 ? "ສໍາລັບ Windows 10/11 (64-bit) · CpIPOS Web ໃນໂປຣແກຣມ Windows ພ້ອມ Local Print Bridge"
                 : "Windows 10/11 (64-bit) · Installed CpIPOS Web app with local receipt-printer bridge",
@@ -230,13 +235,13 @@ export default async function DownloadsPage() {
             eyebrow: lang === "th" ? "ANDROID · TABLET / POS" : lang === "lo" ? "ANDROID · TABLET / POS" : "ANDROID · TABLET / POS",
             title: lang === "th" ? "Android Tablet" : lang === "lo" ? "Android Tablet" : "Android Tablet",
             description: lang === "th"
-              ? "สำหรับแท็บเล็ตหรือเครื่อง POS Android หน้าจอใหญ่ · รุ่นเดิมที่ใช้งานอยู่"
+              ? "สำหรับแท็บเล็ตหรือเครื่อง POS Android หน้าจอใหญ่ 1–2 จอ · Customer Display V2 รุ่น QA ต้องทดสอบกับรุ่นเครื่องก่อนใช้งานจริง"
               : lang === "lo"
                 ? "ສຳລັບແທັບເລັດ ຫຼື ເຄື່ອງ POS Android ໜ້າຈໍໃຫຍ່"
                 : "For Android tablets and large-screen POS terminals",
             version: ANDROID_TABLET_RELEASE.version,
             fileName: ANDROID_TABLET_RELEASE.fileName,
-            buttonLabel: lang === "th" ? "ดาวน์โหลดสำหรับแท็บเล็ต" : lang === "lo" ? "ດາວໂຫຼດສຳລັບແທັບເລັດ" : "Download for Tablet",
+            buttonLabel: lang === "th" ? "ดาวน์โหลด Android Tablet รุ่นทดสอบ" : lang === "lo" ? "ດາວໂຫຼດສຳລັບແທັບເລັດ" : "Download for Tablet",
             noLinkLabel: item.noLink,
             href: androidTabletUrl,
           }}
@@ -258,6 +263,27 @@ export default async function DownloadsPage() {
             href: androidMobileUrl,
           }}
         />
+
+        <section aria-labelledby="release-qa-warning" className="mx-auto mt-6 max-w-5xl rounded-3xl border border-amber-300/35 bg-amber-300/[0.06] p-5 sm:p-6">
+          <h2 id="release-qa-warning" className="text-lg font-extrabold text-amber-100">
+            {lang === "th" ? "Windows Web POS 0.2.1 และ Android Tablet 1.0.26 เป็นรุ่นทดสอบ 2 จอ" : lang === "lo" ? "Windows Web POS 0.2.1 ແລະ Android Tablet 1.0.26 ແມ່ນລຸ້ນ QA ສອງຈໍ" : "Windows Web POS 0.2.1 and Android Tablet 1.0.26 are two-screen pilot builds"}
+          </h2>
+          <p className="mt-2 text-sm leading-7 text-slate-200">
+            {lang === "th"
+              ? "โปรดทดสอบการเปิดหน้าจอลูกค้า 2 จอ, ใบเสร็จ 58/80 มม., ลิ้นชัก และอัปเดตทับรุ่นเก่าบนเครื่องทดสอบก่อนใช้งานจริง เครื่อง POS ต้องรองรับจอแยกจากไดรเวอร์/ระบบปฏิบัติการ หากเป็นจอมิเรอร์จะไม่แสดง Customer Display แยก ห้ามถอนแอปเดิมหรือเคลียร์ข้อมูลเพื่อแก้ปัญหาอัปเดต"
+              : lang === "lo"
+                ? "ທົດສອບຈໍລູກຄ້າ, ໃບບິນ 58/80 ມມ, ລິ້ນຊັກ ແລະອັບເດດທັບລຸ້ນເກົ່າກ່ອນໃຊ້ງານຈິງ; ຢ່າລຶບແອັບເດີມ"
+                : "Test independent customer display, 58/80 mm receipts, cash drawer and in-place upgrades on a pilot terminal. Mirrored screens are not independent customer displays. Never uninstall the previous app to force an upgrade."}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-4 text-sm">
+            <a href={ANDROID_TABLET_STABLE_1025} className="font-semibold text-amber-100 underline underline-offset-4">
+              Android Tablet 1.0.25 · Stable
+            </a>
+            <a href={WINDOWS_WEBPOS_PREVIOUS_BETA} className="font-semibold text-amber-100 underline underline-offset-4">
+              Windows Web POS 0.2.0 · Previous Beta
+            </a>
+          </div>
+        </section>
 
         <section aria-labelledby="download-start-title" className="mx-auto mt-8 max-w-5xl rounded-3xl border border-cyan-300/25 bg-cyan-300/[0.07] p-5 sm:p-7">
           <h2 id="download-start-title" className="text-xl font-extrabold text-white">
