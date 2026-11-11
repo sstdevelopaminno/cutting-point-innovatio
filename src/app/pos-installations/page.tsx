@@ -17,6 +17,24 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const gallery = [
+  { src: "/pos-installations/field-01.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 1" },
+  { src: "/pos-installations/field-02.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 2" },
+  { src: "/pos-installations/field-03.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 3" },
+  { src: "/pos-installations/field-04.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 4" },
+  { src: "/pos-installations/field-05.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 5" },
+  { src: "/pos-installations/field-06.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 6" },
+  { src: "/pos-installations/field-07.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 7" },
+  { src: "/pos-installations/field-08.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 8" },
+  { src: "/pos-installations/field-09.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 9" },
+  { src: "/pos-installations/field-10.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 10" },
+  { src: "/pos-installations/field-12.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 11" },
+  { src: "/pos-installations/field-13.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 12" },
+  { src: "/pos-installations/field-17.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 13" },
+  { src: "/pos-installations/field-19.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 14" },
+  { src: "/pos-installations/field-20.webp", alt: "ภาพลงพื้นที่สาธิตและแนะนำการใช้งาน CpiPOS สำหรับร้านค้าและร้านอาหาร ลำดับที่ 15" },
+];
+
 const stories = [
   {
     title: "สาธิต CpiPOS บนแท็บเล็ต ณ ร้านค้าปลีก",
@@ -65,6 +83,19 @@ export default function PosInstallationsPage() {
                 <h3 className="mt-3 text-xl font-black leading-8">{story.title}</h3>
                 <p className="mt-4 leading-8 text-slate-600">{story.description}</p>
               </article>
+            ))}
+          </div>
+        </section>
+        <section className="mx-auto max-w-6xl px-6 pb-16" aria-labelledby="field-gallery-heading">
+          <h2 id="field-gallery-heading" className="text-3xl font-black">ภาพบรรยากาศจากการลงพื้นที่จริง</h2>
+          <p className="mt-3 text-slate-600">ภาพจากการแนะนำ สาธิต และทดลองใช้งานอุปกรณ์ POS ในสถานที่จริง</p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {gallery.map((photo, index) => (
+              <figure key={photo.src} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={photo.src} alt={photo.alt} width={1400} height={900} loading={index < 2 ? "eager" : "lazy"} decoding="async" className="aspect-[4/3] w-full object-cover" />
+                <figcaption className="p-4 text-sm text-slate-600">ภาพกิจกรรมแนะนำและสาธิตระบบ CpiPOS · ภาพที่ {index + 1}</figcaption>
+              </figure>
             ))}
           </div>
         </section>
