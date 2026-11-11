@@ -141,6 +141,12 @@ export default function PosPillarPage() {
                 สอบถามทีมงาน ช่วยเริ่มใช้ POS บน Android
               </Link>
               <Link
+                href="/pos/field-stories"
+                className="rounded-full border border-blue-300 bg-white px-6 py-3 text-sm font-black text-blue-800 hover:bg-blue-50"
+              >
+                ภาพบรรยากาศลงพื้นที่สาธิต CpiPOS
+              </Link>
+              <Link
                 href="/pos-android"
                 className="rounded-full border border-sky-300 bg-sky-50 px-6 py-3 text-sm font-black text-sky-900 hover:bg-sky-100"
               >
