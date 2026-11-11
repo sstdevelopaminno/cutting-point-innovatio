@@ -82,6 +82,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.95,
     },
     {
+      url: `${baseUrl}/pos/field-stories`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/pos`,
       changeFrequency: "weekly",
       priority: 0.98,
