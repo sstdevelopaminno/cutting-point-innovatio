@@ -11,10 +11,12 @@ const WINDOWS_FINAL_RELEASE = {
   url: "https://github.com/sstdevelopaminno/cp-ipos-desktop/releases/download/v0.3.4/CpIPOS.Desktop_0.3.4_x64-setup.exe",
 } as const;
 
-const WINDOWS_WEB_POS_BETA_RELEASE = {
-  version: "v0.2.2 Beta · 2 จอ",
+// Signed release must exist and pass Authenticode verification before this
+// download change is merged and deployed. Never link to the unsigned QA build.
+const WINDOWS_WEB_POS_SIGNED_RELEASE = {
+  version: "v0.2.5 · Signed · 2 จอ",
   fileName: "CpIPOS-WindowsWebPOS-Setup.exe",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.2-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.5-signed/CpIPOS-WindowsWebPOS-Setup.exe",
 } as const;
 
 const ANDROID_TABLET_RELEASE = {
@@ -181,7 +183,7 @@ export default async function DownloadsPage() {
   const item = copy[lang];
   const androidMobileRelease = await getVerifiedAndroidMobileRelease();
   const windowsUrl = approvedHttpsUrl(WINDOWS_FINAL_RELEASE.url);
-  const windowsWebPosUrl = approvedHttpsUrl(WINDOWS_WEB_POS_BETA_RELEASE.url);
+  const windowsWebPosUrl = approvedHttpsUrl(WINDOWS_WEB_POS_SIGNED_RELEASE.url);
   const androidTabletUrl = approvedHttpsUrl(ANDROID_TABLET_RELEASE.url);
   const androidMobileUrl = approvedHttpsUrl(ANDROID_MOBILE_QA.url);
   return (
@@ -238,8 +240,8 @@ export default async function DownloadsPage() {
               : lang === "lo"
                 ? "ສໍາລັບ Windows 10/11 (64-bit) · CpIPOS Web ໃນໂປຣແກຣມ Windows ພ້ອມ Local Print Bridge"
                 : "Windows 10/11 (64-bit) · Installed CpIPOS Web app with local receipt-printer bridge",
-            version: WINDOWS_WEB_POS_BETA_RELEASE.version,
-            fileName: WINDOWS_WEB_POS_BETA_RELEASE.fileName,
+            version: WINDOWS_WEB_POS_SIGNED_RELEASE.version,
+            fileName: WINDOWS_WEB_POS_SIGNED_RELEASE.fileName,
             buttonLabel: lang === "th"
               ? "ดาวน์โหลด Windows Web POS"
               : lang === "lo"
