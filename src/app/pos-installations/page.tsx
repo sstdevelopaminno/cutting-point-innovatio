@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import StructuredData from "@/components/StructuredData";
 
-const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.cuttingpointinnovation.com").replace(/\\/+$/, "");
+const baseUrl = "https://www.cuttingpointinnovation.com";
 
 export const metadata: Metadata = {
   title: "ผลงานติดตั้งระบบ POS และลงพื้นที่ร้านค้าจริง | CpiPOS",
