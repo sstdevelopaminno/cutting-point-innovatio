@@ -20,6 +20,16 @@ const photos = [
   { file: "field-08.webp", alt: "บรรยากาศการช่วยเหลือผู้ใช้งานระบบหน้าร้าน" },
   { file: "field-09.webp", alt: "การสาธิตระบบ CpiPOS ในพื้นที่ขายสินค้าจริง" },
   { file: "field-10.webp", alt: "การแนะนำการใช้งานระบบ POS กับผู้ประกอบการ" },
+  { file: "field-11.webp", alt: "การสาธิต CpiPOS บนแท็บเล็ตกับผู้ประกอบการที่ร้านค้า" },
+  { file: "field-12.webp", alt: "หน้าจอระบบ CpiPOS บนแท็บเล็ตระหว่างการสาธิต" },
+  { file: "field-13.webp", alt: "บรรยากาศร้านค้าระหว่างการลงพื้นที่แนะนำระบบ POS" },
+  { file: "field-14.webp", alt: "การอธิบายวิธีใช้งาน CpiPOS บนคอมพิวเตอร์ที่จุดขาย" },
+  { file: "field-15.webp", alt: "ผู้ใช้งานทดลองสแกนสินค้าด้วยระบบ POS ที่หน้าร้าน" },
+  { file: "field-16.webp", alt: "บรรยากาศทีมงานแนะนำขั้นตอนระบบ CpiPOS ในร้าน" },
+  { file: "field-17.webp", alt: "การสาธิตระบบขายหน้าร้านและอุปกรณ์ POS" },
+  { file: "field-18.webp", alt: "การแนะนำระบบ POS และการจัดวางอุปกรณ์ที่จุดขาย" },
+  { file: "field-19.webp", alt: "การสาธิตการจัดวางจอและอุปกรณ์ POS ในร้านอาหาร" },
+  { file: "field-20.webp", alt: "การแนะนำการใช้งาน CpiPOS กับเครื่องพิมพ์ใบเสร็จ" },
 ] as const;
 export default function FieldStoriesPage() {
   return <main className="min-h-screen bg-white text-slate-900">
