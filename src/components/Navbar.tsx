@@ -59,6 +59,7 @@ export default function Navbar({
           servicesDorm: "ระบบหอพัก/รีสอร์ท",
           servicesCompany: "จดทะเบียนบริษัท",
           servicesPosPricing: "ราคาแพ็กเกจ POS",
+          servicesFieldGallery: "ภาพลงพื้นที่ CpiPOS",
           contactOverview: "ติดต่อเรา",
           contactArticles: "บทความ",
           menu: "เมนู",
@@ -72,6 +73,7 @@ export default function Navbar({
             servicesDorm: "ລະບົບຫໍພັກ/ຣີສອດ",
             servicesCompany: "ຈົດທະບຽນບໍລິສັດ",
             servicesPosPricing: "ລາຄາແພັກເກດ POS",
+            servicesFieldGallery: "ຮູບພາບລົງພື້ນທີ່ CpiPOS",
             contactOverview: "ຕິດຕໍ່ພວກເຮົາ",
             contactArticles: "ບົດຄວາມ",
             menu: "ເມນູ",
@@ -84,6 +86,7 @@ export default function Navbar({
           servicesDorm: "Dormitory/Resort System",
           servicesCompany: "Company Registration",
           servicesPosPricing: "POS Package Pricing",
+          servicesFieldGallery: "CpiPOS Field Photos",
           contactOverview: "Contact us",
           contactArticles: "Articles",
           menu: "Menu",
@@ -425,6 +428,14 @@ export default function Navbar({
                     </Link>
                     <Link
                       role="menuitem"
+                      href="/pos-installations"
+                      onClick={() => setServicesOpen(false)}
+                      className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
+                    >
+                      {t.servicesFieldGallery}
+                    </Link>
+                    <Link
+                      role="menuitem"
                       href="/packages/pos"
                       onClick={() => {
                         onNavClick("services");
@@ -579,6 +590,17 @@ export default function Navbar({
                             {t.servicesOverview}
                           </Link>
                                                     <Link
+                            href="/pos-installations"
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setMobileFeaturesOpen(false);
+                              setMobileServicesOpen(false);
+                            }}
+                            className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
+                          >
+                            {t.servicesFieldGallery}
+                          </Link>
+                          <Link
                             href="/packages/pos"
                             onClick={() => {
                               onNavClick("services");
