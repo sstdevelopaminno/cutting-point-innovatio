@@ -644,6 +644,48 @@ const seoContent = useMemo(
             </div>
           </div>
         </section>
+        <section id="cpipos-field-gallery" className="border-b border-slate-200 bg-gradient-to-b from-slate-50 to-white py-14 md:py-20">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-3xl">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700">CpiPOS · Field Stories</p>
+                <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+                  {lang === "th" ? "ภาพบรรยากาศลงพื้นที่ CpiPOS จากร้านค้าจริง" : lang === "lo" ? "ຮູບພາບການລົງພື້ນທີ່ CpiPOS ໃນຮ້ານຄ້າຈິງ" : "CpiPOS in real shops: field stories"}
+                </h2>
+                <p className="mt-4 text-base leading-8 text-slate-600">
+                  {lang === "th"
+                    ? "ชมภาพกิจกรรมแนะนำ สาธิต และทดลองใช้งานระบบขายหน้าร้านกับอุปกรณ์จริง พร้อมเรื่องราวจากการลงพื้นที่"
+                    : lang === "lo"
+                      ? "ຊົມຮູບພາບການແນະນຳ ສາທິດ ແລະທົດລອງໃຊ້ງານລະບົບ POS ໃນຮ້ານຄ້າ"
+                      : "Photos from on-site introductions, demos, and hands-on POS use with real equipment."}
+                </p>
+              </div>
+              <Link href="/pos-installations" className="inline-flex shrink-0 items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-700">
+                {lang === "th" ? "ชมภาพผลงานทั้ง 15 ภาพ" : lang === "lo" ? "ເບິ່ງຮູບພາບທັງ 15 ຮູບ" : "View all 15 field photos"}
+              </Link>
+            </div>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {[
+                { src: "/pos-installations/field-01.webp", alt: "การสาธิต CpiPOS บนแท็บเล็ต ณ ร้านจำหน่ายผลไม้" },
+                { src: "/pos-installations/field-04.webp", alt: "เจ้าหน้าที่ใช้งานอุปกรณ์ขายหน้าร้านและเครื่องอ่านบาร์โค้ด" },
+                { src: "/pos-installations/field-19.webp", alt: "การลงพื้นที่สาธิตระบบขายหน้าร้านและจอ POS" },
+              ].map((photo) => (
+                <Link key={photo.src} href="/pos-installations" aria-label={photo.alt} className="group block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    width={1280}
+                    height={900}
+                    unoptimized
+                    loading="lazy"
+                    sizes="(min-width: 640px) 33vw, 100vw"
+                    className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
         <section id="seo" className="bg-white py-20 md:py-24">
           <div className="mx-auto w-full max-w-6xl px-6">
             {seoContent.sections.slice(0, 1).map((section) => (
