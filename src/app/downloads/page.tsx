@@ -11,10 +11,13 @@ const WINDOWS_FINAL_RELEASE = {
   url: "https://github.com/sstdevelopaminno/cp-ipos-desktop/releases/download/v0.3.4/CpIPOS.Desktop_0.3.4_x64-setup.exe",
 } as const;
 
-const WINDOWS_WEB_POS_BETA_RELEASE = {
-  version: "v0.2.2 Beta · 2 จอ",
+// The verified 0.2.5 QA binary is made available by the owner's request, but
+// is NOT Authenticode-signed. Do not imply a trusted signature or hardware QA.
+// Upgrade link to a separately verified CA-signed release when it exists.
+const WINDOWS_WEB_POS_CURRENT_RELEASE = {
+  version: "v0.2.5 · 2 จอ",
   fileName: "CpIPOS-WindowsWebPOS-Setup.exe",
-  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.2-beta1/CpIPOS-WindowsWebPOS-Setup.exe",
+  url: "https://github.com/sstdevelopaminno/CpIPOS/releases/download/windows-webpos-v0.2.5-width-qa1/CpIPOS-WindowsWebPOS-Setup.exe",
 } as const;
 
 const ANDROID_TABLET_RELEASE = {
@@ -181,7 +184,7 @@ export default async function DownloadsPage() {
   const item = copy[lang];
   const androidMobileRelease = await getVerifiedAndroidMobileRelease();
   const windowsUrl = approvedHttpsUrl(WINDOWS_FINAL_RELEASE.url);
-  const windowsWebPosUrl = approvedHttpsUrl(WINDOWS_WEB_POS_BETA_RELEASE.url);
+  const windowsWebPosUrl = approvedHttpsUrl(WINDOWS_WEB_POS_CURRENT_RELEASE.url);
   const androidTabletUrl = approvedHttpsUrl(ANDROID_TABLET_RELEASE.url);
   const androidMobileUrl = approvedHttpsUrl(ANDROID_MOBILE_QA.url);
   return (
@@ -234,12 +237,12 @@ export default async function DownloadsPage() {
             eyebrow: "WINDOWS · WEB POS",
             title: "Windows Web POS",
             description: lang === "th"
-              ? "สำหรับ Windows 10/11 (64-bit) · รองรับ Customer Display 2 จอ และ Local Print Bridge"
+              ? "สำหรับ Windows 10/11 (64-bit) · รองรับ 2 จอและเครื่องพิมพ์ · ไฟล์ยังไม่มีลายเซ็นดิจิทัล Authenticode"
               : lang === "lo"
-                ? "ສໍາລັບ Windows 10/11 (64-bit) · CpIPOS Web ໃນໂປຣແກຣມ Windows ພ້ອມ Local Print Bridge"
-                : "Windows 10/11 (64-bit) · Installed CpIPOS Web app with local receipt-printer bridge",
-            version: WINDOWS_WEB_POS_BETA_RELEASE.version,
-            fileName: WINDOWS_WEB_POS_BETA_RELEASE.fileName,
+                ? "ສໍາລັບ Windows 10/11 (64-bit) · Local Print Bridge · ໄຟລ໌ຍັງບໍ່ມີລາຍເຊັນ Authenticode"
+                : "Windows 10/11 (64-bit) · Receipt-printer bridge · Installer not yet Authenticode-signed",
+            version: WINDOWS_WEB_POS_CURRENT_RELEASE.version,
+            fileName: WINDOWS_WEB_POS_CURRENT_RELEASE.fileName,
             buttonLabel: lang === "th"
               ? "ดาวน์โหลด Windows Web POS"
               : lang === "lo"
