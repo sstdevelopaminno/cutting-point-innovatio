@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Noto_Sans_Lao, Noto_Sans_Thai, Noto_Serif_Lao, Noto_Serif_Thai } from "next/font/google";
 import Analytics from "@/components/Analytics";
 import MarketingEventTracker from "@/components/MarketingEventTracker";
 import ImageProtection from "@/components/ImageProtection";
@@ -7,34 +6,6 @@ import SiteShell from "@/components/SiteShell";
 import StructuredData from "@/components/StructuredData";
 import { getRequestedLocale, type Locale } from "@/lib/locale";
 import "./globals.css";
-
-const notoSansThai = Noto_Sans_Thai({
-  subsets: ["latin", "thai"],
-  variable: "--font-sans-thai",
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
-
-const notoSerifThai = Noto_Serif_Thai({
-  subsets: ["latin", "thai"],
-  variable: "--font-serif-thai",
-  weight: ["400", "600", "700"],
-  display: "swap",
-});
-
-const notoSansLao = Noto_Sans_Lao({
-  subsets: ["latin", "lao"],
-  variable: "--font-sans-lao",
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
-
-const notoSerifLao = Noto_Serif_Lao({
-  subsets: ["latin", "lao"],
-  variable: "--font-serif-lao",
-  weight: ["400", "600", "700"],
-  display: "swap",
-});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.cuttingpointinnovation.com";
 
@@ -127,7 +98,7 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${notoSansThai.variable} ${notoSerifThai.variable} ${notoSansLao.variable} ${notoSerifLao.variable} antialiased`}
+        className="antialiased"
       >
         <StructuredData locale={locale} includeGlobal />
         <Analytics />
