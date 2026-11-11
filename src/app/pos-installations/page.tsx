@@ -13,9 +13,28 @@ export const metadata: Metadata = {
     description: "ภาพและเรื่องราวการแนะนำระบบขายหน้าร้าน CpiPOS ให้ธุรกิจจริง",
     url: `${baseUrl}/pos-installations`,
     type: "website",
+    images: [{ url: "/pos-installations/field-01.webp", alt: "ภาพกิจกรรมแนะนำ CpiPOS ณ ร้านค้าจริง" }],
   },
   robots: { index: true, follow: true },
 };
+
+const gallery = [
+  { src: "/pos-installations/field-01.webp", alt: "ผู้ประกอบการยืนคู่กับแท็บเล็ตระบบขายหน้าร้านภายในร้านค้าผลไม้" },
+  { src: "/pos-installations/field-02.webp", alt: "หน้าจอระบบ POS บนคอมพิวเตอร์ระหว่างสาธิตการขายที่เคาน์เตอร์" },
+  { src: "/pos-installations/field-03.webp", alt: "แนะนำวิธีใช้งานระบบขายหน้าร้าน POS บนจอคอมพิวเตอร์" },
+  { src: "/pos-installations/field-04.webp", alt: "พนักงานใช้งานเครื่องอ่านบาร์โค้ดร่วมกับจอขายหน้าร้าน" },
+  { src: "/pos-installations/field-05.webp", alt: "ทีมงานสาธิตหน้าจอระบบ POS และการทำรายการขายหน้าร้าน" },
+  { src: "/pos-installations/field-06.webp", alt: "บรรยากาศเคาน์เตอร์เครื่องดื่มและร้านค้าระหว่างลงพื้นที่" },
+  { src: "/pos-installations/field-07.webp", alt: "ทีมงานและพนักงานร่วมเรียนรู้การใช้งาน POS ที่เคาน์เตอร์" },
+  { src: "/pos-installations/field-08.webp", alt: "ทีมงานกำลังแนะนำระบบขายหน้าร้านให้ผู้ใช้งาน" },
+  { src: "/pos-installations/field-09.webp", alt: "พนักงานร้านค้าสาธิตใช้งานจอ POS ที่จุดชำระเงิน" },
+  { src: "/pos-installations/field-10.webp", alt: "การสาธิตระบบขายหน้าร้านและหน้าจอ POS" },
+  { src: "/pos-installations/field-12.webp", alt: "ตัวอย่างหน้าจอแท็บเล็ต POS ที่จุดขายโดยปิดบังข้อมูลบนจอ" },
+  { src: "/pos-installations/field-13.webp", alt: "บรรยากาศร้านจำหน่ายผลไม้และสินค้าภายในอาคาร" },
+  { src: "/pos-installations/field-17.webp", alt: "ทีมงานลงพื้นที่แนะนำระบบ POS ในบริเวณเคาน์เตอร์ขาย" },
+  { src: "/pos-installations/field-19.webp", alt: "ชุดอุปกรณ์ POS หลายจอ คอมพิวเตอร์ และลิ้นชักเก็บเงิน" },
+  { src: "/pos-installations/field-20.webp", alt: "การสาธิตระบบ POS บนจอและเครื่องพิมพ์ใบเสร็จที่ร้าน" },
+];
 
 const stories = [
   {
@@ -65,6 +84,19 @@ export default function PosInstallationsPage() {
                 <h3 className="mt-3 text-xl font-black leading-8">{story.title}</h3>
                 <p className="mt-4 leading-8 text-slate-600">{story.description}</p>
               </article>
+            ))}
+          </div>
+        </section>
+        <section className="mx-auto max-w-6xl px-6 pb-16" aria-labelledby="field-gallery-heading">
+          <h2 id="field-gallery-heading" className="text-3xl font-black">ภาพบรรยากาศจากการลงพื้นที่จริง</h2>
+          <p className="mt-3 text-slate-600">ภาพจากการแนะนำ สาธิต และทดลองใช้งานอุปกรณ์ POS ในสถานที่จริง</p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {gallery.map((photo, index) => (
+              <figure key={photo.src} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={photo.src} alt={photo.alt} width={1400} height={900} loading={index < 2 ? "eager" : "lazy"} decoding="async" className="aspect-[4/3] w-full object-cover" />
+                <figcaption className="p-4 text-sm text-slate-600">ภาพกิจกรรมแนะนำและสาธิตระบบ CpiPOS · ภาพที่ {index + 1}</figcaption>
+              </figure>
             ))}
           </div>
         </section>
