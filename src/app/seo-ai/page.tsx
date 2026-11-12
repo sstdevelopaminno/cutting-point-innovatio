@@ -78,7 +78,7 @@ const content: Record<"th" | "en", LocaleContent> = {
     meta: {
       title: "AI SEO | CUTTING POINT INNOVATION",
       description:
-        "บริการ AI SEO สำหรับเว็บไซต์องค์กร: On-page SEO, CRO, Generative AI Optimization และรายงานเชิงลึก เพื่อเพิ่มโอกาสติดหน้าแรก Google อย่างยั่งยืน",
+        "บริการ AI SEO สำหรับเว็บไซต์องค์กร: On-page SEO, CRO, Generative AI Optimization และรายงานเชิงลึก เพื่อปรับปรุงการค้นพบเว็บไซต์บน Google อย่างเป็นระบบ",
     },
     crumbs: [
       { label: "หน้าแรก", href: "/" },
@@ -419,6 +419,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: data.meta.title,
     description: data.meta.description,
     alternates: { canonical: "/seo-ai" },
+    openGraph: { title: data.meta.title, description: data.meta.description, url: "/seo-ai", type: "website" },
+    twitter: { card: "summary_large_image", title: data.meta.title, description: data.meta.description },
   };
 }
 
