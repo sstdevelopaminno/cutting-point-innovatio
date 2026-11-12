@@ -38,7 +38,7 @@ type StructuredDataProps = {
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.cuttingpointinnovation.com";
 
 const CONTACT = {
-  email: "cuttingpointtech@gmail.com",
+  email: "",
   phoneLocal: "0985460355",
   phoneE164: "+66985460355",
   line: "https://lin.ee/z8qLGjU",
@@ -48,22 +48,22 @@ const CONTACT = {
 
 const companyInfo = {
   th: {
-    name: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด",
-    alternateName: "CUTTING POINT INNOVATION CO., LTD.",
+    name: "คัตติ้ง พอยท์ อินโนเวชั่น",
+    alternateName: "CUTTING POINT INNOVATION",
     description:
-      "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด ผู้พัฒนา CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไป รองรับอุปกรณ์ Android ที่รองรับ พร้อมบริการด้านไอทีและการดูแลระบบ",
+      "คัตติ้ง พอยท์ อินโนเวชั่น ผู้พัฒนา CpiPOS ระบบ POS สำหรับร้านอาหาร คาเฟ่ ร้านค้าปลีก และร้านค้าทั่วไป รองรับอุปกรณ์ Android ที่รองรับ พร้อมบริการด้านไอทีและการดูแลระบบ",
   },
   en: {
-    name: "CUTTING POINT INNOVATION CO., LTD.",
-    alternateName: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด",
+    name: "CUTTING POINT INNOVATION",
+    alternateName: "คัตติ้ง พอยท์ อินโนเวชั่น",
     description:
-      "CUTTING POINT INNOVATION CO., LTD. develops CpiPOS, an Android POS system for restaurants, cafés, retail stores, and general merchants, alongside IT services and system support.",
+      "CUTTING POINT INNOVATION develops CpiPOS, an Android POS system for restaurants, cafés, retail stores, and general merchants, alongside IT services and system support.",
   },
   lo: {
-    name: "CUTTING POINT INNOVATION CO., LTD.",
-    alternateName: "บริษัท คัตติ้ง พอยท์ อินโนเวชั่น จำกัด",
+    name: "CUTTING POINT INNOVATION",
+    alternateName: "คัตติ้ง พอยท์ อินโนเวชั่น",
     description:
-      "CUTTING POINT INNOVATION CO., LTD. develops CpiPOS, a POS system for compatible Android devices, with IT services and system support for businesses.",
+      "CUTTING POINT INNOVATION develops CpiPOS, a POS system for compatible Android devices, with IT services and system support for businesses.",
   },
 };
 function uniqueGraphId(id: string) {
@@ -100,7 +100,6 @@ export default function StructuredData({
       alternateName: info.alternateName,
       url: `${baseUrl}/`,
       description: info.description,
-      email: CONTACT.email,
       telephone: CONTACT.phoneE164,
       sameAs: [CONTACT.line, CONTACT.facebook],
     };
@@ -114,7 +113,6 @@ export default function StructuredData({
                 "@type": "ContactPoint",
                 telephone: CONTACT.phoneE164,
                 contactType: "customer support",
-                email: CONTACT.email,
                 url: CONTACT.contactUrl,
                 availableLanguage: ["th", "en", "lo"],
               },
@@ -127,42 +125,10 @@ export default function StructuredData({
   if (includeGlobal) {
     ensureOrganization("full");
     graph.push({
-      "@type": "LocalBusiness",
-      "@id": `${baseUrl}/#localbusiness`,
-      name: info.name,
-      alternateName: info.alternateName,
-      url: `${baseUrl}/`,
-      description: info.description,
-      telephone: CONTACT.phoneE164,
-      email: CONTACT.email,
-      sameAs: [CONTACT.line, CONTACT.facebook],
-      areaServed: {
-        "@type": "Country",
-        name: "Thailand",
-      },
-      openingHoursSpecification: [
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "09:00",
-          closes: "17:00",
-        },
-      ],
-      address: {
-        "@type": "PostalAddress",
-        streetAddress:
-          "139/32 หมู่บ้านนันทนาการ์เด้นท์ ตำบลบ้านกลาง",
-        addressLocality: "อำเภอเมืองปทุมธานี",
-        addressRegion: "ปทุมธานี",
-        postalCode: "12000",
-        addressCountry: "TH",
-      },
-    });
-    graph.push({
       "@type": "WebSite",
       "@id": websiteId,
       url: `${baseUrl}/`,
-      name: "CUTTING POINT INNOVATION CO., LTD.",
+      name: "CUTTING POINT INNOVATION",
       publisher: { "@id": organizationId },
       inLanguage: locale,
     });
@@ -219,7 +185,7 @@ export default function StructuredData({
       name:
         article?.headline ??
         service?.name ??
-        (locale === "th" ? "คำถามที่พบบ่อย | CUTTING POINT INNOVATION" : "FAQ | CUTTING POINT INNOVATION CO., LTD."),
+        (locale === "th" ? "คำถามที่พบบ่อย | CUTTING POINT INNOVATION" : "FAQ | CUTTING POINT INNOVATION"),
       isPartOf: { "@id": websiteId },
       inLanguage: locale,
       mainEntity: faqs.map((item) => ({
@@ -256,7 +222,7 @@ export default function StructuredData({
         "@type": "WebSite",
         "@id": websiteId,
         url: `${baseUrl}/`,
-        name: "CUTTING POINT INNOVATION CO., LTD.",
+        name: "CUTTING POINT INNOVATION",
         publisher: { "@id": organizationId },
         inLanguage: locale,
       });
