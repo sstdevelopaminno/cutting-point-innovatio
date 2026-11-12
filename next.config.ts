@@ -45,7 +45,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Canonical Field Stories gallery (308 permanent redirect).\n      { source: "/pos/field-stories", destination: "/pos-installations", permanent: true },\n      // Common variants / old paths.
+      // Canonical Field Stories gallery (308 permanent redirect).
+      { source: "/pos/field-stories", destination: "/pos-installations", permanent: true },
+      // Common variants / old paths.
       { source: "/template/:path*", destination: "/templates/:path*", permanent: false },
       { source: "/portfolio", destination: "/templates", permanent: false },
       { source: "/downloads/native-mobile-qa", destination: "/downloads#android", permanent: false },
