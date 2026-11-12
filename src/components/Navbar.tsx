@@ -12,6 +12,7 @@ const navItems = [
   { href: "/#top", key: "home" },
   { href: "/#features", key: "features" },
   { href: "/#services", key: "services" },
+  { href: "/packages/pos", key: "pricing" },
   { href: "/trial", key: "trial" },
   { href: "/contact", key: "contact" },
   { href: "/register-store", key: "signup" },
@@ -22,7 +23,7 @@ type NavKey = (typeof navItems)[number]["key"];
 type NavbarProps = {
   lang: Lang;
   onToggleLang: () => void;
-  labels: Record<NavKey | "downloads", string>;
+  labels: Record<Exclude<NavKey, "pricing"> | "downloads", string>;
   cta: string;
   contactPhone: string;
 };
@@ -50,6 +51,7 @@ export default function Navbar({
   const isEnglishStyle = lang === "en";
   const featuresOverviewLabel = isEnglishStyle ? "Highlights overview" : labels.features;
   const featuresSeoAiLabel = "SEO AI";
+  const pricingLabel = lang === "th" ? "ราคา" : lang === "lo" ? "ລາຄາ" : "Pricing";
 
   const t =
     lang === "th"
@@ -130,22 +132,25 @@ export default function Navbar({
 
   const [featuresOpen, setFeaturesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [pricingOpen, setPricingOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
   const featuresMenuDesktopRef = useRef<HTMLDivElement | null>(null);
   const servicesMenuDesktopRef = useRef<HTMLDivElement | null>(null);
+  const pricingMenuDesktopRef = useRef<HTMLDivElement | null>(null);
   const contactMenuDesktopRef = useRef<HTMLDivElement | null>(null);
   const signupMenuDesktopRef = useRef<HTMLDivElement | null>(null);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileFeaturesOpen, setMobileFeaturesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobilePricingOpen, setMobilePricingOpen] = useState(false);
   const [mobileContactOpen, setMobileContactOpen] = useState(false);
   const [mobileSignupOpen, setMobileSignupOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!featuresOpen && !servicesOpen && !contactOpen && !signupOpen && !mobileMenuOpen) {
+    if (!featuresOpen && !servicesOpen && !pricingOpen && !contactOpen && !signupOpen && !mobileMenuOpen) {
       return;
     }
 
@@ -153,11 +158,13 @@ export default function Navbar({
       if (event.key === "Escape") {
         setFeaturesOpen(false);
         setServicesOpen(false);
+        setPricingOpen(false);
         setContactOpen(false);
         setSignupOpen(false);
         setMobileMenuOpen(false);
         setMobileFeaturesOpen(false);
         setMobileServicesOpen(false);
+        setMobilePricingOpen(false);
         setMobileContactOpen(false);
         setMobileSignupOpen(false);
       }
@@ -167,6 +174,7 @@ export default function Navbar({
       const containers = [
         featuresMenuDesktopRef.current,
         servicesMenuDesktopRef.current,
+        pricingMenuDesktopRef.current,
         contactMenuDesktopRef.current,
         signupMenuDesktopRef.current,
         mobileMenuRef.current,
@@ -197,7 +205,7 @@ export default function Navbar({
       document.removeEventListener("keydown", onKeyDown);
       document.removeEventListener("pointerdown", onPointerDown);
     };
-  }, [featuresOpen, servicesOpen, contactOpen, signupOpen, mobileMenuOpen]);
+  }, [featuresOpen, servicesOpen, pricingOpen, contactOpen, signupOpen, mobileMenuOpen]);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -333,6 +341,36 @@ export default function Navbar({
                 </div>
               );
             }
+            if (item.key === "pricing") {
+              return (
+                <div key={item.key} ref={pricingMenuDesktopRef} className="relative">
+                  <button
+                    type="button"
+                    aria-haspopup="menu"
+                    aria-expanded={pricingOpen}
+                    onClick={() => {
+                      setPricingOpen((prev) => !prev);
+                      setFeaturesOpen(false);
+                      setServicesOpen(false);
+                      setContactOpen(false);
+                      setSignupOpen(false);
+                    }}
+                    className={navLinkClass}
+                  >
+                    {pricingLabel}
+                    <ChevronDown className="h-4 w-4" />
+                  </button>
+                  {pricingOpen ? (
+                    <div role="menu" className="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-slate-200 bg-white p-2 shadow-lg">
+                      <Link role="menuitem" href="/packages/pos" onClick={() => setPricingOpen(false)}
+                        className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900">
+                        {t.servicesPosPricing}
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
+              );
+            }
             if (item.key !== "features" && item.key !== "services") {
               return (
                 <Link
@@ -433,17 +471,6 @@ export default function Navbar({
                       className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
                     >
                       {t.servicesOverview}
-                    </Link>
-                    <Link
-                      role="menuitem"
-                      href="/packages/pos"
-                      onClick={() => {
-                        onNavClick("services");
-                        setServicesOpen(false);
-                      }}
-                      className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
-                    >
-                      {t.servicesPosPricing}
                     </Link>
                     <Link
                       role="menuitem"
@@ -600,18 +627,6 @@ export default function Navbar({
                           >
                             {t.servicesOverview}
                           </Link>
-                          <Link
-                            href="/packages/pos"
-                            onClick={() => {
-                              onNavClick("services");
-                              setMobileMenuOpen(false);
-                              setMobileFeaturesOpen(false);
-                              setMobileServicesOpen(false);
-                            }}
-                            className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
-                          >
-                            {t.servicesPosPricing}
-                          </Link>
 <Link
                             href="/services/website"
                             onClick={() => {
@@ -635,6 +650,30 @@ export default function Navbar({
                             className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
                           >
                             {t.servicesCompany}
+                          </Link>
+                        </div>
+                      ) : null}
+
+                      <button
+                        type="button"
+                        aria-expanded={mobilePricingOpen}
+                        onClick={() => setMobilePricingOpen((prev) => !prev)}
+                        className="flex w-full items-center justify-between rounded-xl px-3 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-50"
+                      >
+                        <span>{pricingLabel}</span>
+                        <ChevronDown className={`h-5 w-5 transition-transform ${mobilePricingOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      {mobilePricingOpen ? (
+                        <div className="space-y-1 px-3 pb-2">
+                          <Link href="/packages/pos"
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setMobilePricingOpen(false);
+                              setMobileFeaturesOpen(false);
+                              setMobileServicesOpen(false);
+                            }}
+                            className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900">
+                            {t.servicesPosPricing}
                           </Link>
                         </div>
                       ) : null}
