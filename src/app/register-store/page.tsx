@@ -17,6 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description: "สมัครเปิดร้าน CpIPOS เลือกแพ็กเกจ โหมดขายและทดลองใช้งาน 7 วันหลัง IT อนุมัติ",
     alternates: { canonical: "/register-store" },
     robots: { index: true, follow: true },
+    openGraph: { title: titles[lang], description: "สมัครเปิดร้าน CpiPOS เลือกแพ็กเกจและเริ่มทดลองใช้งานตามเงื่อนไขบริการ", url: "/register-store", type: "website" },
+    twitter: { card: "summary_large_image", title: titles[lang], description: "สมัครเปิดร้าน CpiPOS เลือกแพ็กเกจและเริ่มทดลองใช้งานตามเงื่อนไขบริการ" },
   };
 }
 
