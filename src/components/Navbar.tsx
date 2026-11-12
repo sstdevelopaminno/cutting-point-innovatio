@@ -436,14 +436,6 @@ export default function Navbar({
                     </Link>
                     <Link
                       role="menuitem"
-                      href="/pos-installations"
-                      onClick={() => setServicesOpen(false)}
-                      className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
-                    >
-                      {t.servicesFieldGallery}
-                    </Link>
-                    <Link
-                      role="menuitem"
                       href="/packages/pos"
                       onClick={() => {
                         onNavClick("services");
