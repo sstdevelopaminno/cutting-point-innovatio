@@ -26,14 +26,14 @@ const metadataByLocale: Record<
     alternateLocales: ["en_US", "lo_LA"],
   },
   en: {
-    title: "CUTTING POINT INNOVATION CO., LTD. | CpiPOS POS for Android",
+    title: "CUTTING POINT INNOVATION | CpiPOS POS for Android",
     description:
       "CpiPOS is an Android POS system for restaurants, cafés, retail stores, and general merchants, covering sales, products, inventory, and store visibility with a 7-day free trial.",
     ogLocale: "en_US",
     alternateLocales: ["th_TH"],
   },
   lo: {
-    title: "CUTTING POINT INNOVATION CO., LTD. | CpiPOS POS for Android",
+    title: "CUTTING POINT INNOVATION | CpiPOS POS for Android",
     description:
       "CpiPOS ແມ່ນລະບົບ POS ສຳລັບ Android ສຳລັບຮ້ານອາຫານ ຄາເຟ ແລະ ຮ້ານຄ້າປີກ ຮອງຮັບວຽກຂາຍ ສິນຄ້າ ແລະ ສະຕັອກ.",
     ogLocale: "lo_LA",
@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
       alternateLocale: meta.alternateLocales,
       type: "website",
       url: "/",
-      siteName: "CUTTING POINT INNOVATION CO., LTD.",
+      siteName: "CUTTING POINT INNOVATION",
       images: [
         {
           url: "/product-showcase/service-pos.png",
