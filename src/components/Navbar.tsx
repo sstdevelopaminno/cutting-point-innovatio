@@ -51,6 +51,7 @@ export default function Navbar({
   const isEnglishStyle = lang === "en";
   const featuresOverviewLabel = isEnglishStyle ? "Highlights overview" : labels.features;
   const featuresSeoAiLabel = "SEO AI";
+  const featuresAiLabel = "AI";
   const pricingLabel = lang === "th" ? "ราคา" : lang === "lo" ? "ລາຄາ" : "Pricing";
 
   const t =
@@ -131,6 +132,7 @@ export default function Navbar({
   };
 
   const [featuresOpen, setFeaturesOpen] = useState(false);
+  const [featuresAiOpen, setFeaturesAiOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [pricingOpen, setPricingOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
@@ -143,6 +145,7 @@ export default function Navbar({
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileFeaturesOpen, setMobileFeaturesOpen] = useState(false);
+  const [mobileFeaturesAiOpen, setMobileFeaturesAiOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobilePricingOpen, setMobilePricingOpen] = useState(false);
   const [mobileContactOpen, setMobileContactOpen] = useState(false);
@@ -416,14 +419,24 @@ export default function Navbar({
                       >
                         {featuresOverviewLabel}
                       </Link>
-                      <Link
-                        role="menuitem"
-                        href="/seo-ai"
-                        onClick={() => setFeaturesOpen(false)}
-                        className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
+                      <button
+                        type="button"
+                        aria-expanded={featuresAiOpen}
+                        onClick={() => setFeaturesAiOpen((prev) => !prev)}
+                        className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-50"
                       >
-                        {featuresSeoAiLabel}
-                      </Link>
+                        <span>{featuresAiLabel}</span>
+                        <ChevronDown className={`h-4 w-4 transition-transform ${featuresAiOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      {featuresAiOpen ? (
+                        <div className="pl-4">
+                          <Link role="menuitem" href="/seo-ai"
+                            onClick={() => { setFeaturesOpen(false); setFeaturesAiOpen(false); }}
+                            className="block rounded-xl px-3 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-50">
+                            {featuresSeoAiLabel}
+                          </Link>
+                        </div>
+                      ) : null}
                       <Link
                         role="menuitem"
                         href="/pos-installations"
@@ -580,17 +593,29 @@ export default function Navbar({
                           >
                             {featuresOverviewLabel}
                           </Link>
-                          <Link
-                            href="/seo-ai"
-                            onClick={() => {
-                              setMobileMenuOpen(false);
-                              setMobileFeaturesOpen(false);
-                              setMobileServicesOpen(false);
-                            }}
-                            className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
+                          <button
+                            type="button"
+                            aria-expanded={mobileFeaturesAiOpen}
+                            onClick={() => setMobileFeaturesAiOpen((prev) => !prev)}
+                            className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-50"
                           >
-                            {featuresSeoAiLabel}
-                          </Link>
+                            <span>{featuresAiLabel}</span>
+                            <ChevronDown className={`h-4 w-4 transition-transform ${mobileFeaturesAiOpen ? "rotate-180" : ""}`} />
+                          </button>
+                          {mobileFeaturesAiOpen ? (
+                            <div className="pl-4">
+                              <Link href="/seo-ai"
+                                onClick={() => {
+                                  setMobileMenuOpen(false);
+                                  setMobileFeaturesOpen(false);
+                                  setMobileFeaturesAiOpen(false);
+                                  setMobileServicesOpen(false);
+                                }}
+                                className="block rounded-xl px-3 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-50">
+                                {featuresSeoAiLabel}
+                              </Link>
+                            </div>
+                          ) : null}
                           <Link
                             href="/pos-installations"
                             onClick={() => {
