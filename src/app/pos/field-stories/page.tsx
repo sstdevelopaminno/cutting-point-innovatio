@@ -1,6 +1,6 @@
-import { permanentRedirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
-/** Keep one canonical gallery URL; field stories already live at /pos-installations. */
+/** Fallback route; next.config.ts sends a permanent 308 redirect first. */
 export default function FieldStoriesPage() {
-  permanentRedirect("/pos-installations");
+  redirect("/pos-installations");
 }
