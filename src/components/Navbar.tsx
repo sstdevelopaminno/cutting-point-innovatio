@@ -386,6 +386,14 @@ export default function Navbar({
                       >
                         {featuresSeoAiLabel}
                       </Link>
+                      <Link
+                        role="menuitem"
+                        href="/pos-installations"
+                        onClick={() => setFeaturesOpen(false)}
+                        className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
+                      >
+                        {t.servicesFieldGallery}
+                      </Link>
                     </div>
                   ) : null}
                 </div>
@@ -425,14 +433,6 @@ export default function Navbar({
                       className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
                     >
                       {t.servicesOverview}
-                    </Link>
-                    <Link
-                      role="menuitem"
-                      href="/pos-installations"
-                      onClick={() => setServicesOpen(false)}
-                      className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
-                    >
-                      {t.servicesFieldGallery}
                     </Link>
                     <Link
                       role="menuitem"
@@ -564,6 +564,17 @@ export default function Navbar({
                           >
                             {featuresSeoAiLabel}
                           </Link>
+                          <Link
+                            href="/pos-installations"
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setMobileFeaturesOpen(false);
+                              setMobileServicesOpen(false);
+                            }}
+                            className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
+                          >
+                            {t.servicesFieldGallery}
+                          </Link>
                         </div>
                       ) : null}
 
@@ -588,17 +599,6 @@ export default function Navbar({
                             className="block rounded-xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
                           >
                             {t.servicesOverview}
-                          </Link>
-                                                    <Link
-                            href="/pos-installations"
-                            onClick={() => {
-                              setMobileMenuOpen(false);
-                              setMobileFeaturesOpen(false);
-                              setMobileServicesOpen(false);
-                            }}
-                            className="block rounded-xl px-3 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 hover:text-blue-900"
-                          >
-                            {t.servicesFieldGallery}
                           </Link>
                           <Link
                             href="/packages/pos"
