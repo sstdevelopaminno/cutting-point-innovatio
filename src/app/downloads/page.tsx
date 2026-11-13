@@ -45,10 +45,10 @@ const ANDROID_MOBILE_FALLBACK = {
 // Manual QA download shown in the existing Android Mobile installer card.
 // Keep separate from the verified Stable policy used for customer auto-updates.
 const ANDROID_MOBILE_QA = {
-  version: "v2.1.3 QA",
+  version: "v2.1.4 QA",
   minAndroid: "Android 8.0+",
-  fileName: "CpIPOS-Native-Mobile-2.1.3.apk",
-  url: "/downloads/apk/CpIPOS-Native-Mobile-2.1.3.apk",
+  fileName: "CpIPOS-Native-Mobile-2.1.4.apk",
+  url: "/downloads/apk/CpIPOS-Native-Mobile-2.1.4.apk",
 } as const;
 
 const ANDROID_MOBILE_STABLE_DIRECT = "/downloads/apk/CpIPOS-Native-Mobile-2.1.0.apk";
@@ -148,6 +148,7 @@ const copy = {
 type Lang = keyof typeof copy;
 
 const VERIFIED_COMPANY_APK_PATHS = new Set([
+  "/downloads/apk/CpIPOS-Native-Mobile-2.1.4.apk",
   "/downloads/apk/CpIPOS-Native-Mobile-2.1.3.apk",
   "/downloads/apk/CpIPOS-Native-Mobile-2.1.2.apk",
   "/downloads/apk/CpIPOS-Native-Mobile-2.1.0.apk",
@@ -281,11 +282,19 @@ export default async function DownloadsPage() {
                 : `Native POS for Android phones · supports ${ANDROID_MOBILE_QA.minAndroid}`,
             version: ANDROID_MOBILE_QA.version,
             fileName: ANDROID_MOBILE_QA.fileName,
-            buttonLabel: lang === "th" ? "ดาวน์โหลด Android Mobile" : lang === "lo" ? "ດາວໂຫຼດ Android Mobile" : "Download for Mobile",
+            buttonLabel: lang === "th" ? "ดาวน์โหลด Android Mobile (QA)" : lang === "lo" ? "ດາວໂຫຼດ Android Mobile (QA)" : "Download for Mobile (QA)",
             noLinkLabel: item.noLink,
             href: androidMobileUrl,
           }}
         />
+
+        <div role="note" className="mx-auto mt-6 max-w-5xl rounded-2xl border border-amber-300/30 bg-amber-100/[0.07] p-5 text-sm leading-7 text-amber-100">
+          {lang === "th"
+            ? "Android Mobile 2.1.4 QA เป็นรุ่นทดสอบ ยังไม่ผ่านการรับรองใช้งานหน้าร้านจริงครบทุกขั้นตอน ไม่แนะนำให้ติดตั้งบนเครื่องขายหลัก หากใช้งานจริงให้เลือก Stable 2.1.0 จากหัวข้ออัปเดตแอปด้านล่าง"
+            : lang === "lo"
+              ? "Android Mobile 2.1.4 QA ເປັນລຸ້ນທົດສອບ ບໍ່ຄວນຕິດຕັ້ງໃນເຄື່ອງຂາຍຫຼັກ. ສຳລັບຮ້ານທີ່ໃຊ້ງານຈິງ ໃຫ້ໃຊ້ Stable 2.1.0"
+              : "Android Mobile 2.1.4 QA is a test-only build, not fully accepted for live store use. Do not install it on your primary cashier device. Use Stable 2.1.0 below for production."}
+        </div>
 
         <section aria-labelledby="previous-versions" className="mx-auto mt-6 max-w-5xl rounded-3xl border border-slate-200/15 bg-white/[0.04] p-5 sm:p-6">
           <h2 id="previous-versions" className="text-lg font-extrabold text-white">

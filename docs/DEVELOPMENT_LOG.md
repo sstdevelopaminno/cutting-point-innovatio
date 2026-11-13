@@ -1,3 +1,11 @@
+## 2026-11-13 — Android Mobile 2.1.4 signed QA download staging
+
+- Owner requested update to `/downloads#android` from QA 2.1.3 to QA 2.1.4. Main Android Mobile card now uses `/downloads/apk/CpIPOS-Native-Mobile-2.1.4.apk`.
+- Source: signed QA release `native-mobile-v2.1.4-qa` (13,699,526 bytes; SHA-256 `5c59d0192c0ab65e46cd54cf001c1293472528fce9ee993e01fb372b271017a8`; GitHub asset ID 744280027). Build-time staging verifies exact bytes and hash before deployment.
+- QA-only warning visible in TH/EN/LO. Do not change Stable 2.1.0 auto-update authority or replace the existing Stable download.
+- Preserve the immutable QA 2.1.3 URL and installer for prior testers.
+- Site CI validates metadata/links, lints/types, builds production and verifies all staged APK checksums. QA 2.1.4 does NOT supersede product-release physical acceptance or the currently failing Native Emulator gate.
+
 # Development Log
 
 

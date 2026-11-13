@@ -1,0 +1,25 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+
+const source = readFileSync(new URL("../src/app/downloads/page.tsx", import.meta.url), "utf8");
+const config = readFileSync(new URL("../next.config.ts", import.meta.url), "utf8");
+const assets = JSON.parse(readFileSync(new URL("./android-apk-assets.json", import.meta.url), "utf8")).assets;
+const fileName = "CpIPOS-Native-Mobile-2.1.4.apk";
+const qa = assets.find((asset) => asset.fileName === fileName);
+assert.ok(qa, "Signed QA 2.1.4 must be staged to the company CDN");
+assert.equal(qa.channel, "qa-mobile");
+assert.equal(qa.sha256, "5c59d0192c0ab65e46cd54cf001c1293472528fce9ee993e01fb372b271017a8");
+assert.equal(qa.size, 13699526);
+assert.equal(qa.releaseAssetId, 744280027);
+assert.equal(qa.url, "https://github.com/sstdevelopaminno/CpIPOS/releases/download/native-mobile-v2.1.4-qa/" + fileName);
+assert.ok(source.includes('version: "v2.1.4 QA"'));
+assert.ok(source.includes('fileName: "' + fileName + '"'));
+assert.ok(source.includes('url: "/downloads/apk/' + fileName + '"'));
+assert.ok(source.includes('"/downloads/apk/' + fileName + '"'), "QA 2.1.4 must be allowlisted");
+assert.ok(config.includes('"' + fileName + '"'), "QA 2.1.4 requires APK headers");
+assert.ok(source.includes("2.1.4 QA เป็นรุ่นทดสอบ"), "QA-only warning must remain visible");
+assert.ok(source.includes("getVerifiedAndroidMobileRelease()"), "Do not replace stable update authority");
+assert.ok(source.includes("const ANDROID_MOBILE_STABLE_DIRECT"), "Stable fallback must remain available");
+const previous = assets.find((asset) => asset.fileName === "CpIPOS-Native-Mobile-2.1.3.apk");
+assert.equal(previous?.channel, "qa-mobile", "Keep previous immutable QA download available");
+console.log("Verified company CDN QA 2.1.4 metadata, download link, safe warning and separate stable policy.");
