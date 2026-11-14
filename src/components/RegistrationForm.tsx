@@ -143,7 +143,13 @@ export default function RegisterStoreForm() {
         <div className={styles.formHead}><span>ลงทะเบียนขอเปิดร้าน</span><h2>ข้อมูลร้านค้าและเจ้าของร้าน</h2><p>ข้อมูลที่ส่งจะปรากฏใน IT Control Plane เพื่อรออนุมัติ</p></div>
         <div className={styles.fields}>
           <label>ชื่อร้านค้า <input required minLength={2} maxLength={180} value={storeName} onChange={e=>setStoreName(e.target.value)} placeholder="ชื่อร้านที่ต้องการแสดงใน POS"/></label>
-          <label>ประเภทร้านค้า <select required value={businessType} onChange={e=>setBusinessType(e.target.value)}>
+          <label>ประเภทร้านค้า <select required value={businessType} onChange={e=>{
+            const type=e.target.value;
+            setBusinessType(type);
+            // Pick the sensible default while keeping the mode choices editable.
+            const foodService=type==="ร้านอาหาร"||type==="ร้านกาแฟ / เครื่องดื่ม";
+            setModes({takeaway:foodService,dine_in:false,general_sale:!foodService});
+          }}>
             <option value="">เลือกประเภทร้าน</option><option>ร้านอาหาร</option><option>ร้านกาแฟ / เครื่องดื่ม</option>
             <option>ร้านชำ / มินิมาร์ท</option><option>ร้านค้าปลีก</option><option>ธุรกิจบริการ</option><option>อื่น ๆ</option>
           </select></label>
