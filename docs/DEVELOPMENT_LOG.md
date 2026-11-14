@@ -1,3 +1,8 @@
+## 2026-11-15 — CpiPOS signup retail usability follow-up
+- Replace residual Web Demo badge in POS trial page with a clear 7-day store-trial label; POS login remains for already-approved stores.
+- Selecting a grocery/retail/non-restaurant business category now defaults the registration form to general-sale mode rather than takeaway. Restaurant/cafe categories default to takeaway. Customers may change the modes before submitting; no API or billing changes.
+- Verification: pending CI Verify Company Site; deploy through reviewed PR after checks pass.
+
 ## 2026-11-15 — CpiPOS lead-funnel conversion changes (organic marketing)
 - Scope: company marketing site only. POS and Contact trial buttons link directly to existing store registration, preserving UTM source/medium/campaign and adding content tags to identify CTA position.
 - Trial page now gives real-store free-trial registration top priority. Existing-store sign-in is a secondary button linking to the configured POS custom domain, without claiming that the login-gated page is a public Web Demo.
