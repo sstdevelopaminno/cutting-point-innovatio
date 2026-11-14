@@ -5,7 +5,7 @@ import StructuredData from "@/components/StructuredData";
 import { getRequestedLocale } from "@/lib/locale";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.cuttingpointinnovation.com";
-const POS_TRIAL_URL = "https://cp-ipos-web.vercel.app/";
+const POS_LOGIN_URL = "https://pos.cuttingpointinnovation.com/";
 
 const copy = {
   th: {
@@ -14,14 +14,14 @@ const copy = {
     back: "กลับหน้าทดลองใช้งาน",
     eyebrow: "CpiPOS TRIAL",
     heading: "ทดลอง CpiPOS ก่อนใช้งานจริง",
-    subtitle: "ทดลองดูระบบผ่าน Web Demo ได้ก่อน หากต้องการทดลองใช้กับร้านจริง 7 วัน ให้ส่งคำขอเปิดร้าน ทีมงานจะตรวจสอบและติดต่อกลับผ่านข้อมูลที่ลงทะเบียน",
+    subtitle: "สมัครทดลองใช้งานกับร้านจริงฟรี 7 วัน โดยส่งคำขอเปิดร้านเพื่อให้ทีมงานตรวจสอบและติดต่อกลับ ก่อนเริ่มนับวันทดลองเมื่ออนุมัติแล้ว",
     feature1: "ขายและจัดการรายการสินค้า",
     feature2: "ดูยอดขายและข้อมูลร้าน",
     feature3: "รองรับการใช้งานหน้าร้านบนอุปกรณ์ Android ที่รองรับ",
     feature4: "ระบบจริงอาจต้องสมัครร้านและกำหนดสิทธิ์ก่อนใช้งานเต็มรูปแบบ",
-    launch: "เปิด Web Demo CpiPOS",
+    launch: "เข้าสู่ระบบ CpiPOS (สำหรับร้านที่มีบัญชีแล้ว)",
     signup: "ขอทดลองใช้กับร้านจริง 7 วัน",
-    domainNote: "Web Demo ใช้สำหรับทดลองฟังก์ชันเบื้องต้น การใช้งานหน้าร้านจริงให้สมัครร้านและใช้งานผ่านอุปกรณ์ Android ที่รองรับ",
+    domainNote: "หากยังไม่มีบัญชีร้านค้า กรุณากดขอทดลองฟรี 7 วันก่อน ระบบ POS เปิดใช้งานได้หลังทีมงานตรวจสอบและอนุมัติเท่านั้น",
   },
   en: {
     title: "Try CpiPOS | CUTTING POINT INNOVATION",
@@ -29,14 +29,14 @@ const copy = {
     back: "Back to trials",
     eyebrow: "CpiPOS TRIAL",
     heading: "Try CpiPOS before going live",
-    subtitle: "Explore the web demo first. To request a 7-day trial for your store, submit a store registration and our team will review and contact you.",
+    subtitle: "Request a free 7-day store trial. Our team reviews your registration before activating your account and trial period.",
     feature1: "Sales and product management",
     feature2: "Store sales and operational insights",
     feature3: "Designed for front-of-house use on compatible Android devices",
     feature4: "Full production access may require store registration and permissions",
-    launch: "Open CpiPOS web demo",
+    launch: "CpiPOS sign in (existing stores)",
     signup: "Request a 7-day store trial",
-    domainNote: "The web demo is for exploring core functions. Live store use requires store registration and a compatible Android device.",
+    domainNote: "New stores should request a 7-day trial first. POS sign-in is for existing stores with approved accounts.",
   },
   lo: {
     title: "ທົດລອງ CpiPOS | CUTTING POINT INNOVATION",
@@ -49,9 +49,9 @@ const copy = {
     feature2: "ຍອດຂາຍ ແລະ ຂໍ້ມູນຮ້ານ",
     feature3: "ຮອງຮັບການໃຊ້ງານໜ້າຮ້ານເທິງອຸປະກອນ Android ທີ່ຮອງຮັບ",
     feature4: "ການໃຊ້ງານເຕັມອາດຕ້ອງລົງທະບຽນຮ້ານ ແລະ ກຳນົດສິດ",
-    launch: "ເປີດລະບົບ POS",
+    launch: "ເຂົ້າສູ່ລະບົບ CpiPOS (ສຳລັບຮ້ານທີ່ມີບັນຊີແລ້ວ)",
     signup: "ຂໍທົດລອງໃຊ້ CpiPOS 7 ມື້",
-    domainNote: "Web Demo ໃຊ້ເພື່ອທົດລອງຟັງຊັນເບື້ອງຕົ້ນ ການໃຊ້ງານຈິງຕ້ອງສະໝັກຮ້ານ ແລະ ໃຊ້ອຸປະກອນ Android ທີ່ຮອງຮັບ.",
+    domainNote: "ຮ້ານໃໝ່ຄວນສະໝັກທົດລອງ 7 ມື້ກ່ອນ ການເຂົ້າລະບົບສຳລັບຮ້ານທີ່ມີບັນຊີແລ້ວ.",
   },
 } as const;
 
@@ -130,17 +130,20 @@ export default async function PosTrialPage() {
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/register-store?utm_source=company_website&utm_medium=trial_page&utm_campaign=cpipos_trial&utm_content=primary_signup"
+                  className="inline-flex min-h-11 items-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700"
+                >
+                  {t.signup}
+                </Link>
                 <a
-                  href={POS_TRIAL_URL}
+                  href={POS_LOGIN_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700"
+                  className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-700 transition hover:bg-slate-50"
                 >
                   {t.launch}<ExternalLink className="h-4 w-4" />
                 </a>
-                <Link href="/register-store?utm_source=company_website&utm_medium=trial_page&utm_campaign=cpipos_trial" className="inline-flex items-center rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-700 hover:bg-slate-50">
-                  {t.signup}
-                </Link>
               </div>
             </div>
 

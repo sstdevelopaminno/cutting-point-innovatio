@@ -147,10 +147,10 @@ export default function PosPillarPage() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                href="/trial/pos?utm_source=seo&utm_medium=pos_pillar&utm_campaign=nonbrand_pos"
+                href="/register-store?utm_source=seo&utm_medium=pos_pillar&utm_campaign=nonbrand_pos&utm_content=primary_signup"
                 className="rounded-full bg-blue-600 px-6 py-3 text-sm font-black text-white hover:bg-blue-700"
               >
-                ทดลองใช้ฟรี CpiPOS 7 วัน
+                สมัครทดลอง CpiPOS ฟรี 7 วัน
               </Link>
               <Link
                 href="/contact?utm_source=website&utm_medium=pos_pillar&utm_campaign=cpipos_inbound&utm_content=ask_team"
@@ -287,8 +287,8 @@ export default function PosPillarPage() {
               เพื่อดูว่าพนักงานใช้งานได้คล่องและระบบตอบโจทย์ร้านจริงหรือไม่
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/trial/pos?utm_source=seo&utm_medium=pos_pillar&utm_campaign=free_trial" className="rounded-full bg-blue-600 px-6 py-3 text-sm font-black text-white">
-                เริ่มทดลองใช้ฟรี 7 วัน
+              <Link href="/register-store?utm_source=seo&utm_medium=pos_pillar&utm_campaign=free_trial&utm_content=bottom_signup" className="rounded-full bg-blue-600 px-6 py-3 text-sm font-black text-white">
+                สมัครทดลองฟรี 7 วัน
               </Link>
               <Link href="/articles/pos-free-trial" className="rounded-full border border-slate-300 px-6 py-3 text-sm font-black text-slate-800">
                 ดูเช็กลิสต์ทดลอง POS

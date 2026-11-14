@@ -191,7 +191,13 @@ export default function RegisterStoreForm() {
         <div className={styles.hidden} aria-hidden="true"><label>Website<input tabIndex={-1} autoComplete="off" value={honeypot} onChange={e=>setHoneypot(e.target.value)}/></label></div>
         {error?<p role="alert" className={styles.error}>{error}</p>:null}
         <button type="submit" disabled={loading||submitting||!packageId}>{submitting?"กำลังส่งคำขอ…":"ส่งคำขอเปิดร้าน →"}</button>
-        <p className={styles.note}>การส่งคำขอไม่ใช่การเปิดร้านทันที ทีมงานจะตรวจสอบก่อนสร้างรหัสร้านและบัญชี Owner</p>
+        <p className={styles.note}>การส่งคำขอไม่มีค่าใช้จ่าย และไม่ใช่การเปิดร้านทันที ทีมงานจะตรวจสอบก่อนสร้างรหัสร้านและบัญชี Owner</p>
+        <p className={styles.note}>
+          ต้องการให้ทีมงานช่วยสมัคร?{" "}
+          <a href="https://line.me/R/ti/p/@174zcwjw" target="_blank" rel="noreferrer" className="font-bold text-blue-700 underline underline-offset-4" onClick={() => trackGaEvent("registration_help_line_click", { page: "register_store" })}>
+            ติดต่อ LINE Official Account
+          </a>
+        </p>
       </form></div>}
     </div>
   </main>;
