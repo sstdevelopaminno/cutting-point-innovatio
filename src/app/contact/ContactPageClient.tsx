@@ -17,7 +17,7 @@ const FACEBOOK_URL = "https://www.facebook.com/cpipos";
 const EMAIL = "cuttingpointtech@gmail.com";
 const MAP_URL = "https://maps.app.goo.gl/K9PJtkZi2RStu3MR8";
 const TRIAL_URL =
-  "/trial/pos?utm_source=website&utm_medium=contact_page&utm_campaign=cpipos_contact_hub&utm_content=trial_cta";
+  "/register-store?utm_source=website&utm_medium=contact_page&utm_campaign=cpipos_contact_hub&utm_content=trial_cta";
 
 function SimpleIcon({
   className,
