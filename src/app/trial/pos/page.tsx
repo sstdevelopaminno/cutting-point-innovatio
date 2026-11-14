@@ -152,7 +152,7 @@ export default async function PosTrialPage() {
               <div className="relative flex w-full max-w-sm flex-col items-center rounded-[28px] border border-white/10 bg-white/5 p-8 text-center backdrop-blur">
                 <img src="/brand/logo-icon.png" alt="CpiPOS" className="h-20 w-20 object-contain" />
                 <strong className="mt-5 text-3xl font-black">CpiPOS</strong>
-                <span className="mt-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-200">ANDROID POS · WEB DEMO</span>
+                <span className="mt-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-200">ANDROID POS · FREE 7-DAY STORE TRIAL</span>
                 <p className="mt-6 text-xs leading-5 text-slate-300">{t.domainNote}</p>
               </div>
             </div>
