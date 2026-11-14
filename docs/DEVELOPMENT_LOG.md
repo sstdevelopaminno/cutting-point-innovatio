@@ -1,3 +1,10 @@
+## 2026-11-15 — CpiPOS lead-funnel conversion changes (organic marketing)
+- Scope: company marketing site only. POS and Contact trial buttons link directly to existing store registration, preserving UTM source/medium/campaign and adding content tags to identify CTA position.
+- Trial page now gives real-store free-trial registration top priority. Existing-store sign-in is a secondary button linking to the configured POS custom domain, without claiming that the login-gated page is a public Web Demo.
+- Registration form explicitly says requesting a trial has no fee and approval is not immediate, and offers an official LINE help link with click event. No changes to registration API, billing, store approval, trial policy, database or automated emails.
+- Non-mutating verification: /api/store-registration GET returns Starter/Growth/Business/CUSTOM; CI lint/TypeScript/build to be checked in pull request. No fake production signup submitted.
+- Branch: marketing/cpipos-trial-conversion-20261115. Release remains subject to reviewed PR, CI and production verification.
+
 ## 2026-11-13 — Android Mobile 2.1.4 signed QA download staging
 
 - Owner requested update to `/downloads#android` from QA 2.1.3 to QA 2.1.4. Main Android Mobile card now uses `/downloads/apk/CpIPOS-Native-Mobile-2.1.4.apk`.
