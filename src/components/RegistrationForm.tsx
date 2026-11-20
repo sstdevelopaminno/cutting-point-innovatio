@@ -14,16 +14,27 @@ const labels: Array<{key:keyof SalesModes;label:string;description:string}> = [
 const ATTRIBUTION_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"] as const;
 function readSignupAttribution() {
   if (typeof window === "undefined") return {};
+  // Session storage is best-effort. A bad/blocked entry must not discard
+  // valid UTM parameters in the current registration URL.
+  let stored: Record<string, unknown> = {};
   try {
-    const stored = JSON.parse(window.sessionStorage.getItem("cpinno_marketing_attribution") || "{}") as Record<string, unknown>;
-    const current = new URLSearchParams(window.location.search);
-    const values: Record<string, string> = {};
-    for (const key of ATTRIBUTION_PARAMS) {
-      const value = current.get(key) || stored[key];
-      if (typeof value === "string" && value.length <= 120) values[key] = value;
+    const parsed: unknown = JSON.parse(window.sessionStorage.getItem("cpinno_marketing_attribution") || "{}");
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      stored = parsed as Record<string, unknown>;
     }
-    return values;
-  } catch { return {}; }
+  } catch {
+    // Direct tagged URLs still work when storage is unavailable.
+  }
+  const current = new URLSearchParams(window.location.search);
+  const values: Record<string, string> = {};
+  for (const key of ATTRIBUTION_PARAMS) {
+    const raw = current.get(key) || stored[key];
+    if (typeof raw !== "string") continue;
+    const tag = raw.trim();
+    // Match the server's whitelist: no free text, URLs, or email addresses.
+    if (/^[A-Za-z0-9][A-Za-z0-9._~-]{0,119}$/.test(tag)) values[key] = tag;
+  }
+  return values;
 }
 const formatPrice = (n:number) => new Intl.NumberFormat("th-TH", { style:"currency",currency:"THB",maximumFractionDigits:0 }).format(n);
 const countSelectedModes = (modes:SalesModes) => labels.reduce((count,item)=>count+(modes[item.key]?1:0),0);
@@ -95,10 +106,11 @@ export default function RegisterStoreForm() {
     if(!consent){setError("กรุณายืนยันการยินยอมให้ใช้ข้อมูลเพื่อพิจารณาเปิดร้าน");return;}
     setSubmitting(true);setError("");
     try {
+      const attribution = readSignupAttribution();
       const response=await fetch("/api/store-registration",{method:"POST",headers:{"content-type":"application/json"},
         body:JSON.stringify({submission_key:submissionKey,store_name:storeName,business_type:businessType,
           owner_name:ownerName,owner_phone:ownerPhone,owner_email:ownerEmail,
-          package_id:packageId,sales_modes:modes,custom_requirements:isCustom?customRequirements.trim():"",consent,website:honeypot,started_at:startedAt})});
+          package_id:packageId,sales_modes:modes,custom_requirements:isCustom?customRequirements.trim():"",consent,website:honeypot,started_at:startedAt,marketing_attribution:attribution})});
       const payload=await response.json().catch(()=>null) as {error?:string;code?:string;field?:string;retry_after_seconds?:number;id?:string}|null;
       if(!response.ok){
         if(payload?.code==="form_session_expired"){
@@ -109,7 +121,6 @@ export default function RegisterStoreForm() {
       }
       // Only the upstream API's successful response counts as a submitted lead.
       // A click or an attempted form submission must not be treated as success.
-      const attribution = readSignupAttribution();
       trackGaEvent("generate_lead", {
         lead_type: "cpipos_store_registration",
         package_id: packageId,
