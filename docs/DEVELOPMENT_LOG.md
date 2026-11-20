@@ -1,3 +1,10 @@
+## 2026-11-21 — CpiPOS store registration UTM attribution (Issue #84)
+
+- Scope: company website signup form only. The form now sends an optional `marketing_attribution` object with the 5 standard UTM keys to the existing `/api/store-registration` proxy. The IT API performs the authoritative validation and saves accepted tags on the registration row.
+- Browser collection explicitly whitelists UTM source/medium/campaign/content/term, max 120 safe ASCII characters each. URL tags take precedence over previous session tags. Corrupted/unavailable session storage does not block direct campaign links. No IP address, full referrer, financial details or passwords are collected in this object.
+- Untagged or historic applications remain unknown; Facebook/Google/Search cannot be inferred from `source=cpipos_website` without a saved campaign tag. This applies only to applications submitted after BOTH website and IT changes are live.
+- Release safety: deploy the additive Supabase schema change first, then IT API, then website; no fake production applications. CI runs lint, typecheck and production build. Existing registration approval, trial and payment logic unchanged.
+
 ## 2026-11-15 — CpiPOS signup retail usability follow-up
 - Replace residual Web Demo badge in POS trial page with a clear 7-day store-trial label; POS login remains for already-approved stores.
 - Selecting a grocery/retail/non-restaurant business category now defaults the registration form to general-sale mode rather than takeaway. Restaurant/cafe categories default to takeaway. Customers may change the modes before submitting; no API or billing changes.
